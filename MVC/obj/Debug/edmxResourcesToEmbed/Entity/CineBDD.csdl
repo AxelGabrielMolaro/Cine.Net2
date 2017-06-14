@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CineEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMINISTRADOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARTELERA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HORA_DE_INICIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIAS_DE_SEMANA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA_DE_INICIO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FECHA_DE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NUMERO_DE_SALA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SEDE" Relationship="Self.FK__SEDE__ID_CARTELE__34C8D9D1" FromRole="CARTELERA" ToRole="SEDE" />
+  </EntityType>
+  <EntityType Name="PELICULA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CALIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="GENERO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="DURACION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.FK__RESERVA__ID_PELI__37A5467C" FromRole="PELICULA" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="REPORTES_DE_RESERVAS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_DE_INICIO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FECHA_DE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_RESERVA" Type="Int32" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.FK__REPORTES___ID_RE__3B75D760" FromRole="REPORTES_DE_RESERVAS" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VERSION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HORA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_PELICULA" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <NavigationProperty Name="PELICULA" Relationship="Self.FK__RESERVA__ID_PELI__37A5467C" FromRole="RESERVA" ToRole="PELICULA" />
+    <NavigationProperty Name="REPORTES_DE_RESERVAS" Relationship="Self.FK__REPORTES___ID_RE__3B75D760" FromRole="RESERVA" ToRole="REPORTES_DE_RESERVAS" />
+    <NavigationProperty Name="SEDE" Relationship="Self.FK__RESERVA__ID_SEDE__38996AB5" FromRole="RESERVA" ToRole="SEDE" />
+  </EntityType>
+  <EntityType Name="SEDE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRECIO_ENTRADA_GENERAL" Type="Int32" Nullable="false" />
+    <Property Name="ID_CARTELERA" Type="Int32" />
+    <NavigationProperty Name="CARTELERA" Relationship="Self.FK__SEDE__ID_CARTELE__34C8D9D1" FromRole="SEDE" ToRole="CARTELERA" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.FK__RESERVA__ID_SEDE__38996AB5" FromRole="SEDE" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__SEDE__ID_CARTELE__34C8D9D1">
+    <End Role="CARTELERA" Type="Self.CARTELERA" Multiplicity="0..1" />
+    <End Role="SEDE" Type="Self.SEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARTELERA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SEDE">
+        <PropertyRef Name="ID_CARTELERA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVA__ID_PELI__37A5467C">
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="ID_PELICULA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REPORTES___ID_RE__3B75D760">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
+    <End Role="REPORTES_DE_RESERVAS" Type="Self.REPORTES_DE_RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REPORTES_DE_RESERVAS">
+        <PropertyRef Name="ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVA__ID_SEDE__38996AB5">
+    <End Role="SEDE" Type="Self.SEDE" Multiplicity="0..1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" />
+    <EntitySet Name="CARTELERA" EntityType="Self.CARTELERA" />
+    <EntitySet Name="PELICULA" EntityType="Self.PELICULA" />
+    <EntitySet Name="REPORTES_DE_RESERVAS" EntityType="Self.REPORTES_DE_RESERVAS" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" />
+    <EntitySet Name="SEDE" EntityType="Self.SEDE" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK__SEDE__ID_CARTELE__34C8D9D1" Association="Self.FK__SEDE__ID_CARTELE__34C8D9D1">
+      <End Role="CARTELERA" EntitySet="CARTELERA" />
+      <End Role="SEDE" EntitySet="SEDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVA__ID_PELI__37A5467C" Association="Self.FK__RESERVA__ID_PELI__37A5467C">
+      <End Role="PELICULA" EntitySet="PELICULA" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REPORTES___ID_RE__3B75D760" Association="Self.FK__REPORTES___ID_RE__3B75D760">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="REPORTES_DE_RESERVAS" EntitySet="REPORTES_DE_RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVA__ID_SEDE__38996AB5" Association="Self.FK__RESERVA__ID_SEDE__38996AB5">
+      <End Role="SEDE" EntitySet="SEDE" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

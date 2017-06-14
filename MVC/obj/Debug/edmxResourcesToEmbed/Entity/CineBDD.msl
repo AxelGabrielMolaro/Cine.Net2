@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CineEntityModelStoreContainer" CdmEntityContainer="CineEntities">
+    <EntitySetMapping Name="ADMINISTRADOR">
+      <EntityTypeMapping TypeName="CineEntityModel.ADMINISTRADOR">
+        <MappingFragment StoreEntitySet="ADMINISTRADOR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARTELERA">
+      <EntityTypeMapping TypeName="CineEntityModel.CARTELERA">
+        <MappingFragment StoreEntitySet="CARTELERA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HORA_DE_INICIO" ColumnName="HORA_DE_INICIO" />
+          <ScalarProperty Name="DIAS_DE_SEMANA" ColumnName="DIAS_DE_SEMANA" />
+          <ScalarProperty Name="FECHA_DE_INICIO" ColumnName="FECHA_DE_INICIO" />
+          <ScalarProperty Name="FECHA_DE_FIN" ColumnName="FECHA_DE_FIN" />
+          <ScalarProperty Name="NUMERO_DE_SALA" ColumnName="NUMERO_DE_SALA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PELICULA">
+      <EntityTypeMapping TypeName="CineEntityModel.PELICULA">
+        <MappingFragment StoreEntitySet="PELICULA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
+          <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTES_DE_RESERVAS">
+      <EntityTypeMapping TypeName="CineEntityModel.REPORTES_DE_RESERVAS">
+        <MappingFragment StoreEntitySet="REPORTES_DE_RESERVAS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FECHA_DE_INICIO" ColumnName="FECHA_DE_INICIO" />
+          <ScalarProperty Name="FECHA_DE_FIN" ColumnName="FECHA_DE_FIN" />
+          <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVA">
+      <EntityTypeMapping TypeName="CineEntityModel.RESERVA">
+        <MappingFragment StoreEntitySet="RESERVA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="DIA" ColumnName="DIA" />
+          <ScalarProperty Name="HORA" ColumnName="HORA" />
+          <ScalarProperty Name="ID_PELICULA" ColumnName="ID_PELICULA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEDE">
+      <EntityTypeMapping TypeName="CineEntityModel.SEDE">
+        <MappingFragment StoreEntitySet="SEDE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="PRECIO_ENTRADA_GENERAL" ColumnName="PRECIO_ENTRADA_GENERAL" />
+          <ScalarProperty Name="ID_CARTELERA" ColumnName="ID_CARTELERA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="CineEntityModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

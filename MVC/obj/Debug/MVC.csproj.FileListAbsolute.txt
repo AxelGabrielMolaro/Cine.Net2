@@ -1,0 +1,432 @@
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\ApplicationInsights.config
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\csc.exe
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\System.Collections.Immutable.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\vbc.exe
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\VBCSCompiler.exe
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\roslyn\VBCSCompiler.exe.config
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\MVC.dll.config
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\MVC.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\MVC.pdb
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.Web.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.WindowsServer.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.ApplicationInsights.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.Web.Infrastructure.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Helpers.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Mvc.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Razor.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.Deployment.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.Razor.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.Web.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.AI.WindowsServer.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.ApplicationInsights.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Razor.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.Deployment.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Webpages.Razor.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Helpers.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\System.Web.Mvc.xml
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Razor.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Webpages.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Helpers.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\bin\es\System.Web.Mvc.resources.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\obj\Debug\MVC.dll
+c:\users\molaro\documents\visual studio 2015\Projects\Cine\MVC\obj\Debug\MVC.pdb
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll.config
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\MVC.pdb
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\Users\molaro\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.pdb
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.pdb
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll.config
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\MVC.pdb
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Axel\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll.config
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\MVC.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\MVC.pdb
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\obj\Debug\MVC.pdb
+C:\AppCine\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\AppCine\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\AppCine\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\AppCine\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\AppCine\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\AppCine\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\AppCine\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\AppCine\Cine.Net\MVC\bin\MVC.dll.config
+C:\AppCine\Cine.Net\MVC\bin\MVC.dll
+C:\AppCine\Cine.Net\MVC\bin\MVC.pdb
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\AppCine\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\AppCine\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\AppCine\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\AppCine\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\AppCine\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\AppCine\Cine.Net\MVC\obj\Debug\MVC.pdb
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\EntityFramework.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\EntityFramework.xml
+C:\Users\Marian\Documents\GitHub\Cine.Net\MVC\bin\EntityFramework.SqlServer.xml
+C:\App.Net\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\App.Net\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\App.Net\Cine.Net\MVC\obj\Debug\MVC.pdb
+C:\App.Net\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\App.Net\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\App.Net\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\App.Net\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\App.Net\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\App.Net\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\App.Net\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\App.Net\Cine.Net\MVC\bin\MVC.dll.config
+C:\App.Net\Cine.Net\MVC\bin\MVC.dll
+C:\App.Net\Cine.Net\MVC\bin\MVC.pdb
+C:\App.Net\Cine.Net\MVC\bin\EntityFramework.dll
+C:\App.Net\Cine.Net\MVC\bin\EntityFramework.SqlServer.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\App.Net\Cine.Net\MVC\bin\EntityFramework.xml
+C:\App.Net\Cine.Net\MVC\bin\EntityFramework.SqlServer.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\App.Net\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\App.Net\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\App.Net\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\obj\Debug\MVC.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\obj\Debug\MVC.pdb
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\ApplicationInsights.config
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\csc.exe
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\vbc.exe
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\VBCSCompiler.exe
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\MVC.dll.config
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\MVC.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\MVC.pdb
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\EntityFramework.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.Web.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Helpers.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Mvc.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Razor.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.Razor.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\EntityFramework.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.Web.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Razor.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Webpages.Razor.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Helpers.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\System.Web.Mvc.xml
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Razor.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Marian\Desktop\aModificarel que anda perfect! BACKUP\Cine.Net-master\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Cine.Net\MVC\bin\ApplicationInsights.config
+C:\Cine.Net\MVC\bin\roslyn\csc.exe
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Cine.Net\MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Cine.Net\MVC\bin\roslyn\System.Collections.Immutable.dll
+C:\Cine.Net\MVC\bin\roslyn\System.Reflection.Metadata.dll
+C:\Cine.Net\MVC\bin\roslyn\vbc.exe
+C:\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe
+C:\Cine.Net\MVC\bin\roslyn\VBCSCompiler.exe.config
+C:\Cine.Net\MVC\bin\MVC.dll.config
+C:\Cine.Net\MVC\bin\MVC.dll
+C:\Cine.Net\MVC\bin\MVC.pdb
+C:\Cine.Net\MVC\bin\EntityFramework.dll
+C:\Cine.Net\MVC\bin\EntityFramework.SqlServer.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.Web.dll
+C:\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.dll
+C:\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Cine.Net\MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Cine.Net\MVC\bin\System.Web.Helpers.dll
+C:\Cine.Net\MVC\bin\System.Web.Mvc.dll
+C:\Cine.Net\MVC\bin\System.Web.Razor.dll
+C:\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.dll
+C:\Cine.Net\MVC\bin\System.Web.Webpages.dll
+C:\Cine.Net\MVC\bin\System.Web.Webpages.Razor.dll
+C:\Cine.Net\MVC\bin\EntityFramework.xml
+C:\Cine.Net\MVC\bin\EntityFramework.SqlServer.xml
+C:\Cine.Net\MVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Cine.Net\MVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Cine.Net\MVC\bin\Microsoft.AI.Web.xml
+C:\Cine.Net\MVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Cine.Net\MVC\bin\Microsoft.ApplicationInsights.xml
+C:\Cine.Net\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Cine.Net\MVC\bin\System.Web.Razor.xml
+C:\Cine.Net\MVC\bin\System.Web.Webpages.xml
+C:\Cine.Net\MVC\bin\System.Web.Webpages.Deployment.xml
+C:\Cine.Net\MVC\bin\System.Web.Webpages.Razor.xml
+C:\Cine.Net\MVC\bin\System.Web.Helpers.xml
+C:\Cine.Net\MVC\bin\System.Web.Mvc.xml
+C:\Cine.Net\MVC\bin\es\System.Web.Razor.resources.dll
+C:\Cine.Net\MVC\bin\es\System.Web.Webpages.resources.dll
+C:\Cine.Net\MVC\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Cine.Net\MVC\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Cine.Net\MVC\bin\es\System.Web.Helpers.resources.dll
+C:\Cine.Net\MVC\bin\es\System.Web.Mvc.resources.dll
+C:\Cine.Net\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Cine.Net\MVC\obj\Debug\MVC.dll
+C:\Cine.Net\MVC\obj\Debug\MVC.pdb

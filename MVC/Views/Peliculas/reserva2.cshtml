@@ -1,0 +1,122 @@
+﻿@model MVC.Models.ReservaModelAndView
+@{
+    ViewBag.Title = "reserva2";
+    Layout = "~/Views/Shared/_base.cshtml";
+}
+
+
+<div class="text-center"> <h2>Finalizar Reserva</h2> </div>
+<div class="col-md-5">
+    <table class="table">
+       
+            <tr class="">
+                <th class="info ">Nombre</th>
+                 <tr class="">
+                    <td class="col-md-12">@Model.pelicula.Nombre</td>
+                </tr>
+            <tr>
+            <tr class="">
+                <th class="info ">Descripcion</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.pelicula.Descripcion</td>
+            </tr>
+            <tr>
+            <tr class="">
+                <th class="info ">Clasificaion</th>
+            <tr class="">
+                <td class="col-md-12">5 estrella</td>
+            </tr>
+            <tr>
+            <tr class="">
+                <th class="info ">Perecio de la entrada</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.sede.PrecioGeneral.ToString()</td>
+            </tr>
+            <tr>
+            <tr class="">
+                <th class="success ">Version</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.version.Nombre</td>
+            </tr>
+            <tr>
+            <tr class="">
+                <th class="success ">Sede</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.sede.Direccion</td>
+            </tr>
+            <tr>
+            <tr class="">
+            <th class="success ">Dia</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.diaDeReservaReservaModel</td>
+            </tr>
+            <tr>
+            <tr class="">
+            <th class="success ">Horario</th>
+            <tr class="">
+                <td class="col-md-12"> @Model.horaDeFuncionReservaModel</td>
+            </tr>
+            <tr>
+
+        
+ </table>
+
+</div>
+<div class="col-md-offset-1 col-md-5">
+    <div class="text-center text"><h3>Finalizar Reserva</h3></div>
+    <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva">
+
+        <div class="form-group">
+            <label class="control-label" >mail</label>
+            <div>
+                <input class="form-control"  id="mail" name="mail"/>
+            </div>
+            
+            
+        </div>
+        <div class="form-group">
+            <label class="control-label " >Tipo de documento</label>
+           <div>
+               <div class="col-md-6">
+                   <select class="form-control " id="tipoDocumento" name="tipoDocumento">
+                       <option value="0">Seleccione</option>
+                       @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
+                       {
+                        <option value="@tipoDocumento.IdTipoDocumento">@tipoDocumento.Descripcion</option>
+                       }
+                   </select>
+               </div>
+               <div class="col-md-6">
+                   <input class="form-control" id="numeroDocumento" name="numeroDocumento" />
+               </div>
+              
+           </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Cantidad De Entradas</label>
+            <div>
+                <input type="number" class="form-control bfh-number" id="cantidadDeEntradas"  name="cantidadDeEntradas">
+            </div>
+          
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="versionPaso5" value="@Model.idVersionReservaModel" />
+            <input type="hidden" name="peliculaPaso5" value="@Model.idPeliculaReservaModel" />
+            <input type="hidden" name="idSedePaso5" value="@Model.idSedeReservaModel" />
+            <input type="hidden" name="diaPaso5" value="@Model.diaDeReservaReservaModel" />
+            <input type="hidden" name="horarioPaso5" value="@Model.horaDeFuncionReservaModel" />
+           <h1>VER LA PARTE DE LA FECHA</h1>
+            <input type="submit" id="btnReserva2" class="btn btn-success col-md-12 " value="Reservar"/>
+        </div>
+        <div class="form-group  alert alert-warning  col-md-12">
+            <span class=""> Recuerda revisar que los datos sean los correctos antes de reservar</span>
+
+        </div>
+
+       
+
+    </form>
+    
+</div>
+
+

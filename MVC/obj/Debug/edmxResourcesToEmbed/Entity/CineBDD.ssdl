@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CineEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMINISTRADOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARTELERA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HORA_DE_INICIO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DIAS_DE_SEMANA" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="FECHA_DE_INICIO" Type="date" Nullable="false" />
+    <Property Name="FECHA_DE_FIN" Type="date" Nullable="false" />
+    <Property Name="NUMERO_DE_SALA" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'CINE.dbo.CARTELETA_PELICULA' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="CARTELETA_PELICULA">
+          <Property Name="ID_CARTELERA" Type="int" />
+          <Property Name="ID_PELICULA" Type="int" />
+        </EntityType>-->
+  <EntityType Name="PELICULA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CALIFICACION" Type="int" Nullable="false" />
+    <Property Name="GENERO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IMAGEN" Type="image" Nullable="false" />
+    <Property Name="DURACION" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REPORTES_DE_RESERVAS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA_DE_INICIO" Type="date" Nullable="false" />
+    <Property Name="FECHA_DE_FIN" Type="date" Nullable="false" />
+    <Property Name="ID_RESERVA" Type="int" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VERSION" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DIA" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="HORA" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ID_PELICULA" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+  </EntityType>
+  <EntityType Name="SEDE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="PRECIO_ENTRADA_GENERAL" Type="int" Nullable="false" />
+    <Property Name="ID_CARTELERA" Type="int" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'CINE.dbo.CARTELETA_PELICULA', pero no se encuentra la tabla.
+        <Association Name="FK__CARTELETA__ID_CA__30F848ED" />-->
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'CINE.dbo.CARTELETA_PELICULA', pero no se encuentra la tabla.
+        <Association Name="FK__CARTELETA__ID_PE__31EC6D26" />-->
+  <Association Name="FK__REPORTES___ID_RE__3B75D760">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
+    <End Role="REPORTES_DE_RESERVAS" Type="Self.REPORTES_DE_RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REPORTES_DE_RESERVAS">
+        <PropertyRef Name="ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVA__ID_PELI__37A5467C">
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="ID_PELICULA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVA__ID_SEDE__38996AB5">
+    <End Role="SEDE" Type="Self.SEDE" Multiplicity="0..1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SEDE__ID_CARTELE__34C8D9D1">
+    <End Role="CARTELERA" Type="Self.CARTELERA" Multiplicity="0..1" />
+    <End Role="SEDE" Type="Self.SEDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARTELERA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SEDE">
+        <PropertyRef Name="ID_CARTELERA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CineEntityModelStoreContainer">
+    <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARTELERA" EntityType="Self.CARTELERA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PELICULA" EntityType="Self.PELICULA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REPORTES_DE_RESERVAS" EntityType="Self.REPORTES_DE_RESERVAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEDE" EntityType="Self.SEDE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__REPORTES___ID_RE__3B75D760" Association="Self.FK__REPORTES___ID_RE__3B75D760">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="REPORTES_DE_RESERVAS" EntitySet="REPORTES_DE_RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVA__ID_PELI__37A5467C" Association="Self.FK__RESERVA__ID_PELI__37A5467C">
+      <End Role="PELICULA" EntitySet="PELICULA" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVA__ID_SEDE__38996AB5" Association="Self.FK__RESERVA__ID_SEDE__38996AB5">
+      <End Role="SEDE" EntitySet="SEDE" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SEDE__ID_CARTELE__34C8D9D1" Association="Self.FK__SEDE__ID_CARTELE__34C8D9D1">
+      <End Role="CARTELERA" EntitySet="CARTELERA" />
+      <End Role="SEDE" EntitySet="SEDE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

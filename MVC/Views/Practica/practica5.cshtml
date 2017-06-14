@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "practica1";
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Jquiery1</title>
+    <script type="text/javascript" src="~/Js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Css/bootstrap-theme.min.css" />
+</head>
+<body>
+    <div class="co-md-offset-5"> <h3>Practica jquery 5</h3> </div>
+    ARREGLOS
+    <script type="text/javascript">
+       /* var arreglo = new Array();
+
+        arreglo.push(3);
+        arreglo.push("Hola mundo");
+        arreglo[0] = "Axel Molaro";
+        console.log(arreglo[0]);*/
+
+        //var arreglo = [0, 1, 'HOLA', 'Mundo'];
+       // console.log("longitud del arreglo : " + arreglo.length);
+        var arreglo = [[1, 2, 3], ['a', 'b', 'c']];
+        /*for (i = 0; i < arreglo[1].length; i++)
+        {
+            console.log(arreglo[1][i]);
+        }*/
+
+        var cadena = arreglo[1].join('') //me transforma el array en cadena
+        console.log(cadena);
+
+        var cadena = "a/bc"
+
+        var arreglo2 = cadena.split('/');//transdorma la cadena en array
+        
+        for (i = 0; i < arreglo2.length;i++)
+        {
+            console.log(arreglo2[i])
+        }
+    </script>
+</body>
+</html>

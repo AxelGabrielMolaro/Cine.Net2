@@ -1,0 +1,58 @@
+﻿@model MVC.Models.SedeModelAndView
+
+@{
+    ViewBag.Title = "sedes";
+    Layout = "~/Views/Shared/_AdministradorBase.cshtml";
+}
+
+<div>
+    <div class="text-center col-md-12">
+        <h3>
+            Lista de sedes
+        </h3>
+        
+    </div>
+    <div class="col-md-12 alert-danger">@ViewBag.errorSede</div>
+    <table class="table">
+        <thead>
+            <tr class="success">
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Precio de entrada general</th>
+                <th>
+                    <form method="post" action="/Administracion/agregarSede">
+                        <input type="hidden" value="0" name="idSede" />
+                        <input type="submit" class="btn bn-block btn-success col-md-12" value="Nueva" />
+                    </form>
+                    
+                       
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                @foreach (var sede in Model.listadoDeSedesModel)
+                {
+                    <tr class="warning">
+                        <td>@sede.Nombre</td>
+                        <td>@sede.Direccion</td>
+                        <td>$ @sede.PrecioGeneral</td>
+                        <td>
+                            <form action="/Administracion/agregarSede" method="post">
+                                <input type="hidden" name="idSede" value="@sede.IdSede" />
+                                <input type="submit" class="btn btn-warning" value="Modificar" />
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+            
+           
+        </tbody>
+    </table>
+   
+    
+    
+</div>
+

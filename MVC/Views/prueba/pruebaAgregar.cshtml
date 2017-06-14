@@ -1,0 +1,12 @@
+﻿@model List<MVC.Entity.SEDE >
+@{
+    ViewBag.Title = "pruebaAgregar";
+    Layout = "~/Views/Shared/_AdministradorBase.cshtml";
+}
+
+<h2>pruebaAgregar</h2>
+
+@foreach (var p in Model)
+{
+   <span class="alert-danger"> nombre sede =</span> @p.NOMBRE;
+}

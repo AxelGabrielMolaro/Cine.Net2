@@ -1,0 +1,10 @@
+﻿use [20171C_TP];
+
+ /* insert into  dbo.Calificaciones (Nombre) values ('1'),('2'),('3'),('4'),('5'); 
+
+
+ insert into  dbo.Generos (Nombre) values ('Terror'),('Comedia'),('Drama'),('Accion'),('Suspenso');
+
+  insert into usuarios (NombreUsuario,Password) values ('admin','123');
+
+ */

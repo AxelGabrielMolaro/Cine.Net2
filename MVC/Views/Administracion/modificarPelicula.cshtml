@@ -1,0 +1,112 @@
+﻿@model MVC.DAL.Peliculas
+
+@{
+    ViewBag.Title = "modificarPelicula";
+    Layout = "~/Views/Shared/_AdministradorBase.cshtml";
+    MVC.DAL.TPEntities ctx = new MVC.DAL.TPEntities();
+    var calificaciones = (from c in ctx.Calificaciones
+                          select c).ToList();
+    var generos = (from g in ctx.Generos
+                   select g).ToList();
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-offset-3 col-md-6">
+        <hr />
+        <div class="btn btn-xs btn-default">
+            @Html.ActionLink("Volver", "sedes")
+        </div>
+        <div class="text-center">
+            <h3>
+                Modificar la película: @Model.Nombre
+            </h3>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdPelicula, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdPelicula, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.IdPelicula)
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Nombre)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Descripcion)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Imagen)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdCalificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="IdCalificacion">
+                    <option value="@Model.IdCalificacion"> @Model.Calificaciones.Nombre </option>
+                    @foreach (var c in calificaciones)
+                    {
+                        <option value="@c.IdCalificacion"> @c.Nombre </option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(x => x.IdCalificacion)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdGenero, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="IdGenero">
+                    <option value="@Model.IdGenero"> @Model.Generos.Nombre </option>
+                    @foreach (var g in generos)
+                    {
+                        <option value="@g.IdGenero"> @g.Nombre </option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(x => x.IdGenero)
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duracion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duracion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Duracion)
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-block btn-success" value="Guardar" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "practica1";
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Jquiery1</title>
+    <script type="text/javascript" src="~/Js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Css/bootstrap-theme.min.css" />
+</head>
+<body>
+    <div class="co-md-offset-5"> <h3>Practica jquery 6</h3> </div>
+    Objetos
+    <script type="text/javascript">
+        var Gato = new gato("Bola de pelos"); //instancio la clase
+        var Gato2 = new gato("Minino");
+        //diractamente el constructor
+        function gato(nombre)
+        {
+            this.nombre = nombre; //defino atributos y le seteo el valor
+            this.maulla = function () {//funcion anonima
+                alert(this.nombre + " : miawwww");
+            }
+        }
+
+        alert("El gato se llama " + Gato.nombre);
+        alert("El segundo gato se llama " + Gato2.nombre);
+        Gato.maulla();
+    </script>
+</body>
+</html>

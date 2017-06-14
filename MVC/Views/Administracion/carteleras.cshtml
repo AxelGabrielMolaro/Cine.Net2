@@ -1,0 +1,134 @@
+﻿@model MVC.Models.CarteleraModelAndView
+@{
+    ViewBag.Title = "carteleras";
+    Layout = "~/Views/Shared/_AdministradorBase.cshtml";
+}
+<html>
+<head>
+    <script type="text/javascript" src="~/Js/Validacion.js"></script>
+</head>
+<body>
+    <div>
+        <div class="text-center"><h3>Carteleras</h3></div>
+
+        <!-- Mensaje que se muestra si la lista está vacía -->
+        <div class="text-center alert-danger">
+            <h4>
+                @ViewBag.ListaCartelerasVacia
+            </h4>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr class="success">
+                    <th> Sede </th>
+                    <th> Película </th>
+                    <th> Horario </th>
+                    <th> Inicio </th>
+                    <th> Fin </th>
+                    <th> Sala </th>
+                    <th> Versión </th>
+                    <th> Fecha de carga </th>
+                    <th> Disponible: </th>
+                    <th>
+                        <form method="post" action="/Administracion/agregarCartelera">
+                            <input type="hidden" value="0" name="idCartelera" />
+                            <input type="submit" class="btn bn-block btn-success col-md-12" value="Nueva" />
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model.listadoDeCarteleras)
+                {
+                    <tr class="warning">
+                        <td>@c.Sedes.Nombre</td>
+                        <td> @c.Peliculas.Nombre </td>
+                        <td class="col-md-2"> @TimeSpan.FromHours(@c.HoraInicio).ToString("hh':'mm") </td>
+                        <td class="col-md-2"> @c.FechaInicio.ToShortDateString() </td>
+                        <td class="col-md-2"> @c.FechaFin.ToShortDateString() </td>
+                        <td class="col-md-2"> @c.NumeroSala </td>
+                        <td class="col-md-2"> @c.Versiones.Nombre  </td>
+                        <td class="col-md-2"> @c.FechaCarga </td> <!-- Muestra la fecha completa (Fecha y hora) -->
+                        <td class="col-md-2">
+                            @{
+
+                                switch (c.Lunes)
+                                {
+                                    case true:
+                                        <div> Lunes </div>
+                                        break;
+                                }
+
+                                switch (c.Martes)
+                                {
+                                    case true:
+                                        <div> Martes </div>
+                                        break;
+                                }
+
+                                switch (c.Miercoles)
+                                {
+                                    case true:
+                                        <div> Miércoles </div>
+                                        break;
+                                }
+
+                                switch (c.Jueves)
+                                {
+                                    case true:
+                                        <div> Jueves </div>
+                                        break;
+                                }
+
+                                switch (c.Viernes)
+                                {
+                                    case true:
+                                        <div> Viernes </div>
+                                        break;
+                                }
+
+                                switch (c.Sabado)
+                                {
+                                    case true:
+                                        <div> Sábado </div>
+                                        break;
+                                }
+
+                                switch (c.Domingo)
+                                {
+                                    case true:
+                                        <div> Domingo </div>
+                                        break;
+                                }
+                            }
+                        </td>
+                        <td class="col-md-2">
+                            <form action="/Administracion/agregarCartelera" method="post">
+                                <input type="hidden" name="idCartelera" value="@c.IdCartelera" />
+                                <input type="submit" class="btn btn-warning" value="Modificar" />
+                            </form>
+                        </td>
+                        <td class="col-md-2">
+                            <form action="/Administracion/eliminarCartelera/@c.IdCartelera" method="post">
+                                <input type="hidden" name="idCartelera" value="@c.IdCartelera" />
+                                <input type="submit" class="btn btn-danger" value="Eliminar" onclick="javascript:preguntar(event)" />
+                            </form>
+                        </td>
+                    </tr>
+                                }
+            </tbody>
+        </table>
+        <div class="text-center alert-success">
+            <h4>
+                @TempData["CarteleraAgregada"]
+            </h4>
+        </div>
+        <div class="text-center alert-success">
+            <h4>
+                @TempData["CarteleraEliminada"]
+            </h4>
+        </div>
+    </div>
+</body>
+</html>
