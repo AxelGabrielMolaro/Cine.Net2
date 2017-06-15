@@ -6,9 +6,10 @@ using MVC.Entity;
 using System.ComponentModel.DataAnnotations;
 using MVC.ServicesImpl;
 
+
 namespace MVC.Models
 {
-    public class PeliculaModelAndView : Peliculas
+    public class PeliculaModelAndView 
     {
         //implementacion de metodos 
         GeneroServiceImpl generoService = new GeneroServiceImpl();
@@ -16,12 +17,27 @@ namespace MVC.Models
 
         //Strings 
         public string idPeliculaModel { get; set; }
+        [Required(ErrorMessage = "Ingrese el nombre")]
         public string nombrePeliculaModel { get; set; }
+
+        [Required(ErrorMessage = "Ingrese la descripción")]
         public string descripcionPeliculaModel { get; set; }
+        
+        
+        
+        [CustomValidation(typeof(PeliculaModelAndView),"ValueDistintoDe0")]
         public string idCalificacionPeliculaModel { get; set; }
+
+        [CustomValidation(typeof(PeliculaModelAndView), "ValueDistintoDe0")]
         public string idgeneroPeliculaModel { get; set; }
+
+        
         public string imagenPeliculaModel { get; set; }
+
+        [Required(ErrorMessage = "Ingrese la duración")]
         public string duracionPeliculaModel { get; set; }
+
+       
         public string fechaDeCargaPeliculaModel { get; set; }
 
         //objetos
@@ -39,19 +55,10 @@ namespace MVC.Models
 
 
         public PeliculaModelAndView()
-        {
-            this.idPeliculaModel = IdPelicula.ToString();
-            this.nombrePeliculaModel = Nombre;
-            this.descripcionPeliculaModel = Descripcion;
-            this.idCalificacionPeliculaModel = IdCalificacion.ToString();
-            this.idgeneroPeliculaModel = IdGenero.ToString();
-            this.imagenPeliculaModel = Imagen;
-            this.duracionPeliculaModel = Duracion.ToString();
-            this.fechaDeCargaPeliculaModel = FechaCarga.ToString();
+        {      
             this.listadoDePeliculas = new List<Peliculas>();
-
             llenarListados();
-            //this.generoObjetoModel = generoService.getGeneroPorId(IdGenero);
+
 
         }
 
@@ -69,6 +76,20 @@ namespace MVC.Models
                 Console.Write(e.Message);
             }
         }
+
+
+
+        //validaciones
+        public static ValidationResult ValueDistintoDe0(object value, ValidationContext c)
+        {
+            String valueString = value as String;
+            if (valueString == "0")
+            {
+                return new ValidationResult("Elija una opcion");
+            }
+            return ValidationResult.Success;
+        }
+
 
 
     }

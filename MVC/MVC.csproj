@@ -189,6 +189,7 @@
     <Compile Include="DaoImpl\DocumentoDaoImpl.cs" />
     <Compile Include="DaoImpl\GeneroDaoImpl.cs" />
     <Compile Include="DaoImpl\PeliculaDaoImpl.cs" />
+    <Compile Include="DaoImpl\ReporteDaoImpl.cs" />
     <Compile Include="DaoImpl\ReservaDaoImpl.cs" />
     <Compile Include="DaoImpl\SedeDaoImpl.cs" />
     <Compile Include="DaoImpl\UsuarioDaoImpl.cs" />
@@ -255,10 +256,13 @@
     <Compile Include="ServicesImpl\DocumentoServiceImpl.cs" />
     <Compile Include="ServicesImpl\GeneroServiceImpl.cs" />
     <Compile Include="ServicesImpl\PeliculaServiceImpl.cs" />
+    <Compile Include="ServicesImpl\ReporteServiceImpl.cs" />
     <Compile Include="ServicesImpl\ReservaServiceImpl.cs" />
     <Compile Include="ServicesImpl\SedeServiceImpl.cs" />
     <Compile Include="ServicesImpl\UsuarioServiceImpl.cs" />
     <Compile Include="ServicesImpl\VersionServiceImpl.cs" />
+    <Compile Include="SessionManger\SessionManager.cs" />
+    <Compile Include="Validadores\ValidacionesCustom.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

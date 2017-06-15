@@ -20,6 +20,7 @@ namespace MVC.Controllers
         ReservaServiceImpl reservaServiceImpl = new ReservaServiceImpl();
         //Se agrega el service de Carteleras
         CarteleraServiceImpl carteleraService = new CarteleraServiceImpl();
+        ReporteServiceImpl reporteService = new ReporteServiceImpl();
 
         // GET: Administracion
         public ActionResult Index()
@@ -39,10 +40,7 @@ namespace MVC.Controllers
             try
             {
                 ViewBag.ErrorPelicula = "";
-
                 model.listadoDePeliculas = peliculaService.getListadoDePeliculas();
-
-
                 return View(model);
             }
             catch (Exception e)
@@ -119,10 +117,7 @@ namespace MVC.Controllers
                     peliculaAAgregar.IdGenero = Convert.ToInt32(model.idgeneroPeliculaModel);
                     peliculaAAgregar.Imagen = fileName;
                     peliculaAAgregar.FechaCarga = DateTime.Now;
-
-
-
-
+                   
                     peliculaService.grabarUnaPelicula(peliculaAAgregar);
                     return RedirectToAction("peliculas");
                 }
@@ -183,7 +178,7 @@ namespace MVC.Controllers
                     Sedes sedeAEditar = sedeService.getSedePorId(Convert.ToInt32(model.IdSede));
                     model.nombreSedeModel = sedeAEditar.Nombre;
                     model.direccionSedeModel = sedeAEditar.Direccion;
-                    model.precioEntradaGeneralModel = sedeAEditar.PrecioGeneral.ToString();
+                    model.precioEntradaGeneralModel = Convert.ToInt32(sedeAEditar.PrecioGeneral).ToString();
                 }
                 catch (Exception e)
                 {
@@ -200,7 +195,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult agregarSedePost(SedeModelAndView model)
         {
-
+            model.IdSede = Convert.ToInt32(model.idSedeModel);
             if (!ModelState.IsValid)
             {
                 return View("AgregarSede", model);
@@ -226,7 +221,7 @@ namespace MVC.Controllers
 
                     }
 
-                    return RedirectToAction("sedes");
+                    return RedirectToAction("sedes",model);
                 }
                 else
                 { //Modifica uno ya existente
@@ -465,6 +460,16 @@ namespace MVC.Controllers
             model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
 
             return View(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult reportesFiltrar(ReservaModelAndView model)
+        {
+
+            model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
+
+            return View("reportes",model);
 
         }
     }

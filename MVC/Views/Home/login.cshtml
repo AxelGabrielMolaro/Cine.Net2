@@ -22,7 +22,7 @@
         <div class="form-group">
             <label class="control-label" for="">Nombre de usuario</label>
             <div>
-                <input type="text" class="form-control" name="nombreUsuarioModel" id="nombreUsuarioModel" />
+                <input type="text" class="form-control" name="nombreUsuarioModel" id="nombreUsuarioModel" value="@Model.NombreUsuario" />
 
                 <div class="alert-danger text-danger">@Html.ValidationMessageFor(model => model.nombreUsuarioModel)</div>
             </div>
@@ -31,7 +31,7 @@
             <label class="control-label" for="">Contraseña</label>
 
             <div>
-                <input type="password" class="form-control" name="contraseñaUsuarioModel" id="contraseñaUsuarioModel" />
+                <input type="password" class="form-control" name="contraseñaUsuarioModel" id="contraseñaUsuarioModel" value="@Model.contraseñaUsuarioModel"/>
                 <div class="alert-danger text-danger"> @Html.ValidationMessageFor(x => x.contraseñaUsuarioModel)</div>
             </div>
         </div>

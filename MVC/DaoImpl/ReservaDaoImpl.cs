@@ -32,7 +32,7 @@ namespace MVC.DaoImpl
             return null;
         }
 
-        //--------PARA RESERVAS Mesco con otras clases-----//
+        //--------PARA RESERVAS Mesclo con otras clases-----//
 
 
         /// <summary>

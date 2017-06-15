@@ -49,7 +49,8 @@ namespace MVC.Models
 
         //para reportes
         public List<Reservas> listadoDeReservasReporteModel { get; set; }
-
+        public string fechaDesdeReporteModel { get; set; }
+        public string fechaHastaReporteModel { get; set; }
         public ReservaModelAndView()
         {
             listadoDeDiasTemporal = new List<string>();
@@ -70,6 +71,7 @@ namespace MVC.Models
                     FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
                     horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
                     horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+                    
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
                 else
