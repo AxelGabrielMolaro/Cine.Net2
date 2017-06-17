@@ -18,6 +18,12 @@
             </h4>
         </div>
 
+        <div class="text-center alert-success">
+            <h4>
+                @TempData["CartelerasEliminadas"]
+            </h4>
+        </div>
+
         <table class="table">
             <thead>
                 <tr class="success">
@@ -34,6 +40,11 @@
                         <form method="post" action="/Administracion/agregarCartelera">
                             <input type="hidden" value="0" name="idCartelera" />
                             <input type="submit" class="btn bn-block btn-success col-md-12" value="Nueva" />
+                        </form>
+                    </th>
+                    <th>
+                        <form action="/Administracion/eliminarTodasLasCarteleras" method="post">
+                            <input type="submit" class="btn btn-danger" value="Eliminar Todas" onclick="javascript:preguntar(event)" />
                         </form>
                     </th>
                 </tr>

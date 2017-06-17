@@ -212,6 +212,9 @@
     <Compile Include="Entity\Sedes.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\sysdiagrams.cs">
+      <DependentUpon>TPBDDCINE.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\TiposDocumentos.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
@@ -262,6 +265,7 @@
     <Compile Include="ServicesImpl\UsuarioServiceImpl.cs" />
     <Compile Include="ServicesImpl\VersionServiceImpl.cs" />
     <Compile Include="SessionManger\SessionManager.cs" />
+    <Compile Include="Validadores\CarteleraValidation.cs" />
     <Compile Include="Validadores\ValidacionesCustom.cs" />
   </ItemGroup>
   <ItemGroup>

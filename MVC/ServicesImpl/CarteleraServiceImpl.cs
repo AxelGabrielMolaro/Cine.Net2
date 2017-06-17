@@ -1,5 +1,6 @@
 ﻿using MVC.DaoImpl;
 using MVC.Entity;
+using MVC.Validadores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace MVC.ServicesImpl
     public class CarteleraServiceImpl
     {
         CarteleraDaoImpl carteleraDao = new CarteleraDaoImpl();
+
+        CarteleraValidation carteleraValidaciones = new CarteleraValidation();
 
         public List<Carteleras> getListadoDeCarteleras()
         {
@@ -69,7 +72,7 @@ namespace MVC.ServicesImpl
             }
             else
             {
-                carteleraDao.grabarCarteleraEnLaBaseDeDatos(carteleraAGrabar);
+                carteleraValidaciones.validarCarteleraIngresada(carteleraAGrabar);
             }
         }
         public void modificarCarteleraPorId(int id, string idSede, string idPelicula, string hora, string fechaInicio, string fechaFin, string sala, string idVersion, string lunes, string martes, string miercoles, string jueves, string viernes, string sabado, string domingo, string fechaCarga)
@@ -88,6 +91,20 @@ namespace MVC.ServicesImpl
             try
             {
                 carteleraDao.eliminarCarteleraDeLaBdd(cartelera);
+            }
+            catch
+            {
+                throw new Exception("Error al eliminar");
+            }
+        }
+
+        //Este método lo creé por si necesitamos traer la lista sin registros que sea más práctico borrar toda la lista.
+        public void eliminarTodasLasCarteleras()
+        {
+            List<Carteleras> lista = carteleraDao.getListadoDeCarteleras();
+            try
+            {
+                carteleraDao.eliminarTodasLasCarteleras(lista);
             }
             catch
             {

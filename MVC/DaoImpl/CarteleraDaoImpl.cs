@@ -134,6 +134,21 @@ namespace MVC.DaoImpl
             }
         }
 
-        
+        public void eliminarTodasLasCarteleras(List<Carteleras> lista)
+        {
+            if (lista == null)
+            {
+                throw new Exception("");
+            }
+            else
+            {
+                foreach (var c in lista)
+                {
+                    repositorioManager.ctx.Carteleras.Remove(c);
+                    repositorioManager.ctx.SaveChanges();
+                }
+            }
+        }
+
     }
 }

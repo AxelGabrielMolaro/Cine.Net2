@@ -117,7 +117,7 @@ namespace MVC.Controllers
                     peliculaAAgregar.IdGenero = Convert.ToInt32(model.idgeneroPeliculaModel);
                     peliculaAAgregar.Imagen = fileName;
                     peliculaAAgregar.FechaCarga = DateTime.Now;
-                   
+
                     peliculaService.grabarUnaPelicula(peliculaAAgregar);
                     return RedirectToAction("peliculas");
                 }
@@ -221,7 +221,7 @@ namespace MVC.Controllers
 
                     }
 
-                    return RedirectToAction("sedes",model);
+                    return RedirectToAction("sedes", model);
                 }
                 else
                 { //Modifica uno ya existente
@@ -348,8 +348,13 @@ namespace MVC.Controllers
                     carteleraAAgregar.IdSede = Convert.ToInt32(model.idSedeCarteleraModel);
                     carteleraAAgregar.IdPelicula = Convert.ToInt32(model.idPeliculaCarteleraModel);
                     carteleraAAgregar.HoraInicio = Convert.ToInt32(model.horaInicioModel);
-                    carteleraAAgregar.FechaInicio = DateTime.Now;//ver esto mariana
-                    carteleraAAgregar.FechaFin = DateTime.Now;
+                    //carteleraAAgregar.FechaInicio = DateTime.Now;//ver esto mariana (Por el momento lo pongo como string - Marian)
+                    //carteleraAAgregar.FechaFin = DateTime.Now;
+
+                    carteleraAAgregar.FechaInicio = Convert.ToDateTime(model.fechaInicioModel);
+                    carteleraAAgregar.FechaFin = Convert.ToDateTime(model.fechaFinModel);
+
+
                     carteleraAAgregar.NumeroSala = Convert.ToInt32(model.numeroSalaModel);
                     carteleraAAgregar.IdVersion = Convert.ToInt32(model.idVersionModel);
                     carteleraAAgregar.Lunes = Convert.ToBoolean(model.lunesModel);
@@ -362,12 +367,11 @@ namespace MVC.Controllers
                     carteleraAAgregar.FechaCarga = DateTime.Now;
                     try
                     {
-                        ViewBag.errorCartelera = "";
                         carteleraService.crearCartelera(carteleraAAgregar);
                     }
                     catch (Exception e)
                     {
-                        ViewBag.ErrorAlAgregarCartelera = "No se pudo agregar la cartelera";
+                        ViewBag.ErrorAlAgregarCartelera = e.Message;
                         return View("agregarCartelera", model);
                     }
                     TempData["CarteleraAgregada"] = "¡La cartelera se agregó correctamente!";
@@ -451,6 +455,29 @@ namespace MVC.Controllers
             return RedirectToAction("carteleras");
         }
 
+
+        [HttpPost]
+        public ActionResult eliminarTodasLasCarteleras()
+        {
+            try
+            {
+                List<Carteleras> lista = carteleraService.getListadoDeCarteleras();
+
+                if (lista != null)
+                {
+                    carteleraService.eliminarTodasLasCarteleras();
+                }
+            }
+
+            catch (Exception e)
+            {
+                ViewBag.ListaCartelerasVacia = e.Message;
+            }
+            TempData["CartelerasEliminadas"] = "Se eliminaron todas las carteleras";
+            return RedirectToAction("carteleras");
+        }
+
+
         /*********************************************************************************************/
 
         //reservas
@@ -469,7 +496,7 @@ namespace MVC.Controllers
 
             model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
 
-            return View("reportes",model);
+            return View("reportes", model);
 
         }
     }
