@@ -542,3 +542,9 @@ C:\Users\Marian\Documents\GitHub\Cine.Net2\MVC\bin\es\System.Web.Mvc.resources.d
 C:\Users\Marian\Documents\GitHub\Cine.Net2\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
 C:\Users\Marian\Documents\GitHub\Cine.Net2\MVC\obj\Debug\MVC.dll
 C:\Users\Marian\Documents\GitHub\Cine.Net2\MVC\obj\Debug\MVC.pdb
+C:\Users\Pedro Cora\Documents\Visual Studio 2015\Projects\Cine.Net2-master\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+C:\Users\Pedro Cora\Documents\Visual Studio 2015\Projects\Cine.Net2-master\MVC\obj\Debug\MVC.dll
+C:\Users\Pedro Cora\Documents\Visual Studio 2015\Projects\Cine.Net2-master\MVC\obj\Debug\MVC.pdb
+D:\cine\Cine.Net2\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
+D:\cine\Cine.Net2\MVC\obj\Debug\MVC.dll
+D:\cine\Cine.Net2\MVC\obj\Debug\MVC.pdb

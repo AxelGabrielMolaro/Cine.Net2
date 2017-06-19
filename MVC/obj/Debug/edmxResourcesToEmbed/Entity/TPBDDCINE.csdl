@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="C_TPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Calificaciones">
+  <EntityType Name="Calificacione">
     <Key>
       <PropertyRef Name="IdCalificacion" />
     </Key>
@@ -8,7 +8,7 @@
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Peliculas" Relationship="Self.FK_Peliculas_Calificaciones" FromRole="Calificaciones" ToRole="Peliculas" />
   </EntityType>
-  <EntityType Name="Carteleras">
+  <EntityType Name="Cartelera">
     <Key>
       <PropertyRef Name="IdCartelera" />
     </Key>
@@ -28,11 +28,11 @@
     <Property Name="Sabado" Type="Boolean" Nullable="false" />
     <Property Name="Domingo" Type="Boolean" Nullable="false" />
     <Property Name="FechaCarga" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Peliculas" Relationship="Self.FK_Carteleras_Peliculas" FromRole="Carteleras" ToRole="Peliculas" />
-    <NavigationProperty Name="Sedes" Relationship="Self.FK_Carteleras_Sedes" FromRole="Carteleras" ToRole="Sedes" />
-    <NavigationProperty Name="Versiones" Relationship="Self.FK_Carteleras_Versiones" FromRole="Carteleras" ToRole="Versiones" />
+    <NavigationProperty Name="Pelicula" Relationship="Self.FK_Carteleras_Peliculas" FromRole="Carteleras" ToRole="Peliculas" />
+    <NavigationProperty Name="Sede" Relationship="Self.FK_Carteleras_Sedes" FromRole="Carteleras" ToRole="Sedes" />
+    <NavigationProperty Name="Versione" Relationship="Self.FK_Carteleras_Versiones" FromRole="Carteleras" ToRole="Versiones" />
   </EntityType>
-  <EntityType Name="Generos">
+  <EntityType Name="Genero">
     <Key>
       <PropertyRef Name="IdGenero" />
     </Key>
@@ -40,7 +40,7 @@
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Peliculas" Relationship="Self.FK_Peliculas_Generos" FromRole="Generos" ToRole="Peliculas" />
   </EntityType>
-  <EntityType Name="Peliculas">
+  <EntityType Name="Pelicula">
     <Key>
       <PropertyRef Name="IdPelicula" />
     </Key>
@@ -52,12 +52,12 @@
     <Property Name="IdGenero" Type="Int32" Nullable="false" />
     <Property Name="Duracion" Type="Int32" Nullable="false" />
     <Property Name="FechaCarga" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Peliculas_Calificaciones" FromRole="Peliculas" ToRole="Calificaciones" />
+    <NavigationProperty Name="Calificacione" Relationship="Self.FK_Peliculas_Calificaciones" FromRole="Peliculas" ToRole="Calificaciones" />
     <NavigationProperty Name="Carteleras" Relationship="Self.FK_Carteleras_Peliculas" FromRole="Peliculas" ToRole="Carteleras" />
-    <NavigationProperty Name="Generos" Relationship="Self.FK_Peliculas_Generos" FromRole="Peliculas" ToRole="Generos" />
+    <NavigationProperty Name="Genero" Relationship="Self.FK_Peliculas_Generos" FromRole="Peliculas" ToRole="Generos" />
     <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Peliculas" FromRole="Peliculas" ToRole="Reservas" />
   </EntityType>
-  <EntityType Name="Reservas">
+  <EntityType Name="Reserva">
     <Key>
       <PropertyRef Name="IdReserva" />
     </Key>
@@ -71,12 +71,12 @@
     <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CantidadEntradas" Type="Int32" Nullable="false" />
     <Property Name="FechaCarga" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Peliculas" Relationship="Self.FK_Reservas_Peliculas" FromRole="Reservas" ToRole="Peliculas" />
-    <NavigationProperty Name="Sedes" Relationship="Self.FK_Reservas_Sedes" FromRole="Reservas" ToRole="Sedes" />
-    <NavigationProperty Name="TiposDocumentos" Relationship="Self.FK_Reservas_TiposDocumentos" FromRole="Reservas" ToRole="TiposDocumentos" />
-    <NavigationProperty Name="Versiones" Relationship="Self.FK_Reservas_Versiones" FromRole="Reservas" ToRole="Versiones" />
+    <NavigationProperty Name="Pelicula" Relationship="Self.FK_Reservas_Peliculas" FromRole="Reservas" ToRole="Peliculas" />
+    <NavigationProperty Name="Sede" Relationship="Self.FK_Reservas_Sedes" FromRole="Reservas" ToRole="Sedes" />
+    <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Reservas_TiposDocumentos" FromRole="Reservas" ToRole="TiposDocumentos" />
+    <NavigationProperty Name="Versione" Relationship="Self.FK_Reservas_Versiones" FromRole="Reservas" ToRole="Versiones" />
   </EntityType>
-  <EntityType Name="Sedes">
+  <EntityType Name="Sede">
     <Key>
       <PropertyRef Name="IdSede" />
     </Key>
@@ -87,7 +87,7 @@
     <NavigationProperty Name="Carteleras" Relationship="Self.FK_Carteleras_Sedes" FromRole="Sedes" ToRole="Carteleras" />
     <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Sedes" FromRole="Sedes" ToRole="Reservas" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -97,7 +97,7 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="TiposDocumentos">
+  <EntityType Name="TiposDocumento">
     <Key>
       <PropertyRef Name="IdTipoDocumento" />
     </Key>
@@ -105,7 +105,7 @@
     <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_TiposDocumentos" FromRole="TiposDocumentos" ToRole="Reservas" />
   </EntityType>
-  <EntityType Name="Usuarios">
+  <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="IdUsuario" />
     </Key>
@@ -113,7 +113,7 @@
     <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Versiones">
+  <EntityType Name="Versione">
     <Key>
       <PropertyRef Name="IdVersion" />
     </Key>
@@ -123,8 +123,8 @@
     <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Versiones" FromRole="Versiones" ToRole="Reservas" />
   </EntityType>
   <Association Name="FK_Peliculas_Calificaciones">
-    <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="1" />
-    <End Role="Peliculas" Type="Self.Peliculas" Multiplicity="*" />
+    <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="1" />
+    <End Role="Peliculas" Type="Self.Pelicula" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Calificaciones">
         <PropertyRef Name="IdCalificacion" />
@@ -135,8 +135,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Carteleras_Peliculas">
-    <End Role="Peliculas" Type="Self.Peliculas" Multiplicity="1" />
-    <End Role="Carteleras" Type="Self.Carteleras" Multiplicity="*" />
+    <End Role="Peliculas" Type="Self.Pelicula" Multiplicity="1" />
+    <End Role="Carteleras" Type="Self.Cartelera" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Peliculas">
         <PropertyRef Name="IdPelicula" />
@@ -147,8 +147,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Carteleras_Sedes">
-    <End Role="Sedes" Type="Self.Sedes" Multiplicity="1" />
-    <End Role="Carteleras" Type="Self.Carteleras" Multiplicity="*" />
+    <End Role="Sedes" Type="Self.Sede" Multiplicity="1" />
+    <End Role="Carteleras" Type="Self.Cartelera" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sedes">
         <PropertyRef Name="IdSede" />
@@ -159,8 +159,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Carteleras_Versiones">
-    <End Role="Versiones" Type="Self.Versiones" Multiplicity="1" />
-    <End Role="Carteleras" Type="Self.Carteleras" Multiplicity="*" />
+    <End Role="Versiones" Type="Self.Versione" Multiplicity="1" />
+    <End Role="Carteleras" Type="Self.Cartelera" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Versiones">
         <PropertyRef Name="IdVersion" />
@@ -171,8 +171,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Peliculas_Generos">
-    <End Role="Generos" Type="Self.Generos" Multiplicity="1" />
-    <End Role="Peliculas" Type="Self.Peliculas" Multiplicity="*" />
+    <End Role="Generos" Type="Self.Genero" Multiplicity="1" />
+    <End Role="Peliculas" Type="Self.Pelicula" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Generos">
         <PropertyRef Name="IdGenero" />
@@ -183,8 +183,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reservas_Peliculas">
-    <End Role="Peliculas" Type="Self.Peliculas" Multiplicity="1" />
-    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <End Role="Peliculas" Type="Self.Pelicula" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reserva" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Peliculas">
         <PropertyRef Name="IdPelicula" />
@@ -195,8 +195,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reservas_Sedes">
-    <End Role="Sedes" Type="Self.Sedes" Multiplicity="1" />
-    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <End Role="Sedes" Type="Self.Sede" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reserva" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sedes">
         <PropertyRef Name="IdSede" />
@@ -207,8 +207,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reservas_TiposDocumentos">
-    <End Role="TiposDocumentos" Type="Self.TiposDocumentos" Multiplicity="1" />
-    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <End Role="TiposDocumentos" Type="Self.TiposDocumento" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reserva" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TiposDocumentos">
         <PropertyRef Name="IdTipoDocumento" />
@@ -219,8 +219,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reservas_Versiones">
-    <End Role="Versiones" Type="Self.Versiones" Multiplicity="1" />
-    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <End Role="Versiones" Type="Self.Versione" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reserva" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Versiones">
         <PropertyRef Name="IdVersion" />
@@ -230,17 +230,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TPBDDCINE" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" />
-    <EntitySet Name="Carteleras" EntityType="Self.Carteleras" />
-    <EntitySet Name="Generos" EntityType="Self.Generos" />
-    <EntitySet Name="Peliculas" EntityType="Self.Peliculas" />
-    <EntitySet Name="Reservas" EntityType="Self.Reservas" />
-    <EntitySet Name="Sedes" EntityType="Self.Sedes" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="TiposDocumentos" EntityType="Self.TiposDocumentos" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-    <EntitySet Name="Versiones" EntityType="Self.Versiones" />
+  <EntityContainer Name="Entity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
+    <EntitySet Name="Carteleras" EntityType="Self.Cartelera" />
+    <EntitySet Name="Generos" EntityType="Self.Genero" />
+    <EntitySet Name="Peliculas" EntityType="Self.Pelicula" />
+    <EntitySet Name="Reservas" EntityType="Self.Reserva" />
+    <EntitySet Name="Sedes" EntityType="Self.Sede" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TiposDocumentos" EntityType="Self.TiposDocumento" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Versiones" EntityType="Self.Versione" />
     <AssociationSet Name="FK_Peliculas_Calificaciones" Association="Self.FK_Peliculas_Calificaciones">
       <End Role="Calificaciones" EntitySet="Calificaciones" />
       <End Role="Peliculas" EntitySet="Peliculas" />

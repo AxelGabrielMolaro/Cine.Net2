@@ -27,7 +27,7 @@ namespace MVC.Models
         
         [CustomValidation(typeof(PeliculaModelAndView),"ValueDistintoDe0")]
         public string idCalificacionPeliculaModel { get; set; }
-
+        
         [CustomValidation(typeof(PeliculaModelAndView), "ValueDistintoDe0")]
         public string idgeneroPeliculaModel { get; set; }
 
@@ -35,6 +35,7 @@ namespace MVC.Models
         public string imagenPeliculaModel { get; set; }
 
         [Required(ErrorMessage = "Ingrese la duración")]
+        [Range(15, 90, ErrorMessage = "Max 90 min")]
         public string duracionPeliculaModel { get; set; }
 
        
