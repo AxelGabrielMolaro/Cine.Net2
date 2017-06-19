@@ -1,0 +1,59 @@
+﻿@model MVC.Models.SedeModelAndView
+
+@{
+    ViewBag.Title = "agregarSede";
+    Layout = "~/Views/Shared/_AdministradorBase.cshtml";
+}
+
+<div class="col-md-offset-3 col-md-6">
+    <hr />
+    <div class="">
+        <a href="/Administracion/sedes">
+            <input type="button" class="btn btn-info " value="volver al listado" />
+        </a>
+    </div>
+    <div class="text-center col-md-12">
+        <h3>
+            Agregar una sede
+        </h3>
+    </div>
+    <div class="col-md-12 alert-danger">
+        @ViewBag.errorSede
+    </div> <!-- REVISAR TODOS LOS ERRORES! (ViewBag, TempData que mandamos desde el controlador) -->
+    <div>
+        <form class="form" action="/Administracion/agregarSedePost" method="post">
+            <div class="form-group">
+                <label for="" class="control-label">
+                    Nombre:
+                </label>
+                <div>
+                    <!--Este input id lo uso para saber si es una edicion o una adicion de sede-->
+                    <input typeof="text" class="form-control" name="idSedeModel" value="@Model.IdSede" disabled/>
+                    <input type="text" class="form-control" name="nombreSedeModel" value="@Model.nombreSedeModel" />
+                    <div class="alert-danger">@Html.ValidationMessageFor(x => x.nombreSedeModel)</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">
+                    Dirección:
+                </label>
+                <div>
+                    <input type="text" class="form-control" name="direccionSedeModel" value="@Model.direccionSedeModel" />
+                    <div class="alert-danger">@Html.ValidationMessageFor(x => x.direccionSedeModel)</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">
+                    Precio general de la entrada:
+                </label>
+                <div>
+                    <input type="text" class="form-control" name="precioEntradaGeneralModel" value="@Model.precioEntradaGeneralModel" />
+                    <div class="alert-danger">@Html.ValidationMessageFor(x => x.precioEntradaGeneralModel)</div>
+                </div>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-block btn-success" value="Guardar" />
+            </div>
+        </form>
+    </div>
+</div> 
