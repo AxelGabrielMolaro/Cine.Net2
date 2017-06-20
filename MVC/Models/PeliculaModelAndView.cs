@@ -31,11 +31,12 @@ namespace MVC.Models
         [CustomValidation(typeof(PeliculaModelAndView), "ValueDistintoDe0")]
         public string idgeneroPeliculaModel { get; set; }
 
-        
-        public string imagenPeliculaModel { get; set; }
+        [Required(ErrorMessage = "Ingrese una imagen")]
+       // [FileExtensions(Extensions =".jpg"  , ErrorMessage = "Por favor ingrese una imagen .png o .jpg ")]
+        public HttpPostedFileBase imagenPeliculaModel { get; set; }
 
         [Required(ErrorMessage = "Ingrese la duración")]
-        [Range(15, 90, ErrorMessage = "Max 90 min")]
+        [Range(15, 90, ErrorMessage = "Ingrese una duracion menor a 90 minutos y mayor a 15 minutos.")]
         public string duracionPeliculaModel { get; set; }
 
        
@@ -58,6 +59,7 @@ namespace MVC.Models
         public PeliculaModelAndView()
         {      
             this.listadoDePeliculas = new List<Peliculas>();
+        
             llenarListados();
 
 

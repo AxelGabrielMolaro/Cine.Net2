@@ -62,7 +62,7 @@ namespace MVC.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult agregarPelicula(PeliculaModelAndView model, HttpPostedFileBase imagenPelicula)
+        public ActionResult agregarPelicula(PeliculaModelAndView model)
         {
             if (!ModelState.IsValid)
             {
@@ -75,40 +75,11 @@ namespace MVC.Controllers
                 {
                     ViewBag.ErrorPelicula = "";
                     Entity.Peliculas peliculaAAgregar = new Entity.Peliculas();
-                    //Imagenes
-                    //Obtengo la ruta absoluta
+
+                    //ruta de la carpeta
                     string appDataFolder = Server.MapPath("~/ImagenesDelServidor/");
-                    string savePath = appDataFolder;
-                    string fileName = imagenPelicula.FileName;
-                    string pathToCheck = savePath + fileName;
-                    string tempfileName = "";
-                    if (System.IO.File.Exists(pathToCheck))
-                    {
-                        int counter = 2;
-                        while (System.IO.File.Exists(pathToCheck))
-                        {
-                            // if a file with this name already exists,
-                            // prefix the filename with a number.
-                            tempfileName = counter.ToString() + fileName;
-                            pathToCheck = savePath + tempfileName;
-                            counter++;
-                        }
 
-                        fileName = tempfileName;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Se guardo la imagen correctamente");
-                    }
-
-                    // Append the name of the file to upload to the path.
-                    savePath += fileName;
-
-                    // Call the SaveAs method to save the uploaded
-                    // file to the specified directory.
-                    imagenPelicula.SaveAs(savePath);
-
-
+                    string fileName = peliculaService.guardarUnaImagenEnUnCarpetaSeServidor(appDataFolder, model.imagenPeliculaModel);
 
                     peliculaAAgregar.Nombre = model.nombrePeliculaModel;
                     peliculaAAgregar.Descripcion = model.descripcionPeliculaModel;
@@ -121,11 +92,17 @@ namespace MVC.Controllers
                     peliculaService.grabarUnaPelicula(peliculaAAgregar);
                     return RedirectToAction("peliculas");
                 }
+                catch (FormatException e)
+                {
+                    ViewBag.ErrorPeliculaImagen = e.Message;
+                    return View(model);
+                }
                 catch (Exception e)
                 {
                     ViewBag.ErrorPelicula = e.Message;
                     return View(model);
                 }
+               
             }
 
         }

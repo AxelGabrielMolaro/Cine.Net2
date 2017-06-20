@@ -6,6 +6,7 @@ using System.Web;
 using MVC.Entity;
 using MVC.DaoImpl;
 using MVC.Manager;
+using System.IO;
 
 namespace MVC.ServicesImpl
 {
@@ -65,6 +66,46 @@ namespace MVC.ServicesImpl
             return peliculaBuscada;
         }
 
+
+        public string guardarUnaImagenEnUnCarpetaSeServidor(string urlCarpeta, HttpPostedFileBase imagenPelicula )
+        {
+            string extencion = Path.GetExtension(imagenPelicula.FileName);
+            if (extencion != ".png" && extencion != ".jpg")
+            {
+                throw new FormatException("Por favor ingrese una imagen de extención png o jpg .");
+            }
+            string savePath = urlCarpeta;
+            string fileName = imagenPelicula.FileName;
+            string pathToCheck = savePath + fileName;
+            string tempfileName = "";
+            if (System.IO.File.Exists(pathToCheck))
+            {
+                int counter = 2;
+                while (System.IO.File.Exists(pathToCheck))
+                {
+                    // if a file with this name already exists,
+                    // prefix the filename with a number.
+                    tempfileName = counter.ToString() + fileName;
+                    pathToCheck = savePath + tempfileName;
+                    counter++;
+                }
+
+                fileName = tempfileName;
+            }
+            else
+            {
+                Console.WriteLine("Se guardo la imagen correctamente");
+            }
+
+            // Append the name of the file to upload to the path.
+            savePath += fileName;
+
+            // Call the SaveAs method to save the uploaded
+            // file to the specified directory.
+            imagenPelicula.SaveAs(savePath);
+
+            return fileName;
+        }
 
 
 

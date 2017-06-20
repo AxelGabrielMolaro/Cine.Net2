@@ -212,9 +212,6 @@
     <Compile Include="Entity\Sedes.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\sysdiagrams.cs">
-      <DependentUpon>TPBDDCINE.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entity\TiposDocumentos.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
