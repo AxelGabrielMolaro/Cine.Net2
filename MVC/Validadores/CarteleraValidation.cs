@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 
 namespace MVC.Validadores
-{ 
+{
 
     //ESTO HAY QUE REVISARLO BIEN!
 
@@ -16,25 +16,11 @@ namespace MVC.Validadores
         CarteleraDaoImpl carteleraDao = new CarteleraDaoImpl();
         public void validarCarteleraIngresada(Carteleras carteleraAGrabar)
         {
-            /* 
-             * El método CompareTo() compara dos fechas. 
-             * Si devuelve 0 significa que las fechas son iguales, 
-             * si devuelve mayor a 0 significa que la fecha a comparar es mayor, 
-             * si devuelve menor a 0 significa que la fecha a comparar es menor. 
-            */
-
-            //Si la fecha de inicio o fin son anteriores a la actual (es decir, ya pasaron), no permite agregar. 
-            if (carteleraAGrabar.FechaInicio.CompareTo(DateTime.Now) < 0
-                || carteleraAGrabar.FechaFin.CompareTo(DateTime.Now) < 0)
-            {
-                throw new Exception("Las fechas de inicio o de fin ya expiraron");
-            }
-
             //Si la fecha fin es anterior a la de inicio 
-            if (carteleraAGrabar.FechaInicio.CompareTo(carteleraAGrabar.FechaFin) >= 0)
+            if (Convert.ToDateTime(carteleraAGrabar.FechaInicio).CompareTo(Convert.ToDateTime(carteleraAGrabar.FechaFin)) >= 0)
             {
                 throw new Exception("La fecha de fin debe ser posterior a la fecha de inicio");
-            }
+            } 
 
             //Traigo la lista de carteleras de la base de datos para recorrerla y comparar: 
             List<Carteleras> listaParaValidar = carteleraDao.getListadoDeCarteleras();

@@ -12,7 +12,7 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Cartelera
+    public partial class Carteleras
     {
         public int IdCartelera { get; set; }
         public int IdSede { get; set; }
@@ -31,8 +31,8 @@ namespace MVC.Entity
         public bool Domingo { get; set; }
         public System.DateTime FechaCarga { get; set; }
     
-        public virtual Pelicula Pelicula { get; set; }
-        public virtual Sede Sede { get; set; }
-        public virtual Versione Versione { get; set; }
+        public virtual Peliculas Peliculas { get; set; }
+        public virtual Sedes Sedes { get; set; }
+        public virtual Versiones Versiones { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Genero
+    public partial class Generos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Genero()
+        public Generos()
         {
-            this.Peliculas = new HashSet<Pelicula>();
+            this.Peliculas = new HashSet<Peliculas>();
         }
     
         public int IdGenero { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pelicula> Peliculas { get; set; }
+        public virtual ICollection<Peliculas> Peliculas { get; set; }
     }
 }

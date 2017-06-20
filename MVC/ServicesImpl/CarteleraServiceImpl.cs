@@ -75,11 +75,11 @@ namespace MVC.ServicesImpl
                 carteleraValidaciones.validarCarteleraIngresada(carteleraAGrabar);
             }
         }
-        public void modificarCarteleraPorId(int id, string idSede, string idPelicula, string hora, string fechaInicio, string fechaFin, string sala, string idVersion, string lunes, string martes, string miercoles, string jueves, string viernes, string sabado, string domingo, string fechaCarga)
+        public void modificarCarteleraPorId(int id, string idSede, string idPelicula, string hora, string fechaInicio, string fechaFin, string sala, string idVersion, string lunes, string martes, string miercoles, string jueves, string viernes, string sabado, string domingo)
         {
             try
             {
-                carteleraDao.modificarCarteleraDeLaBddPorId(id, idSede, idPelicula, hora, fechaInicio, fechaFin, sala, idVersion, lunes, martes, miercoles, jueves, viernes, sabado, domingo, fechaCarga);
+                carteleraDao.modificarCarteleraDeLaBddPorId(id, idSede, idPelicula, hora, fechaInicio, fechaFin, sala, idVersion, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
             }
             catch
             {

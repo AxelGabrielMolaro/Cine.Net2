@@ -41,7 +41,7 @@ namespace MVC.DaoImpl
             return carteleraBuscada;
         }
 
-        public void modificarCarteleraDeLaBddPorId(int id, string idSede, string idPelicula, string hora, string fechaInicio, string fechaFin, string sala, string idVersion, string lunes, string martes, string miercoles, string jueves, string viernes, string sabado, string domingo, string fechaCarga)
+        public void modificarCarteleraDeLaBddPorId(int id, string idSede, string idPelicula, string hora, string fechaInicio, string fechaFin, string sala, string idVersion, string lunes, string martes, string miercoles, string jueves, string viernes, string sabado, string domingo)
         {
             if (id == 0)
             {
@@ -106,11 +106,7 @@ namespace MVC.DaoImpl
                 if (domingo != null)
                 {
                     cartelera.Domingo = Convert.ToBoolean(domingo);
-                }
-                if (fechaCarga != null)
-                {
-                    cartelera.FechaCarga = Convert.ToDateTime(fechaCarga);
-                }
+                } 
                 else
                 {
                     throw new Exception("");

@@ -11,18 +11,18 @@
     <div>
         <div class="text-center"><h3>Carteleras</h3></div>
 
+        <div class="text-center alert-success">
+            <h4>
+                @TempData["CartelerasEliminadas"]
+            </h4>
+        </div> 
+
         <!-- Mensaje que se muestra si la lista está vacía -->
         <div class="text-center alert-danger">
             <h4>
                 @ViewBag.ListaCartelerasVacia
             </h4>
-        </div>
-
-        <div class="text-center alert-success">
-            <h4>
-                @TempData["CartelerasEliminadas"]
-            </h4>
-        </div>
+        </div> 
 
         <table class="table">
             <thead>
@@ -36,6 +36,7 @@
                     <th> Versión </th>
                     <th> Fecha de carga </th>
                     <th> Disponible: </th>
+                    <th> Funciones </th>
                     <th>
                         <form method="post" action="/Administracion/agregarCartelera">
                             <input type="hidden" value="0" name="idCartelera" />
@@ -114,6 +115,12 @@
                                 }
                             }
                         </td>
+                        <td>
+                            @foreach (var funcion in Model.listadoDeFunciones)
+                            {
+                                <h5> @funcion.numeroFuncionModel) @funcion.horaFuncionModel hs. </h5>
+                            }
+                        </td>
                         <td class="col-md-2">
                             <form action="/Administracion/agregarCartelera" method="post">
                                 <input type="hidden" name="idCartelera" value="@c.IdCartelera" />
@@ -132,7 +139,7 @@
         </table>
         <div class="text-center alert-success">
             <h4>
-                @TempData["CarteleraAgregada"]
+                @TempData["CarteleraOK"]
             </h4>
         </div>
         <div class="text-center alert-success">

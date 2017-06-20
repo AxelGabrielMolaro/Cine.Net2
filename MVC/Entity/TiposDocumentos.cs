@@ -12,23 +12,18 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Sede
+    public partial class TiposDocumentos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sede()
+        public TiposDocumentos()
         {
-            this.Carteleras = new HashSet<Cartelera>();
-            this.Reservas = new HashSet<Reserva>();
+            this.Reservas = new HashSet<Reservas>();
         }
     
-        public int IdSede { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public decimal PrecioGeneral { get; set; }
+        public int IdTipoDocumento { get; set; }
+        public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cartelera> Carteleras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reservas { get; set; }
+        public virtual ICollection<Reservas> Reservas { get; set; }
     }
 }

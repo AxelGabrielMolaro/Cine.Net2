@@ -12,18 +12,18 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class TiposDocumento
+    public partial class Calificaciones
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TiposDocumento()
+        public Calificaciones()
         {
-            this.Reservas = new HashSet<Reserva>();
+            this.Peliculas = new HashSet<Peliculas>();
         }
     
-        public int IdTipoDocumento { get; set; }
-        public string Descripcion { get; set; }
+        public int IdCalificacion { get; set; }
+        public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reservas { get; set; }
+        public virtual ICollection<Peliculas> Peliculas { get; set; }
     }
 }

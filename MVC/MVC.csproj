@@ -194,28 +194,28 @@
     <Compile Include="DaoImpl\SedeDaoImpl.cs" />
     <Compile Include="DaoImpl\UsuarioDaoImpl.cs" />
     <Compile Include="DaoImpl\VersionDaoImpl.cs" />
-    <Compile Include="Entity\Calificacione.cs">
+    <Compile Include="Entity\Calificaciones.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Cartelera.cs">
+    <Compile Include="Entity\Carteleras.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Genero.cs">
+    <Compile Include="Entity\Generos.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Pelicula.cs">
+    <Compile Include="Entity\Peliculas.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Reserva.cs">
+    <Compile Include="Entity\Reservas.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Sede.cs">
+    <Compile Include="Entity\Sedes.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\sysdiagram.cs">
+    <Compile Include="Entity\sysdiagrams.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\TiposDocumento.cs">
+    <Compile Include="Entity\TiposDocumentos.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\TPBDDCINE.Context.cs">
@@ -233,10 +233,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TPBDDCINE.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Usuario.cs">
+    <Compile Include="Entity\Usuarios.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Versione.cs">
+    <Compile Include="Entity\Versiones.cs">
       <DependentUpon>TPBDDCINE.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

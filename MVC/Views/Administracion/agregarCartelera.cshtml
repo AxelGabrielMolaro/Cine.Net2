@@ -12,7 +12,11 @@
     <div class="text-center"><h3>Agregar una cartelera</h3></div>
     <div>
         <form action="/Administracion/agregarCarteleraPost" method="post" enctype="multipart/form-data">
-
+            <div class="text-center alert-danger">
+                <h4>
+                    @ViewBag.ErrorAlAgregarCartelera
+                </h4>
+            </div>
             <div class="form-group">
                 <label for="" class="control-label">ID</label>
                 <div>
@@ -21,9 +25,14 @@
             </div>
 
             <div class="form-group">
-                <label for="" class="control-label">Sede</label>
+                <label for="" class="control-label">
+                    Sede:
+                </label>
                 <div>
-                    <select name="idSedeCarteleraModel">
+                    <select class="form-control" name="idSedeCarteleraModel">
+                        <option value="0">
+                            Seleccione una sede
+                        </option>
                         @foreach (var sede in Model.listadoDeSedes)
                         {
                             <option value="@sede.IdSede" name="idSedeCarteleraModel"> @sede.Nombre</option>
@@ -32,20 +41,42 @@
                     @Html.ValidationMessageFor(x => x.idSedeCarteleraModel)
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="" class="control-label">Película</label>
-                <div>
-                    <select name="idPeliculaCarteleraModel">
-                        @foreach (var pelicula in Model.listadoDePeliculas)
-                        {
-                            <option value="@pelicula.IdPelicula" name="idPeliculaCarteleraModel"> @pelicula.Nombre</option>
-                        }
-                    </select>
-                    @Html.ValidationMessageFor(x => x.idPeliculaCarteleraModel)
+            <div class="controls form-inline">
+                <div class="form-group">
+                    <label for="" class="control-label">
+                        Película:
+                    </label>
+                    <div>
+                        <select class="form-control" name="idPeliculaCarteleraModel">
+                            <option value="0">
+                                Seleccione una película
+                            </option>
+                            @foreach (var pelicula in Model.listadoDePeliculas)
+                            {
+                                <option value="@pelicula.IdPelicula" name="idPeliculaCarteleraModel"> @pelicula.Nombre</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.idPeliculaCarteleraModel)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">
+                        Versión:
+                    </label>
+                    <div>
+                        <select class="form-control" name="idVersionModel">
+                            <option value="0">
+                                Seleccione una versión
+                            </option>
+                            @foreach (var version in Model.listadoDeVersiones)
+                            {
+                                <option value="@version.IdVersion" name="idVersionModel"> @version.Nombre</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.idVersionModel)
+                    </div>
                 </div>
             </div>
-
 
             <div class="form-group">
                 <label for="" class="control-label">Hora</label>
@@ -55,22 +86,51 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="" class="control-label">Inicio</label>
-                <div>
-                    <input type="text" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
-                    @Html.ValidationMessageFor(x => x.fechaInicioModel)
+            <div>
+                <label for="" class="control-label">
+                    Vigencia de la cartelera:
+                </label>
+                <div class="controls form-inline">
+
+                    <div class="form-group">
+                        <label for="" class="control-label">
+                            Fecha de inicio
+                        </label>
+                        <div>
+                            @switch (Model.IdCartelera)
+                            {
+                                case 0:
+                                    <input type="date" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
+                                    break;
+                                default:
+                                    <input type="text" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
+                                    break;
+                            }
+                            @Html.ValidationMessageFor(x => x.fechaInicioModel)
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="" class="control-label">
+                            Fecha de fin
+                        </label>
+                        <div> 
+                            @switch (Model.IdCartelera)
+                            {
+                                case 0:
+                                    <input type="date" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
+                                    break;
+                                default:
+                                    <input type="text" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
+                                    break;
+                            }
+                            @Html.ValidationMessageFor(x => x.fechaFinModel)
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="" class="control-label">Fin</label>
-                <div>
-                    <input type="text" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
-                    @Html.ValidationMessageFor(x => x.fechaFinModel)
-                </div>
-            </div>
-
             <div class="form-group">
                 <label for="" class="control-label">Sala</label>
                 <div>
@@ -78,21 +138,6 @@
                     @Html.ValidationMessageFor(x => x.numeroSalaModel)
                 </div>
             </div>
-
-
-            <div class="form-group">
-                <label for="" class="control-label">Versión</label>
-                <div>
-                    <select name="idVersionModel">
-                        @foreach (var version in Model.listadoDeVersiones)
-                        {
-                            <option value="@version.IdVersion" name="idVersionModel"> @version.Nombre</option>
-                        }
-                    </select>
-                    @Html.ValidationMessageFor(x => x.idVersionModel)
-                </div>
-            </div>
-
 
             <div class="form-group">
                 <label for="" class="control-label">Seleccione los días que se proyectará la película: </label>
@@ -115,10 +160,6 @@
 
             <input type="submit" class="btn btn-block btn-success" value="Guardar" />
         </form>
-        <div class="text-center alert-danger">
-            <h4>
-                @ViewBag.ErrorAlAgregarCartelera
-            </h4>
-        </div>
+        
     </div>
 </div> 

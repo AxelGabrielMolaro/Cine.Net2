@@ -12,29 +12,23 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Pelicula
+    public partial class Sedes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pelicula()
+        public Sedes()
         {
-            this.Carteleras = new HashSet<Cartelera>();
-            this.Reservas = new HashSet<Reserva>();
+            this.Carteleras = new HashSet<Carteleras>();
+            this.Reservas = new HashSet<Reservas>();
         }
     
-        public int IdPelicula { get; set; }
+        public int IdSede { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public string Imagen { get; set; }
-        public int IdCalificacion { get; set; }
-        public int IdGenero { get; set; }
-        public int Duracion { get; set; }
-        public System.DateTime FechaCarga { get; set; }
+        public string Direccion { get; set; }
+        public decimal PrecioGeneral { get; set; }
     
-        public virtual Calificacione Calificacione { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cartelera> Carteleras { get; set; }
-        public virtual Genero Genero { get; set; }
+        public virtual ICollection<Carteleras> Carteleras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reservas { get; set; }
+        public virtual ICollection<Reservas> Reservas { get; set; }
     }
 }

@@ -242,33 +242,9 @@ namespace MVC.Controllers
 
         }
 
-
         //CARTELERAS 
-
-
-        /* public ActionResult carteleras()
-        {
-            CarteleraModelAndView model = new CarteleraModelAndView();
-            try
-            {
-                ViewBag.ErrorPelicula = ""; //Revisar las validaciones!
-
-                model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
-
-                return View(model);
-            }
-            catch (Exception e)
-            {
-                ViewBag.ErrorPelicula = e.Message;
-                model.listadoDeCarteleras = new List<Carteleras>();
-                return View(model);
-            }
-        } */
-
-
         public ActionResult carteleras()
         {
-
             if (!ModelState.IsValid)
             {
                 return View("agregarCartelera");
@@ -279,6 +255,11 @@ namespace MVC.Controllers
                 try
                 {
                     model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
+                    model.listadoDeFunciones = new List<FuncionModelAndView>();
+                    model.llenarListadoDeFunciones();
+
+                    //VER FUNCIONES.
+
                     return View(model);
                 }
                 catch (Exception e)
@@ -290,10 +271,10 @@ namespace MVC.Controllers
             }
         }
 
-
         [HttpPost]
         public ActionResult agregarCartelera(CarteleraModelAndView model)
         {
+            model.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
             if (model.IdCartelera == 0)
             {
                 return View(new CarteleraModelAndView());
@@ -321,12 +302,11 @@ namespace MVC.Controllers
                 }
                 catch (Exception e)
                 {
-                    ViewBag.errorCartelera = ""; //REVISAR ERRORES!
+                    ViewBag.errorCartelera = e.Message;
                     RedirectToAction("carteleras");
                 }
                 return View(model);
             }
-
         }
 
         [HttpPost]
@@ -348,12 +328,13 @@ namespace MVC.Controllers
                     carteleraAAgregar.IdSede = Convert.ToInt32(model.idSedeCarteleraModel);
                     carteleraAAgregar.IdPelicula = Convert.ToInt32(model.idPeliculaCarteleraModel);
                     carteleraAAgregar.HoraInicio = Convert.ToInt32(model.horaInicioModel);
-                    //carteleraAAgregar.FechaInicio = DateTime.Now;//ver esto mariana (Por el momento lo pongo como string - Marian)
-                    //carteleraAAgregar.FechaFin = DateTime.Now;
+                    //carteleraAAgregar.FechaInicio = DateTime.Now;//ver esto mariana 
+                    //carteleraAAgregar.FechaFin = DateTime.Now; 
+
+                    //Por el momento lo pongo como string - Marian. 
 
                     carteleraAAgregar.FechaInicio = Convert.ToDateTime(model.fechaInicioModel);
                     carteleraAAgregar.FechaFin = Convert.ToDateTime(model.fechaFinModel);
-
 
                     carteleraAAgregar.NumeroSala = Convert.ToInt32(model.numeroSalaModel);
                     carteleraAAgregar.IdVersion = Convert.ToInt32(model.idVersionModel);
@@ -365,6 +346,7 @@ namespace MVC.Controllers
                     carteleraAAgregar.Sabado = Convert.ToBoolean(model.sabadoModel);
                     carteleraAAgregar.Domingo = Convert.ToBoolean(model.domingoModel);
                     carteleraAAgregar.FechaCarga = DateTime.Now;
+                    model.listadoDeFunciones = new List<FuncionModelAndView>();
                     try
                     {
                         carteleraService.crearCartelera(carteleraAAgregar);
@@ -374,70 +356,25 @@ namespace MVC.Controllers
                         ViewBag.ErrorAlAgregarCartelera = e.Message;
                         return View("agregarCartelera", model);
                     }
-                    TempData["CarteleraAgregada"] = "¡La cartelera se agregó correctamente!";
+                    TempData["CarteleraOK"] = "¡La cartelera se agregó correctamente!";
                     return RedirectToAction("carteleras");
                 }
                 else
                 {
                     try
                     {
-                        ViewBag.errorCartelera = "";
-                        carteleraService.modificarCarteleraPorId(Convert.ToInt32(model.idCarteleraModel), model.idSedeCarteleraModel, model.idPeliculaCarteleraModel, model.horaInicioModel, model.fechaInicioModel, model.fechaFinModel, model.numeroSalaModel, model.idVersionModel, model.lunesModel, model.martesModel, model.miercolesModel, model.juevesModel, model.viernesModel, model.sabadoModel, model.domingoModel, model.fechaCargaModel);
+                        carteleraService.modificarCarteleraPorId(Convert.ToInt32(model.idCarteleraModel), model.idSedeCarteleraModel, model.idPeliculaCarteleraModel, model.horaInicioModel, model.fechaInicioModel, model.fechaFinModel, model.numeroSalaModel, model.idVersionModel, model.lunesModel, model.martesModel, model.miercolesModel, model.juevesModel, model.viernesModel, model.sabadoModel, model.domingoModel);
                     }
                     catch (Exception e)
                     {
                         ViewBag.errorCartelera = e.Message;
                         return View("agregarCartelera", model);
                     }
-                    TempData["CarteleraAgregada"] = "¡La cartelera se agregó correctamente!";
+                    TempData["CarteleraOK"] = "¡La cartelera se modificó correctamente!";
                     return RedirectToAction("carteleras");
                 }
-
-            }
-
-        }
-
-
-        /*
-        public ActionResult agregarCartelera()
-        {
-            CarteleraModelAndView model = new CarteleraModelAndView();
-            return View(model);
-        }
-        [HttpPost]
-        public ActionResult agregarCartelera(CarteleraModelAndView model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            else
-            {
-                Carteleras carteleraAAgregar = new Carteleras();
-
-                carteleraAAgregar.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
-                carteleraAAgregar.IdSede = Convert.ToInt32(model.idSedeCarteleraModel);
-                carteleraAAgregar.IdPelicula = Convert.ToInt32(model.idPeliculaCarteleraModel);
-                carteleraAAgregar.HoraInicio = Convert.ToInt32(model.horaInicioModel);
-                carteleraAAgregar.FechaInicio = Convert.ToDateTime(model.fechaInicioModel);
-                carteleraAAgregar.FechaFin = Convert.ToDateTime(model.fechaFinModel);
-                carteleraAAgregar.NumeroSala = Convert.ToInt32(model.numeroSalaModel);
-                carteleraAAgregar.IdVersion = Convert.ToInt32(model.idVersionModel);
-                carteleraAAgregar.Lunes = Convert.ToBoolean(model.lunesModel);
-                carteleraAAgregar.Martes = Convert.ToBoolean(model.martesModel);
-                carteleraAAgregar.Miercoles = Convert.ToBoolean(model.miercolesModel);
-                carteleraAAgregar.Jueves = Convert.ToBoolean(model.juevesModel);
-                carteleraAAgregar.Viernes = Convert.ToBoolean(model.viernesModel);
-                carteleraAAgregar.Sabado = Convert.ToBoolean(model.sabadoModel);
-                carteleraAAgregar.Domingo = Convert.ToBoolean(model.domingoModel);
-                carteleraAAgregar.FechaCarga = DateTime.Now;
-
-                carteleraService.grabarUnaCartelera(carteleraAAgregar);
-
-                return RedirectToAction("carteleras");
             }
         }
-        */
 
         [HttpPost]
         public ActionResult eliminarCartelera(Carteleras cartelera)
@@ -454,7 +391,6 @@ namespace MVC.Controllers
             TempData["CarteleraEliminada"] = "La cartelera fue eliminada";
             return RedirectToAction("carteleras");
         }
-
 
         [HttpPost]
         public ActionResult eliminarTodasLasCarteleras()

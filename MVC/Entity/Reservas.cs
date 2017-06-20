@@ -12,7 +12,7 @@ namespace MVC.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Reserva
+    public partial class Reservas
     {
         public int IdReserva { get; set; }
         public int IdSede { get; set; }
@@ -25,9 +25,9 @@ namespace MVC.Entity
         public int CantidadEntradas { get; set; }
         public System.DateTime FechaCarga { get; set; }
     
-        public virtual Pelicula Pelicula { get; set; }
-        public virtual Sede Sede { get; set; }
-        public virtual TiposDocumento TiposDocumento { get; set; }
-        public virtual Versione Versione { get; set; }
+        public virtual Peliculas Peliculas { get; set; }
+        public virtual Sedes Sedes { get; set; }
+        public virtual TiposDocumentos TiposDocumentos { get; set; }
+        public virtual Versiones Versiones { get; set; }
     }
 }

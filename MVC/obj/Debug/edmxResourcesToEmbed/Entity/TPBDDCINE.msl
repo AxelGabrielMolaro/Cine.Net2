@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="C_TPModelStoreContainer" CdmEntityContainer="Entity">
+  <EntityContainerMapping StorageEntityContainer="C_TPModelStoreContainer" CdmEntityContainer="TPBDDCINE">
     <EntitySetMapping Name="Calificaciones">
-      <EntityTypeMapping TypeName="C_TPModel.Calificacione">
+      <EntityTypeMapping TypeName="C_TPModel.Calificaciones">
         <MappingFragment StoreEntitySet="Calificaciones">
           <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Carteleras">
-      <EntityTypeMapping TypeName="C_TPModel.Cartelera">
+      <EntityTypeMapping TypeName="C_TPModel.Carteleras">
         <MappingFragment StoreEntitySet="Carteleras">
           <ScalarProperty Name="IdCartelera" ColumnName="IdCartelera" />
           <ScalarProperty Name="IdSede" ColumnName="IdSede" />
@@ -32,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Generos">
-      <EntityTypeMapping TypeName="C_TPModel.Genero">
+      <EntityTypeMapping TypeName="C_TPModel.Generos">
         <MappingFragment StoreEntitySet="Generos">
           <ScalarProperty Name="IdGenero" ColumnName="IdGenero" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Peliculas">
-      <EntityTypeMapping TypeName="C_TPModel.Pelicula">
+      <EntityTypeMapping TypeName="C_TPModel.Peliculas">
         <MappingFragment StoreEntitySet="Peliculas">
           <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -54,7 +54,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reservas">
-      <EntityTypeMapping TypeName="C_TPModel.Reserva">
+      <EntityTypeMapping TypeName="C_TPModel.Reservas">
         <MappingFragment StoreEntitySet="Reservas">
           <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
           <ScalarProperty Name="IdSede" ColumnName="IdSede" />
@@ -70,7 +70,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sedes">
-      <EntityTypeMapping TypeName="C_TPModel.Sede">
+      <EntityTypeMapping TypeName="C_TPModel.Sedes">
         <MappingFragment StoreEntitySet="Sedes">
           <ScalarProperty Name="IdSede" ColumnName="IdSede" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -80,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="C_TPModel.sysdiagram">
+      <EntityTypeMapping TypeName="C_TPModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -91,7 +91,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TiposDocumentos">
-      <EntityTypeMapping TypeName="C_TPModel.TiposDocumento">
+      <EntityTypeMapping TypeName="C_TPModel.TiposDocumentos">
         <MappingFragment StoreEntitySet="TiposDocumentos">
           <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -99,7 +99,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="C_TPModel.Usuario">
+      <EntityTypeMapping TypeName="C_TPModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
@@ -108,7 +108,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Versiones">
-      <EntityTypeMapping TypeName="C_TPModel.Versione">
+      <EntityTypeMapping TypeName="C_TPModel.Versiones">
         <MappingFragment StoreEntitySet="Versiones">
           <ScalarProperty Name="IdVersion" ColumnName="IdVersion" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />

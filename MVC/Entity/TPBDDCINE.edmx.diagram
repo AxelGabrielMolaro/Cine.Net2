@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="846fc21c65db4af3b71df10fcfdef2c5" Name="Diagram1">
-        <EntityTypeShape EntityType="C_TPModel.Calificacione" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Cartelera" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Genero" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Pelicula" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Reserva" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Sede" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.TiposDocumento" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Usuario" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="C_TPModel.Versione" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+      <Diagram DiagramId="7c471bc0026b4e94ac7e5c6c8f4eea96" Name="Diagram1">
+        <EntityTypeShape EntityType="C_TPModel.Calificaciones" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Carteleras" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Generos" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Peliculas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Reservas" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Sedes" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.TiposDocumentos" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Usuarios" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="C_TPModel.Versiones" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
         <AssociationConnector Association="C_TPModel.FK_Peliculas_Calificaciones" ManuallyRouted="false" />
         <AssociationConnector Association="C_TPModel.FK_Carteleras_Peliculas" ManuallyRouted="false" />
         <AssociationConnector Association="C_TPModel.FK_Carteleras_Sedes" ManuallyRouted="false" />
