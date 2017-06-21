@@ -30,10 +30,11 @@ namespace MVC.Models
         [CustomValidation(typeof(CarteleraModelAndView), "HoraInicioMayorA15")]
         public string horaInicioModel { get; set; }
         [Required(ErrorMessage = "Ingrese la fecha de inicio")]
-        [CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
+        //ver esos validadores de fechas
+        //[CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
         public string fechaInicioModel { get; set; }
         [Required(ErrorMessage = "Ingrese la fecha de fin")]
-        [CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
+        //[CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
         public string fechaFinModel { get; set; }
         [Required(ErrorMessage = "Ingrese el número de sala")]
         public string numeroSalaModel { get; set; }

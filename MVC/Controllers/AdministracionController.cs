@@ -268,6 +268,7 @@ namespace MVC.Controllers
                     model.fechaFinModel = carteleraModificable.FechaFin.ToString();
                     model.numeroSalaModel = carteleraModificable.NumeroSala.ToString();
                     model.idVersionModel = carteleraModificable.IdVersion.ToString();
+                    //esto de los dias no se para q se usa, por ahora no setea nada, pasa en todos los abms
                     model.lunesModel = carteleraModificable.Lunes.ToString();
                     model.martesModel = carteleraModificable.Martes.ToString();
                     model.miercolesModel = carteleraModificable.Miercoles.ToString();
@@ -330,7 +331,7 @@ namespace MVC.Controllers
                     }
                     catch (Exception e)
                     {
-                        ViewBag.ErrorAlAgregarCartelera = e.Message;
+                        ViewBag.ErrorAlAgregarCartelera = e.Message; //me esta entrando en esta excepcion
                         return View("agregarCartelera", model);
                     }
                     TempData["CarteleraOK"] = "¡La cartelera se agregó correctamente!";

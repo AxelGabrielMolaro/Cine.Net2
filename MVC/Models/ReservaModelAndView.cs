@@ -58,28 +58,37 @@ namespace MVC.Models
             listadoDeTipoDocumentoReservaModel = new  List<TiposDocumentos>();
         }
 
+        /// <summary>
+        /// Va a traer un listado de funciones y estas van a tener de diferencia el final de la pelicula,
+        /// mas media hora 
+        /// </summary>
+        /// <param name="idPeliculaF"></param>
+        /// <param name="idSedeF"></param>
+        /// <param name="idVersionF"></param>
         public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
             int horaFuncion = cartelera.HoraInicio;
-            int horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+            TimeSpan horaDeFuncionEnHoras =TimeSpan.FromHours(horaFuncion);
+            TimeSpan horaFinPeliculaEnMinutos = TimeSpan.FromMinutes(peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion);
+            TimeSpan horaFinPelicula = horaDeFuncionEnHoras + horaFinPeliculaEnMinutos;
+            TimeSpan horaFuncionTime = horaFinPelicula;
             string horaFuncionString = horaFuncion.ToString();
             for (var i = 1; i<=7; i++)
             {
                 if (i == 1)
                 {
                     FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
-                    
+                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
+                    horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
                 else
                 {
-                    int horarioFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horarioFuncion.ToString());
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
+                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionTime.ToString());
+                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
+                    horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
 
