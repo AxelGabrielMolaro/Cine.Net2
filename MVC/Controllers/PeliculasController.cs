@@ -210,7 +210,7 @@ namespace MVC.Controllers
             else if (HerramientasString.esNumero(cantidadDeEntradasFC) == false)
             {
                 ViewBag.errorReserva = "Elija la cantidad de entradas favor";
-                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, numeroDocumentoFC);
+                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
                 return View("reserva2", model);
             }
 

@@ -21,8 +21,8 @@
 
 
 <script>
-    function enviarFormulatio() {
-        $("#formReservaHome").submit();
+    function enviarFormulatio(idFormulario) {
+        $("#formReservaHome-"+ idFormulario).submit();
     }
 
 </script>
@@ -97,10 +97,10 @@
      @foreach (var pelicula in @Model.listadoDePeliculasHome)
      {
 
-        <form action="/Peliculas/reserva" method="post" id="formReservaHome">
+        <form action="/Peliculas/reserva" method="post" id="formReservaHome-@pelicula.IdPelicula">
             <input id="idPeliculaHome"  name="idPeliculaHome" value="@pelicula.IdPelicula"  type="hidden"/>
 
-            <div class="col-md-4 " onclick="enviarFormulatio()">
+            <div class="col-md-4 " onclick="enviarFormulatio(@pelicula.IdPelicula)">
                 <div class="imgYDescripcion">
                     <img src="~/ImagenesDelServidor/@pelicula.Imagen" alt="Imagen de la pelicula">
                     <div class="descripcionPelicula">
