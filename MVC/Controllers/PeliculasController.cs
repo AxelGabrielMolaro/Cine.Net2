@@ -6,11 +6,13 @@ using System.Web.Mvc;
 using MVC.Models;
 using MVC.Entity;
 using MVC.ServicesImpl;
+using MVC.Herramientas;
 
 namespace MVC.Controllers
 {
     public class PeliculasController : Controller
     {
+        PeliculaServiceImpl peliculaService = new PeliculaServiceImpl();
         sedeServiceImpl sedeService = new sedeServiceImpl();
         VersionServiceImpl versionService = new VersionServiceImpl();
         ReservaServiceImpl reservaService = new ReservaServiceImpl();
@@ -27,10 +29,7 @@ namespace MVC.Controllers
             ReservaModelAndView model = new ReservaModelAndView();
             model.paso = "1";
             model.idPeliculaReservaModel = homeModel.idPeliculaHome;
-            model.listadoDeSedesReservaModel = new List<Sedes>();
-            model.listadoDeDiasReservaModel = new List<string>();
             model.listadoDeVersionesReservaModel = reservaService.getListadosDeVersionesParaReserva(Convert.ToInt32(homeModel.idPeliculaHome));
-            model.listadoDeFunciones = new List<FuncionModelAndView>();
             return View(model);
         }
 
@@ -38,38 +37,61 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult reservaPaso2(FormCollection formCol)
         {
+
             ReservaModelAndView model = new ReservaModelAndView();
             string idPeliculaFC = formCol["peliculaPaso1"];
             string idVersionFC = formCol["versionPaso1"];
 
-            model.idPeliculaReservaModel = idPeliculaFC;
-            model.idVersionReservaModel = idVersionFC;
-
-            model.paso = "2";
-            model.listadoDeSedesReservaModel = reservaService.getListadoDeSedesParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC));
-            model.listadoDeDiasReservaModel = new  List<string>();
-            model.listadoDeVersionesReservaModel = new List<Versiones>();
-            model.listadoDeFunciones = new List<FuncionModelAndView>();
-            return View("reserva",model);
+            if (idVersionFC == "" || idVersionFC == null || idVersionFC == "0")
+            {
+               
+                ViewBag.errorReserva = "Seleccione una versión por favor";
+                model.listadoDeVersionesReservaModel = reservaService.getListadosDeVersionesParaReserva(Convert.ToInt32(idPeliculaFC));
+                model.paso = "1";
+                model.idPeliculaReservaModel = idPeliculaFC;
+                return View("reserva", model);
+            }
+            else
+            {           
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.paso = "2";
+                model.listadoDeSedesReservaModel = reservaService.getListadoDeSedesParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC));
+                model.listadoDeFunciones = new List<FuncionModelAndView>();
+                return View("reserva", model);
+            }    
         }
 
         [HttpPost]
-        public ActionResult reservaPaso3( FormCollection formCol)
+        public ActionResult reservaPaso3(FormCollection formCol)
         {
+
             ReservaModelAndView model = new ReservaModelAndView();
             string idVersionFC = formCol["versionPaso2"];
             string idPeliculaFC = formCol["peliculaPaso2"];
             string idSedeFC = formCol["sedePaso2"];
-            model.idPeliculaReservaModel = idPeliculaFC;
-            model.idSedeReservaModel = idSedeFC;
-            model.idVersionReservaModel = idVersionFC;
-            model.paso = "3";
-            model.listadoDeSedesReservaModel = new List<Sedes>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeDiasReservaModel = reservaService.getListadoDeDiasParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC), Convert.ToInt32(idSedeFC));
-            model.listadoDeVersionesReservaModel = new List<Versiones>();
-            model.listadoDeFunciones = new List<FuncionModelAndView>();
-            return View("reserva", model);
+            if (idSedeFC == "" || idSedeFC == null || idSedeFC == "0")
+            {
+                ViewBag.errorReserva = "Seleccione una sede por favor";
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.paso = "2";
+                model.listadoDeSedesReservaModel = reservaService.getListadoDeSedesParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC));
+                model.listadoDeFunciones = new List<FuncionModelAndView>();
+                return View("reserva", model);
+            }
+            else
+            {
+
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idSedeReservaModel = idSedeFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.paso = "3";
+                model.listadoDeDiasReservaModel = reservaService.getListadoDeDiasParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC), Convert.ToInt32(idSedeFC));
+                return View("reserva", model);
+
+            }
+
         }
 
 
@@ -81,19 +103,32 @@ namespace MVC.Controllers
             string idPeliculaFC = formCol["peliculaPaso3"];
             string idSedeFC = formCol["idSedePaso3"];
             string diaFC = formCol["diaPaso3"];
-            model.idPeliculaReservaModel = idPeliculaFC;
-            model.idSedeReservaModel = idSedeFC;
-            model.idVersionReservaModel = idVersionFC;
-            model.diaDeReservaReservaModel = diaFC; 
-            
-            model.paso = "4";
-            model.listadoDeSedesReservaModel = new List<Sedes>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeVersionesReservaModel = new List<Versiones>();
-            model.llenarListadoDeFunciones(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
+            if (diaFC == "" || diaFC == null || diaFC == "0")
+            {
+                ViewBag.errorReserva = "Seleccione una dia por favor";
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idSedeReservaModel = idSedeFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.paso = "3";
+                model.listadoDeSedesReservaModel = new List<Sedes>();
+                model.listadoDeDiasReservaModel = new List<string>();
+                model.listadoDeDiasReservaModel = reservaService.getListadoDeDiasParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC), Convert.ToInt32(idSedeFC));
+                model.listadoDeVersionesReservaModel = new List<Versiones>();
+                model.listadoDeFunciones = new List<FuncionModelAndView>();
+                return View("reserva", model);
+            }
+            else
+            {
 
-        
+
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idSedeReservaModel = idSedeFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.diaDeReservaReservaModel = diaFC;
+                model.paso = "4";
+                model.llenarListadoDeFunciones(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
+            }
+
 
             return View("reserva", model);
         }
@@ -102,38 +137,45 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult reserva2(FormCollection formCol)
         {
-            
-
+          
             ReservaModelAndView model = new ReservaModelAndView();
             string idVersionFC = formCol["versionPaso4"];
             string idPeliculaFC = formCol["peliculaPaso4"];
             string idSedeFC = formCol["idSedePaso4"];
             string diaFC = formCol["diaPaso4"];
             string horarioFC = formCol["horario"];
-            model.idPeliculaReservaModel = idPeliculaFC;
-            model.idSedeReservaModel = idSedeFC;
-            model.idVersionReservaModel = idVersionFC;
-            model.diaDeReservaReservaModel = diaFC;
-            model.horaDeFuncionReservaModel = horarioFC;
-            model.listadoDeTipoDocumentoReservaModel = documentoService.getListadoTipoDocumento();
-            model.paso = "4";
-            //agregar al constructor
-            model.listadoDeSedesReservaModel = new List<Sedes>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeVersionesReservaModel = new List<Versiones>();
-            model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
+            if (horarioFC == "" || horarioFC == null || horarioFC == "0")
+            {
+                ViewBag.errorReserva = "Seleccione un horario por favor";
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idSedeReservaModel = idSedeFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.diaDeReservaReservaModel = diaFC;
+                model.paso = "4";
+                model.llenarListadoDeFunciones(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
+                return View("reserva", model);
+            }
+            else
+            {
+                model.idPeliculaReservaModel = idPeliculaFC;
+                model.idSedeReservaModel = idSedeFC;
+                model.idVersionReservaModel = idVersionFC;
+                model.diaDeReservaReservaModel = diaFC;
+                model.horaDeFuncionReservaModel = horarioFC;
+                model.listadoDeTipoDocumentoReservaModel = documentoService.getListadoTipoDocumento();
+                model.paso = "4";
+                model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
+                return View(model);
+            }
 
-
-
-            return View(model);
-            
-            
         }
 
        [HttpPost]
         public ActionResult finalizarReserva(FormCollection formCol)
         {
+
+            HerramientaMensajes herramientaMensajes = new HerramientaMensajes();
+
             ReservaModelAndView model = new ReservaModelAndView();
             //datos ocultos
             string idVersionFC = formCol["versionPaso5"];
@@ -147,17 +189,38 @@ namespace MVC.Controllers
             string numeroDocumentoFC = formCol["numeroDocumento"];
             string cantidadDeEntradasFC = formCol["cantidadDeEntradas"];
 
+            if (HerramientasString.mailEsValido(mailFC) == false)
+            {
+                ViewBag.errorReserva = "Coloque un mail válido por favor";
+                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", "", "");
+                 return View("reserva2", model);
+            }
+            else if (HerramientasString.documentoEsValido(tipoDocumentoFC, numeroDocumentoFC) == false)
+            {
+                ViewBag.errorReserva = "Coloque un documento válido por favor";
+                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
+                return View("reserva2", model);
+            }
+            else if (HerramientasString.esNumero(numeroDocumentoFC) == false)
+            {
+                ViewBag.errorReserva = "Coloque un numero de documento de 8 dígitos por favor";
+                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
+                return View("reserva2", model);
+            }
+            else if (HerramientasString.esNumero(cantidadDeEntradasFC) == false)
+            {
+                ViewBag.errorReserva = "Elija la cantidad de entradas favor";
+                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, numeroDocumentoFC);
+                return View("reserva2", model);
+            }
+
+
             model.idPeliculaReservaModel = idPeliculaFC;
             model.idSedeReservaModel = idSedeFC;
             model.idVersionReservaModel = idVersionFC;
             model.diaDeReservaReservaModel = diaFC;
             model.horaDeFuncionReservaModel = horarioFC;
             model.paso = "5";
-            //agregar al constructor
-            model.listadoDeSedesReservaModel = new List<Sedes>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeDiasReservaModel = new List<string>();
-            model.listadoDeVersionesReservaModel = new List<Versiones>();
             model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
 
             //crea la reserva

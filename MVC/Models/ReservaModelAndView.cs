@@ -13,6 +13,7 @@ namespace MVC.Models
         PeliculaServiceImpl peliculaService = new PeliculaServiceImpl();
         VersionServiceImpl versionService = new VersionServiceImpl();
         sedeServiceImpl sedeServiceImpl = new sedeServiceImpl();
+        DocumentoServiceImpl documentoServise = new DocumentoServiceImpl();
 
         public string paso { get; set; }
         public string idReservaReservaModel{ get; set; }
@@ -51,11 +52,19 @@ namespace MVC.Models
         public List<Reservas> listadoDeReservasReporteModel { get; set; }
         public string fechaDesdeReporteModel { get; set; }
         public string fechaHastaReporteModel { get; set; }
+
+        //para los errores del ultimo paso
+        //public List<string> erroresListado { get; set; }
+    
         public ReservaModelAndView()
         {
             listadoDeDiasTemporal = new List<string>();
             listadoDeFunciones = new List<FuncionModelAndView>();
             listadoDeTipoDocumentoReservaModel = new  List<TiposDocumentos>();
+            listadoDeVersionesReservaModel = new List<Versiones>();
+            listadoDeSedesReservaModel = new List<Sedes>();
+            listadoDeDiasReservaModel = new List<string>();
+           // erroresListado = new List<string>();
         }
 
         /// <summary>
@@ -69,15 +78,17 @@ namespace MVC.Models
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
             int horaFuncion = cartelera.HoraInicio;
+            TimeSpan horaDeInicioCarteleraTimeSpan = TimeSpan.FromHours(cartelera.HoraInicio);
             TimeSpan horaDeFuncionEnHoras =TimeSpan.FromHours(horaFuncion);
             TimeSpan horaFinPeliculaEnMinutos = TimeSpan.FromMinutes(peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion);
             TimeSpan horaFinPelicula = horaDeFuncionEnHoras + horaFinPeliculaEnMinutos;
             TimeSpan horaFuncionTime = horaFinPelicula;
-            string horaFuncionString = horaFuncion.ToString();
+            string horaFuncionString = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaDeInicioCarteleraTimeSpan);
             for (var i = 1; i<=7; i++)
             {
                 if (i == 1)
                 {
+
                     FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
                     horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
                     horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
@@ -86,7 +97,14 @@ namespace MVC.Models
                 else
                 {
                     horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionTime.ToString());
+                    if (horaFuncionTime.Days.ToString() == "1")
+                    {
+                        TimeSpan unDia = TimeSpan.FromDays(1);
+                        horaFuncionTime = horaFuncionTime - unDia;
+                    }
+                    //formateo de la funcion en hh:mm
+                    string horaFuncionStringFinal = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaFuncionTime);
+                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionStringFinal);
                     horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
                     horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
                     listadoDeFunciones.Add(nuevaFuncion);
@@ -102,6 +120,21 @@ namespace MVC.Models
             pelicula = peliculaService.getPeliculaPorId(idPeli);
             sede = sedeServiceImpl.getSedePorId(idSede);
             version = versionService.getVersionPorId(idVers);
+        }
+
+        //la creo para limpiar los pasos la validacion de else if
+        public void SetearValoresReservaModelAndViewFinal(string idPelicula, string idSedem, string idVersion, string dia, string hora, string paso, string numerodoc, string mail)
+        {
+            this.pelicula = peliculaService.getPeliculaPorId(Convert.ToInt32(idPelicula));
+            this.idPeliculaReservaModel = idPelicula;
+            this.idSedeReservaModel = idSedem;
+            this.idVersionReservaModel = idVersion;
+            this.diaDeReservaReservaModel = dia;
+            this.listadoDeTipoDocumentoReservaModel = documentoServise.getListadoTipoDocumento();
+            this.paso = paso;
+            setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPelicula), Convert.ToInt32(idSedem), Convert.ToInt32(idVersion));
+            this.mailReservaModel = mail;
+            this.NumeroDocumento = numerodoc;
         }
     }
 }

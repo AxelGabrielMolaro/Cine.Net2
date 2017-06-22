@@ -239,12 +239,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Herramientas\HerramientaMensajes.cs" />
+    <Compile Include="Herramientas\HerramientasFechasYHoras.cs" />
+    <Compile Include="Herramientas\HerramientasString.cs" />
     <Compile Include="Manager\RepositorioManager.cs" />
     <Compile Include="Models\CarteleraModelAndView.cs" />
     <Compile Include="Models\FuncionModelAndView.cs" />
     <Compile Include="Models\HomeModelAndView.cs" />
     <Compile Include="Models\ModelAndViewReservaFinal.cs" />
     <Compile Include="Models\ModelAndViewReserva.cs" />
+    <Compile Include="Models\Paso2ModelAndView.cs" />
     <Compile Include="Models\PeliculaModelAndView.cs" />
     <Compile Include="Models\ReservaModelAndView.cs" />
     <Compile Include="Models\SedeModelAndView.cs" />
