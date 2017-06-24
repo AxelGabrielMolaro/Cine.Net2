@@ -54,7 +54,7 @@
             <tr class="">
             <th class="success ">Horario</th>
             <tr class="">
-                <td class="col-md-12"> @Model.horaDeFuncionReservaModel</td>
+                <td class="col-md-12"> @TimeSpan.FromMinutes(Convert.ToInt32(Model.horaDeFuncionReservaModel)).ToString("hh':'mm") hs. </td>
             </tr>
             <tr>
 

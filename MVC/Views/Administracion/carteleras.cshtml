@@ -15,14 +15,14 @@
             <h4>
                 @TempData["CartelerasEliminadas"]
             </h4>
-        </div> 
+        </div>
 
         <!-- Mensaje que se muestra si la lista está vacía -->
         <div class="text-center alert-danger">
             <h4>
                 @ViewBag.ListaCartelerasVacia
             </h4>
-        </div> 
+        </div>
 
         <table class="table">
             <thead>
@@ -36,7 +36,7 @@
                     <th> Versión </th>
                     <th> Fecha de carga </th>
                     <th> Disponible: </th>
-                    <th> Funciones </th>
+                    <!-- <th> Funciones </th> !-->
                     <th>
                         <form method="post" action="/Administracion/agregarCartelera">
                             <input type="hidden" value="0" name="idCartelera" />
@@ -56,7 +56,7 @@
                     <tr class="warning">
                         <td>@c.Sedes.Nombre</td>
                         <td> @c.Peliculas.Nombre </td>
-                        <td class="col-md-2"> @TimeSpan.FromHours(@c.HoraInicio).ToString("hh':'mm") </td>
+                        <td class="col-md-2"> @TimeSpan.FromMinutes(c.HoraInicio).ToString("hh':'mm") </td>
                         <td class="col-md-2"> @c.FechaInicio.ToShortDateString() </td>
                         <td class="col-md-2"> @c.FechaFin.ToShortDateString() </td>
                         <td class="col-md-2"> @c.NumeroSala </td>
@@ -115,12 +115,12 @@
                                 }
                             }
                         </td>
-                        <td>
-                            @foreach (var funcion in Model.listadoDeFunciones)
+                        <!-- <td>
+                            foreach (var funcion in Model.listadoDeFunciones)
                             {
-                                <h5> @funcion.numeroFuncionModel) @funcion.horaFuncionModel hs. </h5>
+                                <h5> funcion.numeroFuncionModel) TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel)).ToString("hh':'mm") hs. </h5>
                             }
-                        </td>
+                        </td> !-->
                         <td class="col-md-2">
                             <form action="/Administracion/agregarCartelera" method="post">
                                 <input type="hidden" name="idCartelera" value="@c.IdCartelera" />

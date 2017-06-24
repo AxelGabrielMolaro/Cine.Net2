@@ -15,8 +15,10 @@ namespace MVC.Models
         sedeServiceImpl sedeServiceImpl = new sedeServiceImpl();
         DocumentoServiceImpl documentoServise = new DocumentoServiceImpl();
 
+        CarteleraServiceImpl carteleraService = new CarteleraServiceImpl();
+
         public string paso { get; set; }
-        public string idReservaReservaModel{ get; set; }
+        public string idReservaReservaModel { get; set; }
         public string idSedeReservaModel { get; set; }
         public string idVersionReservaModel { get; set; }
         public string idPeliculaReservaModel { get; set; }
@@ -39,7 +41,7 @@ namespace MVC.Models
         public List<Versiones> listadoDeVersionesReservaModel { get; set; }
         public List<TiposDocumentos> listadoDeTipoDocumentoModel { get; set; }
         public List<Sedes> listadoDeSedesReservaModel { get; set; }
-        public List<string>  listadoDeDiasReservaModel { get; set; }
+        public List<string> listadoDeDiasReservaModel { get; set; }
         public List<TiposDocumentos> listadoDeTipoDocumentoReservaModel { get; set; }
 
         //para pasos previos de listados de fechas
@@ -55,16 +57,16 @@ namespace MVC.Models
 
         //para los errores del ultimo paso
         //public List<string> erroresListado { get; set; }
-    
+
         public ReservaModelAndView()
         {
             listadoDeDiasTemporal = new List<string>();
             listadoDeFunciones = new List<FuncionModelAndView>();
-            listadoDeTipoDocumentoReservaModel = new  List<TiposDocumentos>();
+            listadoDeTipoDocumentoReservaModel = new List<TiposDocumentos>();
             listadoDeVersionesReservaModel = new List<Versiones>();
             listadoDeSedesReservaModel = new List<Sedes>();
             listadoDeDiasReservaModel = new List<string>();
-           // erroresListado = new List<string>();
+            // erroresListado = new List<string>();
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace MVC.Models
         /// <param name="idPeliculaF"></param>
         /// <param name="idSedeF"></param>
         /// <param name="idVersionF"></param>
-        public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
+        /* public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
             int horaFuncion = cartelera.HoraInicio;
@@ -111,9 +113,47 @@ namespace MVC.Models
                 }
 
             }
-
+            
             
         }
+        */
+
+
+        public List<FuncionModelAndView> llenarListadoDeFunciones(int idPeliculaF, int idSedeF, int idVersionF)
+        {
+            Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
+            int horaFuncion = cartelera.HoraInicio;
+
+            int duracionDeLaPeli = peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+
+            int horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
+
+            string horaFuncionString = horaFuncion.ToString();
+
+            for (var i = 1; i <= 7; i++)
+            {
+                if (i == 1)
+                {
+                    FuncionModelAndView primeraFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
+                    horaFuncion = cartelera.HoraInicio;
+
+                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
+
+                    listadoDeFunciones.Add(primeraFuncion);
+                }
+                else
+                {
+                    int horarioFuncion = horaFinPelicula + 30;
+                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horarioFuncion.ToString());
+                    horaFuncion = horaFinPelicula;
+                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60) + 30;
+                    listadoDeFunciones.Add(nuevaFuncion);
+                }
+
+            }
+            return listadoDeFunciones;
+        }
+
 
         public void setearSedeYPeliculaYVersionParaReserva2(int idPeli, int idSede, int idVers)
         {

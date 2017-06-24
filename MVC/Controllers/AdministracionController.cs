@@ -232,9 +232,11 @@ namespace MVC.Controllers
                 try
                 {
                     model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
-                    model.listadoDeFunciones = new List<FuncionModelAndView>();
-                    model.llenarListadoDeFunciones();
-
+                    /*model.listadoDeFunciones = new List<FuncionModelAndView>(); 
+                    foreach (var c in model.listadoDeCarteleras)
+                    {
+                        model.llenarListadoDeFunciones(c.IdCartelera);
+                    }*/
                     //VER FUNCIONES.
 
                     return View(model);
@@ -251,7 +253,6 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult agregarCartelera(CarteleraModelAndView model)
         {
-            model.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
             if (model.IdCartelera == 0)
             {
                 return View(new CarteleraModelAndView());
@@ -261,6 +262,7 @@ namespace MVC.Controllers
                 try
                 {
                     Carteleras carteleraModificable = carteleraService.obtenerCarteleraPorId(model.IdCartelera);
+
                     model.idSedeCarteleraModel = carteleraModificable.IdSede.ToString();
                     model.idPeliculaCarteleraModel = carteleraModificable.IdPelicula.ToString();
                     model.horaInicioModel = carteleraModificable.HoraInicio.ToString();
@@ -290,7 +292,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult agregarCarteleraPost(CarteleraModelAndView model)
         {
-
+            model.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
             if (!ModelState.IsValid)
             {
                 return View("AgregarCartelera", model);
@@ -302,7 +304,14 @@ namespace MVC.Controllers
                 {
                     Carteleras carteleraAAgregar = new Carteleras();
 
-                    carteleraAAgregar.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
+                    /* 
+                     * carteleraAAgregar.IdCartelera = Convert.ToInt32(model.idCarteleraModel); 
+                     COMENTÉ ESTA LÍNEA PORQUE OBVIAMENTE IBA A TIRAR UNA EXCEPCIÓN, 
+                     ESTABA TOMANDO EL ID 0 DEL MODEL 
+                     *  Marian
+                     */
+
+
                     carteleraAAgregar.IdSede = Convert.ToInt32(model.idSedeCarteleraModel);
                     carteleraAAgregar.IdPelicula = Convert.ToInt32(model.idPeliculaCarteleraModel);
                     carteleraAAgregar.HoraInicio = Convert.ToInt32(model.horaInicioModel);
@@ -332,6 +341,7 @@ namespace MVC.Controllers
                     catch (Exception e)
                     {
                         ViewBag.ErrorAlAgregarCartelera = e.Message; //me esta entrando en esta excepcion
+                        //Ya lo arreglé - Marian.
                         return View("agregarCartelera", model);
                     }
                     TempData["CarteleraOK"] = "¡La cartelera se agregó correctamente!";

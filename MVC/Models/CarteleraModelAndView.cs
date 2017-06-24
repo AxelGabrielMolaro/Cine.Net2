@@ -27,15 +27,17 @@ namespace MVC.Models
         [CustomValidation(typeof(CarteleraModelAndView), "ValueDistintoDe0")]
         public string idPeliculaCarteleraModel { get; set; }
         [Required(ErrorMessage = "Ingrese la hora de inicio")]
-        [CustomValidation(typeof(CarteleraModelAndView), "HoraInicioMayorA15")]
+        //[CustomValidation(typeof(CarteleraModelAndView), "HoraInicioMayorA15")]
+        [CustomValidation(typeof(CarteleraModelAndView), "ValueDistintoDe0")]
         public string horaInicioModel { get; set; }
-        [Required(ErrorMessage = "Ingrese la fecha de inicio")]      
+        [Required(ErrorMessage = "Ingrese la fecha de inicio")]
         [CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
         public string fechaInicioModel { get; set; }
         [Required(ErrorMessage = "Ingrese la fecha de fin")]
         [CustomValidation(typeof(CarteleraModelAndView), "ValidadorDeFechas")]
         public string fechaFinModel { get; set; }
         [Required(ErrorMessage = "Ingrese el número de sala")]
+        [RegularExpression(@"^[+-]?\d+(\.\d+)?$", ErrorMessage = "El campo sala admite sólo números")]
         public string numeroSalaModel { get; set; }
         [CustomValidation(typeof(CarteleraModelAndView), "ValueDistintoDe0")]
         public string idVersionModel { get; set; }
@@ -107,27 +109,29 @@ namespace MVC.Models
         }
 
 
-        //Validaciones
-        //(El problema con estas validaciones es que saltan en el formulario de agregar también, REVISAR ESO)
+        //VALIDACIONES: 
+
+        //(El problema con estas validaciones es que saltan en el formulario de agregar también, REVISAR ESO!)
         public static ValidationResult ValueDistintoDe0(object value, ValidationContext c)
         {
             String valueString = value as String;
-            if (valueString == "0")
+            if (valueString == null)
             {
                 return new ValidationResult("Elija una opcion");
             }
             return ValidationResult.Success;
         }
 
-        public static ValidationResult HoraInicioMayorA15(object value, ValidationContext c)
+        /* public static ValidationResult HoraInicioMayorA15(object value, ValidationContext c)
         {
             int valueInt = Convert.ToInt32(value);
-            if (valueInt < 15)
+            //1500 reprenta las 15:00
+            if (valueInt < 1500)
             {
                 return new ValidationResult("La hora de inicio debe ser a partir de las 15:00hs.");
             }
             return ValidationResult.Success;
-        }
+        } */
 
         public static ValidationResult ValidadorDeFechas(object value, ValidationContext c)
         {
@@ -141,66 +145,49 @@ namespace MVC.Models
             */
 
             //Si la fecha de inicio o fin son anteriores a la actual (es decir, ya pasaron), no permite agregar. 
-            if (Convert.ToDateTime(fechaAValidar).CompareTo(DateTime.Now) < 0)
+            if (fechaAValidar != null)
             {
-                return new ValidationResult("La fecha ya expiró");
+                if (Convert.ToDateTime(fechaAValidar).CompareTo(DateTime.Now) < 0)
+                {
+                    return new ValidationResult("La fecha ya expiró");
+                }
             }
 
             return ValidationResult.Success;
         }
-
-
-        /*public void llenarListadoDeFunciones(CarteleraModelAndView cartelera)
+        public List<FuncionModelAndView> llenarListadoDeFunciones(int paramIdCartelera)
         {
+            Carteleras cartelera = carteleraService.obtenerCarteleraPorId(paramIdCartelera);
             int horaFuncion = cartelera.HoraInicio;
-            int horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
-            string horaFuncionString = horaFuncion.ToString();
-            for (var i = 1; i <= 7; i++)
-            {
-                if (i == 1)
-                {
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
 
-                    listadoDeFunciones.Add(nuevaFuncion);
-                }
-                else
-                {
-                    int horarioFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horarioFuncion.ToString());
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
-                    listadoDeFunciones.Add(nuevaFuncion);
-                }
-            }
-        */
-        public void llenarListadoDeFunciones()
-        {
-            Carteleras cartelera = new Carteleras();
-            int horaFuncion = cartelera.HoraInicio;
-            int horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+            int duracionDeLaPeli = peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+
+            int horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
+
             string horaFuncionString = horaFuncion.ToString();
+
             for (var i = 1; i <= 7; i++)
             {
                 if (i == 1)
                 {
                     FuncionModelAndView primeraFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+                    horaFuncion = cartelera.HoraInicio;
+
+                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
 
                     listadoDeFunciones.Add(primeraFuncion);
                 }
                 else
                 {
-                    int horarioFuncion = horaFinPelicula + Convert.ToInt32(0.5);
+                    int horarioFuncion = horaFinPelicula + 30;
                     FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horarioFuncion.ToString());
-                    horaFuncion = horaFinPelicula + Convert.ToInt32(0.5);
-                    horaFinPelicula = horaFuncion + peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
+                    horaFuncion = horaFinPelicula;
+                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60) + 30;
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
 
             }
+            return listadoDeFunciones;
         }
     }
 }

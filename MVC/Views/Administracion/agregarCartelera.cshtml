@@ -3,163 +3,207 @@
     ViewBag.Title = "agregarCartelera";
     Layout = "~/Views/Shared/_AdministradorBase.cshtml";
 }
-
-<div class="col-md-offset-3 col-md-6">
-    <hr />
-    <div class="btn btn-xs btn-default">
-        @Html.ActionLink("Volver", "carteleras")
-    </div>
-    <div class="text-center"><h3>Agregar una cartelera</h3></div>
-    <div>
-        <form action="/Administracion/agregarCarteleraPost" method="post" enctype="multipart/form-data">
-            <div class="text-center alert-danger">
-                <h4>
-                    @ViewBag.ErrorAlAgregarCartelera
-                </h4>
-            </div>
-            <div class="form-group">
-                <label for="" class="control-label">ID</label>
-                <div>
-                    <input type="text" class="form-control" name="idCarteleraModel" value="@Model.IdCartelera" readonly="readonly" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="" class="control-label">
-                    Sede:
-                </label>
-                <div>
-                    <select class="form-control" name="idSedeCarteleraModel">
-                        <option value="0">
-                            Seleccione una sede
-                        </option>
-                        @foreach (var sede in Model.listadoDeSedes)
-                        {
-                            <option value="@sede.IdSede" name="idSedeCarteleraModel"> @sede.Nombre</option>
-                        }
-                    </select>
-                    @Html.ValidationMessageFor(x => x.idSedeCarteleraModel)
-                </div>
-            </div>
-            <div class="controls form-inline">
-                <div class="form-group">
-                    <label for="" class="control-label">
-                        Película:
-                    </label>
-                    <div>
-                        <select class="form-control" name="idPeliculaCarteleraModel">
-                            <option value="0">
-                                Seleccione una película
-                            </option>
-                            @foreach (var pelicula in Model.listadoDePeliculas)
-                            {
-                                <option value="@pelicula.IdPelicula" name="idPeliculaCarteleraModel"> @pelicula.Nombre</option>
-                            }
-                        </select>
-                        @Html.ValidationMessageFor(x => x.idPeliculaCarteleraModel)
-                    </div>
+<html>
+<head>
+    <script type="text/javascript" src="~/Js/Validacion.js"></script>
+</head>
+<body>
+    <div class="col-md-offset-3 col-md-6">
+        <hr />
+        <div class="btn btn-xs btn-default">
+            @Html.ActionLink("Volver", "carteleras")
+        </div>
+        <div class="text-center"><h3>Agregar una cartelera</h3></div>
+        <div>
+            <form action="/Administracion/agregarCarteleraPost" method="post" enctype="multipart/form-data">
+                <div class="text-center alert-danger">
+                    <h4>
+                        @ViewBag.ErrorAlAgregarCartelera
+                    </h4>
                 </div>
                 <div class="form-group">
-                    <label for="" class="control-label">
-                        Versión:
-                    </label>
+                    <label for="" class="control-label">ID</label>
                     <div>
-                        <select class="form-control" name="idVersionModel">
-                            <option value="0">
-                                Seleccione una versión
-                            </option>
-                            @foreach (var version in Model.listadoDeVersiones)
-                            {
-                                <option value="@version.IdVersion" name="idVersionModel"> @version.Nombre</option>
-                            }
-                        </select>
-                        @Html.ValidationMessageFor(x => x.idVersionModel)
+                        <input type="text" class="form-control" name="idCarteleraModel" value="@Model.IdCartelera" readonly="readonly" />
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="" class="control-label">Hora</label>
-                <div>
-                    <input type="text" class="form-control" name="horaInicioModel" value="@Model.horaInicioModel" />
-                    @Html.ValidationMessageFor(x => x.horaInicioModel)
+                <div class="form-group">
+                    <label for="" class="control-label">
+                        Sede:
+                    </label>
+                    <div>
+                        <select class="form-control" name="idSedeCarteleraModel">
+                            <option value="">
+                                Seleccione una sede
+                            </option>
+                            @foreach (var sede in Model.listadoDeSedes)
+                            {
+                                <option value="@sede.IdSede" name="idSedeCarteleraModel"> @sede.Nombre</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.idSedeCarteleraModel)
+                    </div>
                 </div>
-            </div>
-
-            <div>
-                <label for="" class="control-label">
-                    Vigencia de la cartelera:
-                </label>
                 <div class="controls form-inline">
-
                     <div class="form-group">
                         <label for="" class="control-label">
-                            Fecha de inicio
+                            Película:
                         </label>
                         <div>
-                            @switch (Model.IdCartelera)
-                            {
-                                case 0:
-                                    <input type="date" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
-                                    break;
-                                default:
-                                    <input type="text" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
-                                    break;
-                            }
-                            @Html.ValidationMessageFor(x => x.fechaInicioModel)
+                            <select class="form-control" name="idPeliculaCarteleraModel">
+                                <option value="">
+                                    Seleccione una película
+                                </option>
+                                @foreach (var pelicula in Model.listadoDePeliculas)
+                                {
+                                    <option value="@pelicula.IdPelicula" name="idPeliculaCarteleraModel"> @pelicula.Nombre</option>
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.idPeliculaCarteleraModel)
                         </div>
-
                     </div>
-
-
                     <div class="form-group">
                         <label for="" class="control-label">
-                            Fecha de fin
+                            Versión:
                         </label>
-                        <div> 
-                            @switch (Model.IdCartelera)
-                            {
-                                case 0:
-                                    <input type="date" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
-                                    break;
-                                default:
-                                    <input type="text" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
-                                    break;
-                            }
-                            @Html.ValidationMessageFor(x => x.fechaFinModel)
+                        <div>
+                            <select class="form-control" name="idVersionModel">
+                                <option value="">
+                                    Seleccione una versión
+                                </option>
+                                @foreach (var version in Model.listadoDeVersiones)
+                                {
+                                    <option value="@version.IdVersion" name="idVersionModel"> @version.Nombre</option>
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.idVersionModel)
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="" class="control-label">Sala</label>
-                <div>
-                    <input type="text" class="form-control" name="numeroSalaModel" value="@Model.numeroSalaModel" />
-                    @Html.ValidationMessageFor(x => x.numeroSalaModel)
+
+                <div class="form-group">
+                    <label for="" class="control-label">Hora</label>
+                    <!-- <div>
+                         <input type="text" class="form-control" name="horaInicioModel" value="@Model.horaInicioModel" /> -->
+                    <select class="form-control" name="horaInicioModel">
+                        <option value=""> Seleccione un horario </option>
+                        @for (var h = 15; h <= 23; h++)
+                        {
+                            for (var m = 0; m <= 55; m += 5)
+                            {
+                                int valor = h * 60;
+                                int minutos = valor + m;
+                                <option name="horaInicioModel" value="@minutos"> @h:@string.Format("{0:00}", m) hs. </option>
+                            }
+
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(x => x.horaInicioModel)
+                    <!-- </div> -->
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="" class="control-label">Seleccione los días que se proyectará la película: </label>
+
+
                 <div>
-                    <input type="radio" name="lunesModel" value="true"> Lunes <br />
+                    <label for="" class="control-label">
+                        Vigencia de la cartelera:
+                    </label>
+                    <div class="controls form-inline">
 
-                    <input type="radio" name="martesModel" value="true"> Martes <br />
+                        <div class="form-group">
+                            <label for="" class="control-label">
+                                Fecha de inicio
+                            </label>
+                            <div>
+                                @switch (Model.IdCartelera)
+                                {
+                                    case 0:
+                                        <input type="date" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
+                                        break;
+                                    default:
+                                        <input type="text" class="form-control" name="fechaInicioModel" value="@Convert.ToDateTime(Model.fechaInicioModel).ToShortDateString()" />
+                                        break;
+                                }
+                                @Html.ValidationMessageFor(x => x.fechaInicioModel)
+                            </div>
 
-                    <input type="radio" name="miercolesModel" value="true"> Miércoles <br />
+                        </div>
 
-                    <input type="radio" name="juevesModel" value="true"> Jueves <br />
 
-                    <input type="radio" name="viernesModel" value="true"> Viernes <br />
-
-                    <input type="radio" name="sabadoModel" value="true"> Sábado <br />
-
-                    <input type="radio" name="domingoModel" value="true"> Domingo <br />
+                        <div class="form-group">
+                            <label for="" class="control-label">
+                                Fecha de fin
+                            </label>
+                            <div>
+                                @switch (Model.IdCartelera)
+                                {
+                                    case 0:
+                                        <input type="date" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
+                                        break;
+                                    default:
+                                        <input type="text" class="form-control" name="fechaFinModel" value="@Convert.ToDateTime(@Model.fechaFinModel).ToShortDateString()" />
+                                        break;
+                                }
+                                @Html.ValidationMessageFor(x => x.fechaFinModel)
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Sala</label>
+                    <div>
+                        <input type="text" class="form-control" name="numeroSalaModel" value="@Model.numeroSalaModel" />
+                        @Html.ValidationMessageFor(x => x.numeroSalaModel)
+                    </div>
+                </div>
 
-            <input type="submit" class="btn btn-block btn-success" value="Guardar" />
-        </form>
-        
+                <div class="form-group">
+                    <label for="" class="control-label">Seleccione los días que se proyectará la película: </label>
+                    <div class="checkbox">
+                        <!-- Agregué un input más por cada día, con type hidden y value false, si no se tilda el día, debería mandar ese valor -->
+                        <label>
+                            <input type="checkbox" name="lunesModel" value="true"> Lunes <br />
+                        </label>
+                        <input type="hidden" name="lunesModel" value="false">
+
+                        <label>
+                            <input type="checkbox" name="martesModel" value="true"> Martes <br />
+                        </label>
+                        <input type="hidden" name="martesModel" value="false">
+
+                        <label>
+                            <input type="checkbox" name="miercolesModel" value="true"> Miércoles <br />
+                        </label>
+                        <input type="hidden" name="miercolesModel" value="false">
+
+                        <label>
+                            <input type="checkbox" class="" name="juevesModel" value="true"> Jueves <br />
+                        </label>
+                        <input type="hidden" name="juevesModel" value="false">
+
+                        <label>
+                            <input type="checkbox" name="viernesModel" value="true"> Viernes <br />
+                        </label>
+                        <input type="hidden" name="viernesModel" value="false">
+
+                        <label>
+                            <input type="checkbox" name="sabadoModel" value="true"> Sábado <br />
+                        </label>
+                        <input type="hidden" name="sabadoModel" value="false">
+
+                        <label>
+                            <input type="checkbox" name="domingoModel" value="true"> Domingo <br />
+                        </label>
+                        <input type="hidden" name="domingoModel" value="false">
+
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-block btn-success" value="Guardar" />
+            </form>
+
+        </div>
     </div>
-</div> 
+</body>
+</html>

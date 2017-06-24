@@ -1,5 +1,5 @@
 ﻿function preguntar(e) {
-    eliminar = confirm("¿Deseas eliminar este registro?");
+    eliminar = confirm("¿Estás seguro que deseas eliminar lo elegido?");
     if (!eliminar) {
         e.preventDefault();
     }

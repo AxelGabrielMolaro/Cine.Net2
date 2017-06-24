@@ -31,6 +31,7 @@ namespace MVC.Entity
         public virtual DbSet<Peliculas> Peliculas { get; set; }
         public virtual DbSet<Reservas> Reservas { get; set; }
         public virtual DbSet<Sedes> Sedes { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TiposDocumentos> TiposDocumentos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Versiones> Versiones { get; set; }
