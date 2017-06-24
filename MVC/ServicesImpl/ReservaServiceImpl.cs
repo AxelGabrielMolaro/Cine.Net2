@@ -87,16 +87,19 @@ namespace MVC.ServicesImpl
         {
             List<string> listado = new List<string>();
             List<Carteleras> listadoDeCarteleras = reservaDao.getListadosDeCartelerasParaReserva(idPelicula, idVersion, idSede);
-            string lunes = "Lunes";
-            string martes = "Martes";
-            string miercoles = "Miercoles";
-            string jueves = "Jueves";
-            string viernes = "Viernes";
-            string sabado = "Sabado";
-            string domingo = "Domingo";
+            Carteleras carteleraTratada = null;
+            string lunes = "Monday";
+            string martes = "Tuesday";
+            string miercoles = "Wednesday";
+            string jueves = "Thursday";
+            string viernes = "Friday";
+            string sabado = "Saturday";
+            string domingo = "Sunday";
 
             foreach (var cartelera in listadoDeCarteleras)
             {
+                // soolo va a entrar una vez
+                carteleraTratada = cartelera;
                 bool lunesBool = cartelera.Lunes;
                 bool martesBool = cartelera.Martes;
                 bool miercolesBool = cartelera.Miercoles;
@@ -161,7 +164,22 @@ namespace MVC.ServicesImpl
 
                
             }
-            return listado;
+            // hasta aca optengo los dias de la semana disponibles
+            //optener todos los dias en un intervalo
+            List<String> listadoTotalDeDias = new List<String>();
+            DateTime inicio = carteleraTratada.FechaInicio;
+            DateTime final =carteleraTratada.FechaFin;
+
+            for (DateTime i = inicio; i < final; i = i.AddDays(1))
+            {
+               if(listado.Contains(i.DayOfWeek.ToString()))
+                   {
+                    string diaDeSemana = Herramientas.HerramientasFechasYHoras.traducirDiaDeSemana(i.DayOfWeek.ToString());
+                    listadoTotalDeDias.Add(diaDeSemana + " " + i.Day.ToString()+" / "+i.Month.ToString());
+                }
+                                   
+            }
+            return listadoTotalDeDias;
         }
         /// <summary>
         /// Devuelve una cartelera unica con esos datos
