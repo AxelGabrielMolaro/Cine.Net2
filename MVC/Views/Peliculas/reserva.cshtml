@@ -161,10 +161,13 @@
 
             <select class="form-control" id="horario" name="horario">
                 <option value="0">Seleccionar hora</option>
-                @foreach (var funcion in Model.listadoDeFunciones)
-                {
-                    <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel)).ToString("hh':'mm") hs. </option>
-                }
+               
+               @foreach (var funcion in Model.listadoDeFunciones)
+               {
+
+                <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @funcion.horaFuncionModel </option>
+
+               }
             </select>
 
             <div id="mensaje4" class="mensajeError col-md-12">Seleccione un horario</div>

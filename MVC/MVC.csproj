@@ -250,8 +250,6 @@
     <Compile Include="Models\FuncionModelAndView.cs" />
     <Compile Include="Models\HomeModelAndView.cs" />
     <Compile Include="Models\ModelAndViewReservaFinal.cs" />
-    <Compile Include="Models\ModelAndViewReserva.cs" />
-    <Compile Include="Models\Paso2ModelAndView.cs" />
     <Compile Include="Models\PeliculaModelAndView.cs" />
     <Compile Include="Models\ReservaModelAndView.cs" />
     <Compile Include="Models\SedeModelAndView.cs" />

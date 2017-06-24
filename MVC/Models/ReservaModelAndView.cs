@@ -2,6 +2,7 @@
 using MVC.ServicesImpl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,7 +17,30 @@ namespace MVC.Models
         DocumentoServiceImpl documentoServise = new DocumentoServiceImpl();
 
         CarteleraServiceImpl carteleraService = new CarteleraServiceImpl();
+        //--------------PASO FINAL -------------------------//
+        //-----------------Lo importante----------------------//
+        [EmailAddress(ErrorMessage = "Caráctetes no validos")]
+        [StringLength(50, ErrorMessage = "El mail no puede contener más de 12 caracteres")]
+        [Required(ErrorMessage = "El mail es requierido para continual")]
+        public string mailPasoFinalReservaModel { get; set; }
 
+
+        [Required(ErrorMessage = "El tipo de documento es requerido para continuar")]
+        public string tipoDocumentoPasoFinalReservaModel { get; set; }
+
+
+        [MinLength(8, ErrorMessage = "El numero de documento debe tener al menos 8 carácteres")]
+        [StringLength(8, ErrorMessage = "El numero de documento no puede contener más de 8 caracteres")]
+        [RegularExpression( "^[1-9][0-9]*$",ErrorMessage = "Carácteres no válidos")]
+        [Required(ErrorMessage = "El numero de documento es requerida para continuar")]
+        public string numeroDocumentoPasoFinalReservaModel { get; set; }
+
+
+        [Required(ErrorMessage = "La cantidad de entradas es requerida para continuar")]
+        public string cantidadDeEntradasPasoFinalReservaModel { get; set; }
+
+
+        //-----------------PASOS 1 A 4-----------------------//
         public string paso { get; set; }
         public string idReservaReservaModel { get; set; }
         public string idSedeReservaModel { get; set; }
@@ -76,23 +100,22 @@ namespace MVC.Models
         /// <param name="idPeliculaF"></param>
         /// <param name="idSedeF"></param>
         /// <param name="idVersionF"></param>
-        /* public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
+         public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
             int horaFuncion = cartelera.HoraInicio;
-            TimeSpan horaDeInicioCarteleraTimeSpan = TimeSpan.FromHours(cartelera.HoraInicio);
-            TimeSpan horaDeFuncionEnHoras =TimeSpan.FromHours(horaFuncion);
+            TimeSpan horaDeInicioCarteleraTimeSpan = TimeSpan.FromMinutes(cartelera.HoraInicio);
+            TimeSpan horaDeFuncionEnHoras =TimeSpan.FromMinutes(horaFuncion);
             TimeSpan horaFinPeliculaEnMinutos = TimeSpan.FromMinutes(peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion);
             TimeSpan horaFinPelicula = horaDeFuncionEnHoras + horaFinPeliculaEnMinutos;
             TimeSpan horaFuncionTime = horaFinPelicula;
-            string horaFuncionString = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaDeInicioCarteleraTimeSpan);
+              string horaFuncionString = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaDeInicioCarteleraTimeSpan);
             for (var i = 1; i<=7; i++)
             {
                 if (i == 1)
                 {
 
                     FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
                     horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
@@ -116,10 +139,11 @@ namespace MVC.Models
             
             
         }
-        */
+        
 
-
-        public List<FuncionModelAndView> llenarListadoDeFunciones(int idPeliculaF, int idSedeF, int idVersionF)
+        
+        [Obsolete]
+        public List<FuncionModelAndView> llenarListadoDeFunciones2(int idPeliculaF, int idSedeF, int idVersionF)
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
             int horaFuncion = cartelera.HoraInicio;

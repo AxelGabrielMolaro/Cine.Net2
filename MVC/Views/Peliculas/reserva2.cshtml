@@ -5,6 +5,7 @@
 }
 
 
+
 <div class="text-center"> <h2>Finalizar Reserva</h2> </div>
 <div class="col-md-5">
     <table class="table">
@@ -30,7 +31,7 @@
             <tr class="">
                 <th class="info ">Perecio de la entrada</th>
             <tr class="">
-                <td class="col-md-12"> @Model.sede.PrecioGeneral.ToString()</td>
+                <td class="col-md-12" > <span id="precioUnitario">@Model.sede.PrecioGeneral.ToString()</span></td>
             </tr>
             <tr>
             <tr class="">
@@ -54,7 +55,7 @@
             <tr class="">
             <th class="success ">Horario</th>
             <tr class="">
-                <td class="col-md-12"> @TimeSpan.FromMinutes(Convert.ToInt32(Model.horaDeFuncionReservaModel)).ToString("hh':'mm") hs. </td>
+                <td class="col-md-12"> @Model.horaDeFuncionReservaModel hs. </td>
             </tr>
             <tr>
 
@@ -71,47 +72,68 @@
         <div class="form-group">
             <label class="control-label" >mail</label>
             <div>
-                <input class="form-control"  id="mail" name="mail"/>
+                <input class="form-control"  id="mail" name="mailPasoFinalReservaModel" maxlength="50"/>
             </div>
-            
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.mailPasoFinalReservaModel)</div> 
             
         </div>
         <div class="form-group">
             <label class="control-label " >Tipo de documento</label>
            <div>
-               <div class="col-md-6">
-                   <select class="form-control " id="tipoDocumento" name="tipoDocumento">
-                       <option value="0">Seleccione</option>
+               <div class="">
+                 
+                   <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel">
+                       <option value="">Seleccione</option>
                        @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
                        {
                         <option value="@tipoDocumento.IdTipoDocumento">@tipoDocumento.Descripcion</option>
                        }
                    </select>
-               </div>
-               <div class="col-md-6">
-                   <input class="form-control" id="numeroDocumento" name="numeroDocumento" />
+                   
                </div>
               
+             
            </div>
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.tipoDocumentoPasoFinalReservaModel)</div> 
         </div>
+        <br />
+        <div class="form-group">
+            <label class="control-label">Numero de documento</label>
+            <div class="col-md-12">
+                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel" maxlength="8" />
+            </div>
+            <div>
+                <div class="btn-danger">@Html.ValidationMessageFor(O => O.numeroDocumentoPasoFinalReservaModel)</div>
+
+            </div>
+
+        </div>
+
         <div class="form-group">
             <label class="control-label">Cantidad De Entradas</label>
             <div>
-                <input type="number" class="form-control bfh-number" id="cantidadDeEntradas"  name="cantidadDeEntradas">
+                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas"  name="cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()">
             </div>
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.cantidadDeEntradasPasoFinalReservaModel)</div>
           
         </div>
         <div class="form-group">
-            <input type="hidden" name="versionPaso5" value="@Model.idVersionReservaModel" />
-            <input type="hidden" name="peliculaPaso5" value="@Model.idPeliculaReservaModel" />
-            <input type="hidden" name="idSedePaso5" value="@Model.idSedeReservaModel" />
-            <input type="hidden" name="diaPaso5" value="@Model.diaDeReservaReservaModel" />
-            <input type="hidden" name="horarioPaso5" value="@Model.horaDeFuncionReservaModel" />
-            <input type="submit" id="btnReserva2" class="btn btn-success col-md-12 " value="Reservar"/>
+            <input type="hidden" name="idVersionReservaModel" value="@Model.idVersionReservaModel" />
+            <input type="hidden" name="idPeliculaReservaModel" value="@Model.idPeliculaReservaModel" />
+            <input type="hidden" name="idSedeReservaModel" value="@Model.idSedeReservaModel" />
+            <input type="hidden" name="diaDeReservaReservaModel" value="@Model.diaDeReservaReservaModel" />
+            <input type="hidden" name="horaDeFuncionReservaModel" value="@Model.horaDeFuncionReservaModel" />
+        
+            
+            <div>
+                <input type="submit" id="btnReserva2" class="btn btn-success col-md-6 " value="Reservar" />
+                <div class="text-right col-md-offset-1 col-md-5 btn-success"  >Total $ <span id="precioTotalReserva"> 0 </span>   </div>
+             </div>
+            
         </div>
         <div class="form-group  alert alert-warning  col-md-12">
             <span class=""> Recuerda revisar que los datos sean los correctos antes de reservar</span>
-
+           
         </div>
 
        

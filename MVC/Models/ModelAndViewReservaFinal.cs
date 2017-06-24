@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MVC.Models
 {
     //seguro muchas cosas cambiamos por Long o int por laid
-    public class ModelAndViewReservaFinal
+    public class FinalizarReservaModelAndView
     {
         [RegularExpression("^[a-zA-Z0-9\040]+$", ErrorMessage = "Caráctetes no validos")]
         [StringLength(12, ErrorMessage = "El nombre no puede contener más de 12 caracteres")]

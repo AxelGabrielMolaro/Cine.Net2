@@ -22,7 +22,7 @@ namespace MVC.Herramientas
 
             if (timeSpan.Minutes <= 9)
             {
-                minutostimeSpan = timeSpan.Minutes.ToString() + "0";
+                minutostimeSpan = "0" + timeSpan.Minutes.ToString() ;
             }
             else
             {

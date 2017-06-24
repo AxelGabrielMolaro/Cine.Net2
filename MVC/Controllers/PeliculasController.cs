@@ -171,71 +171,31 @@ namespace MVC.Controllers
         }
 
        [HttpPost]
-        public ActionResult finalizarReserva(FormCollection formCol)
+        public ActionResult finalizarReserva(ReservaModelAndView model)
         {
-
-            HerramientaMensajes herramientaMensajes = new HerramientaMensajes();
-
-            ReservaModelAndView model = new ReservaModelAndView();
-            //datos ocultos
-            string idVersionFC = formCol["versionPaso5"];
-            string idPeliculaFC = formCol["peliculaPaso5"];
-            string idSedeFC = formCol["idSedePaso5"];
-            string diaFC = formCol["diaPaso5"];
-            string horarioFC = formCol["horarioPaso5"];
-            //formulario de la vista
-            string mailFC = formCol["mail"];
-            string tipoDocumentoFC = formCol["tipoDocumento"];
-            string numeroDocumentoFC = formCol["numeroDocumento"];
-            string cantidadDeEntradasFC = formCol["cantidadDeEntradas"];
-
-            if (HerramientasString.mailEsValido(mailFC) == false)
+            if (!ModelState.IsValid)
             {
-                ViewBag.errorReserva = "Coloque un mail válido por favor";
-                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", "", "");
-                 return View("reserva2", model);
-            }
-            else if (HerramientasString.documentoEsValido(tipoDocumentoFC, numeroDocumentoFC) == false)
-            {
-                ViewBag.errorReserva = "Coloque un documento válido por favor";
-                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
-                return View("reserva2", model);
-            }
-            else if (HerramientasString.esNumero(numeroDocumentoFC) == false)
-            {
-                ViewBag.errorReserva = "Coloque un numero de documento de 8 dígitos por favor";
-                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
-                return View("reserva2", model);
-            }
-            else if (HerramientasString.esNumero(cantidadDeEntradasFC) == false)
-            {
-                ViewBag.errorReserva = "Elija la cantidad de entradas favor";
-                model.SetearValoresReservaModelAndViewFinal(idPeliculaFC, idSedeFC, idVersionFC, diaFC, horarioFC, "4", mailFC, "");
+                model.listadoDeTipoDocumentoReservaModel = documentoService.getListadoTipoDocumento();
+                model.pelicula = peliculaService.getPeliculaPorId(Convert.ToInt32(model.idPeliculaReservaModel));
+                model.sede = sedeService.getSedePorId(Convert.ToInt32(model.idSedeReservaModel));
+                model.version = versionService.getVersionPorId(Convert.ToInt32(model.idVersionReservaModel));
                 return View("reserva2", model);
             }
 
-
-            model.idPeliculaReservaModel = idPeliculaFC;
-            model.idSedeReservaModel = idSedeFC;
-            model.idVersionReservaModel = idVersionFC;
-            model.diaDeReservaReservaModel = diaFC;
-            model.horaDeFuncionReservaModel = horarioFC;
-            model.paso = "5";
-            model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
-
+            
             //crea la reserva
             Reservas nuevaReserva = new Reservas();
-            nuevaReserva.CantidadEntradas = Convert.ToInt32(cantidadDeEntradasFC);
-            nuevaReserva.Email = mailFC;
+            nuevaReserva.CantidadEntradas = Convert.ToInt32(model.cantidadDeEntradasPasoFinalReservaModel);
+            nuevaReserva.Email = model.mailPasoFinalReservaModel;
             nuevaReserva.FechaCarga = DateTime.Now;
             nuevaReserva.FechaHoraInicio = DateTime.Now; //CAMBIAR ESTO ESTA MAL
-            nuevaReserva.IdPelicula = Convert.ToInt32(idPeliculaFC);
-            nuevaReserva.IdSede = Convert.ToInt32(idSedeFC);
-            nuevaReserva.IdVersion = Convert.ToInt32(idVersionFC);
-            nuevaReserva.IdTipoDocumento = Convert.ToInt32(tipoDocumentoFC);
-            nuevaReserva.NumeroDocumento = numeroDocumentoFC;
+            nuevaReserva.IdPelicula = Convert.ToInt32(model.idPeliculaReservaModel);
+            nuevaReserva.IdSede = Convert.ToInt32(model.idSedeReservaModel);
+            nuevaReserva.IdVersion = Convert.ToInt32(model.idVersionReservaModel);
+            nuevaReserva.IdTipoDocumento = Convert.ToInt32(model.tipoDocumentoPasoFinalReservaModel);
+            nuevaReserva.NumeroDocumento = model.numeroDocumentoPasoFinalReservaModel;
             reservaService.agregarReserva(nuevaReserva);
-
+            
             return Redirect("/Home/Inicio");
 
         }
