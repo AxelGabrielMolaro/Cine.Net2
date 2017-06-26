@@ -5,16 +5,19 @@
 }
 
 @section usuario{
-     <span class="col-md-offset-1"> @ViewBag.bienvenido</span>
-    }
+    <span class="col-md-offset-1"> @ViewBag.bienvenido</span>
+}
 <nav class="nav">
-        <div class="btn-group col-md-12" role="group">
-            <a href="/Administracion/peliculas"> <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Películas"/></a>
-            <a href="/Administracion/carteleras"> <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Carteleras"/></a>
-            <a href="/Administracion/sedes">  <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Sedes"/></a>
-            <a href="/Administracion/reportes"> <input button type="button" class="btn btn-info col-md-2 " value="Reporte de Reservas"/></a>
-            <a href="/Home/inicio"> <input button type="button" class="btn btn-danger col-md-2 " value="Cerrar sesión" /></a>
-        </div>
-</nav>    
+    <div class="btn-group col-md-12" role="group">
+        <a href="/Administracion/peliculas"> <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Películas" /></a>
+        <a href="/Administracion/carteleras"> <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Carteleras" /></a>
+        <a href="/Administracion/sedes">  <input button type="button" class="btn btn-info col-md-2 " value="Gestión de Sedes" /></a>
+        <a href="/Administracion/reportes"> <input button type="button" class="btn btn-info col-md-2 " value="Reporte de Reservas" /></a>
+        <!-- <a href="/Home/inicio"> <input button type="button" class="btn btn-danger col-md-2 " value="Cerrar sesión" /></a> --> 
+        <form action="/Home/logout" method="post">
+            <input button type="submit" class="btn btn-danger col-md-2" value="Cerrar sesión" />
+        </form>
+    </div>
+</nav>
 
 @RenderBody()

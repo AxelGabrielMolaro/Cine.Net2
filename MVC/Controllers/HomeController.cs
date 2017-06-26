@@ -29,7 +29,7 @@ namespace MVC.Controllers
         public ActionResult login()
         {
             UsuarioModelAndView modeloLogin = new UsuarioModelAndView();
-           return View(modeloLogin);
+            return View(modeloLogin);
         }
 
 
@@ -40,15 +40,16 @@ namespace MVC.Controllers
         public ActionResult login(UsuarioModelAndView model)
         {
             ViewBag.errorLogin = "";
-           
+
             if (!ModelState.IsValid)
             {
-                return View(model);   
+                return View(model);
             }
             try
             {
                 Usuarios usuarioLogin = usuarioService.login(model.nombreUsuarioModel, model.contraseñaUsuarioModel);
-                return Redirect("/Administracion/inicio"); 
+                System.Web.HttpContext.Current.Session["sessionString"] = model.idUsuarioModel; //guarda la variable de sesión. 
+                return Redirect("/Administracion/inicio");
             }
             catch (Exception e)
             {
@@ -62,5 +63,14 @@ namespace MVC.Controllers
             /* ViewBag.bienvenido = ("Bienvenido " + model.nombre);//no anda ver bien dps con la bdd
             return Redirect("/Administracion/inicio"); */
         }
+
+        [HttpPost]
+        public ActionResult logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("inicio", "Home");
+        } 
+
     }
 }

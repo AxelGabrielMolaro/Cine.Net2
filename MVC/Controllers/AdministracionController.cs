@@ -30,39 +30,60 @@ namespace MVC.Controllers
 
         public ActionResult inicio()
         {
-            return View();
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("login", "Home");
+            }
         }
 
         //Muesta en las vista las peliculas
         public ActionResult peliculas()
         {
-            PeliculaModelAndView model = new PeliculaModelAndView();
-            try
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
             {
-                ViewBag.ErrorPelicula = "";
-                model.listadoDePeliculas = peliculaService.getListadoDePeliculas();
-                return View(model);
+                PeliculaModelAndView model = new PeliculaModelAndView();
+                try
+                {
+                    ViewBag.ErrorPelicula = "";
+                    model.listadoDePeliculas = peliculaService.getListadoDePeliculas();
+                    return View(model);
+                }
+                catch (Exception e)
+                {
+                    ViewBag.ErrorPelicula = e.Message;
+                    model.listadoDePeliculas = new List<Peliculas>();
+                    return View(model);
+                }
             }
-            catch (Exception e)
+            else
             {
-                ViewBag.ErrorPelicula = e.Message;
-                model.listadoDePeliculas = new List<Peliculas>();
-                return View(model);
-
+                return RedirectToAction("login", "Home");
             }
-
-
         }
 
         //El el formulario vacio para agregar la pelicula
         public ActionResult agregarPelicula()
         {
-            PeliculaModelAndView model = new PeliculaModelAndView();
-            // model.llenarListados();
-            return View(model);
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
+            {
+                PeliculaModelAndView model = new PeliculaModelAndView();
+                // model.llenarListados();
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("login", "Home");
+            }
         }
         [HttpPost]
-        public ActionResult agregarPelicula(PeliculaModelAndView model)
+        public ActionResult agregarPelicula(PeliculaModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +123,7 @@ namespace MVC.Controllers
                     ViewBag.ErrorPelicula = e.Message;
                     return View(model);
                 }
-               
+
             }
 
         }
@@ -112,34 +133,40 @@ namespace MVC.Controllers
         //lista las sedes por request
         public ActionResult sedes()
         {
-
-            if (!ModelState.IsValid)
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
             {
-                return View("agregarSede");
+                if (!ModelState.IsValid)
+                {
+                    return View("agregarSede");
+                }
+                else
+                {
+                    SedeModelAndView model = new SedeModelAndView();
+                    try
+                    {
+                        ViewBag.errorSede = "";
+                        model.listadoDeSedesModel = sedeService.getListadoDeSedes();
+                        return View(model);
+                    }
+                    catch (Exception e)
+                    {
+                        ViewBag.errorSede = e.Message;
+                        model.listadoDeSedesModel = new List<Sedes>();
+                        return View(model);
+                    }
+                }
             }
             else
             {
-                SedeModelAndView model = new SedeModelAndView();
-                try
-                {
-                    ViewBag.errorSede = "";
-                    model.listadoDeSedesModel = sedeService.getListadoDeSedes();
-                    return View(model);
-                }
-                catch (Exception e)
-                {
-                    ViewBag.errorSede = e.Message;
-                    model.listadoDeSedesModel = new List<Sedes>();
-                    return View(model);
-                }
+                return RedirectToAction("login", "Home");
             }
-
         }
 
         //Envia al formulario de agregar sede
         //Este formulario lo uso para editar, y para agregar
         [HttpPost]
-        public ActionResult agregarSede(SedeModelAndView model)
+        public ActionResult agregarSede(SedeModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             if (model.IdSede == 0)
             {
@@ -170,7 +197,7 @@ namespace MVC.Controllers
         //aca si es una sede nueva agrega si no edita , llama a los metodos correspondientes
         //ante la peticion por request
         [HttpPost]
-        public ActionResult agregarSedePost(SedeModelAndView model)
+        public ActionResult agregarSedePost(SedeModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             model.IdSede = Convert.ToInt32(model.idSedeModel);
             if (!ModelState.IsValid)
@@ -222,36 +249,44 @@ namespace MVC.Controllers
         //CARTELERAS 
         public ActionResult carteleras()
         {
-            if (!ModelState.IsValid)
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
             {
-                return View("agregarCartelera");
+                if (!ModelState.IsValid)
+                {
+                    return View("agregarCartelera");
+                }
+                else
+                {
+                    CarteleraModelAndView model = new CarteleraModelAndView();
+                    try
+                    {
+                        model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
+                        /*model.listadoDeFunciones = new List<FuncionModelAndView>(); 
+                        foreach (var c in model.listadoDeCarteleras)
+                        {
+                            model.llenarListadoDeFunciones(c.IdCartelera);
+                        }*/
+                        //VER FUNCIONES.
+
+                        return View(model);
+                    }
+                    catch (Exception e)
+                    {
+                        ViewBag.ListaCartelerasVacia = e.Message; //Lanza la excepción en la vista.
+                        model.listadoDeCarteleras = new List<Carteleras>();
+                        return View(model);
+                    }
+                }
             }
             else
             {
-                CarteleraModelAndView model = new CarteleraModelAndView();
-                try
-                {
-                    model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
-                    /*model.listadoDeFunciones = new List<FuncionModelAndView>(); 
-                    foreach (var c in model.listadoDeCarteleras)
-                    {
-                        model.llenarListadoDeFunciones(c.IdCartelera);
-                    }*/
-                    //VER FUNCIONES.
-
-                    return View(model);
-                }
-                catch (Exception e)
-                {
-                    ViewBag.ListaCartelerasVacia = e.Message; //Lanza la excepción en la vista.
-                    model.listadoDeCarteleras = new List<Carteleras>();
-                    return View(model);
-                }
+                return RedirectToAction("login", "Home");
             }
         }
 
         [HttpPost]
-        public ActionResult agregarCartelera(CarteleraModelAndView model)
+        public ActionResult agregarCartelera(CarteleraModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             if (model.IdCartelera == 0)
             {
@@ -290,7 +325,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult agregarCarteleraPost(CarteleraModelAndView model)
+        public ActionResult agregarCarteleraPost(CarteleraModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             model.IdCartelera = Convert.ToInt32(model.idCarteleraModel);
             if (!ModelState.IsValid)
@@ -365,7 +400,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult eliminarCartelera(Carteleras cartelera)
+        public ActionResult eliminarCartelera(Carteleras cartelera) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             cartelera = carteleraService.obtenerCarteleraPorId(cartelera.IdCartelera);
             if (cartelera != null)
@@ -381,7 +416,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult eliminarTodasLasCarteleras()
+        public ActionResult eliminarTodasLasCarteleras() //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             try
             {
@@ -407,21 +442,25 @@ namespace MVC.Controllers
         //reservas
         public ActionResult reportes()
         {
-            ReservaModelAndView model = new ReservaModelAndView();
-            model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
+            {
+                ReservaModelAndView model = new ReservaModelAndView();
+                model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
 
-            return View(model);
-
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("login", "Home");
+            }
         }
 
         [HttpPost]
-        public ActionResult reportesFiltrar(ReservaModelAndView model)
+        public ActionResult reportesFiltrar(ReservaModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
-
             model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
-
             return View("reportes", model);
-
         }
     }
 }
