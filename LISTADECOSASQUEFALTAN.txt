@@ -1,0 +1,31 @@
+5.1 Pantalla Inicio (/home/inicio): 
+
+FALTA: Revisar que se muestre una sola vez una Película aunque esté cargada en varias Carteleras. 
+
+5.2 Reserva de entradas (/peliculas/reserva): 
+
+FALTA: 
+	1. El listado de Versiones lo manda completo. Debería filtrar las Versiones disponibles de la Película elegida. 
+	2. Mostrar msjes de error cuando no haya disponibilidad. 
+	3. Verificar que estén validados los campos para efectuar la Reserva. 
+	4. Mostrar mensajes de vigencia de reserva ("Adicionalmente, la vista tendrá un mensaje que indica que la reserva estará vigente hasta 1hr antes de la función elegida y deberá ser confirmada en el cine seleccionado") y detalles. ("Al momento de confirmar la reserva, el cliente verá un cartel con el código de la reserva, el precio total y la cantidad de entradas reservadas.")
+
+5.3 Login (/home/login) 
+5.4 Home Administrativa (/administracion/inicio) (*)
+TERMINADO (Igual revisenlo Axel y Pedro). 
+
+5.5 Gestión de Películas (/administracion/peliculas) (*) 
+
+FALTA: Ver formulario modificar, no anda. 
+
+5.6 Gestión de Sedes (/adiministracion/sedes) (*) 
+
+FALTA: Si ya están separados los formularios, revisar validaciones. 
+
+5.7 Gestión de Carteleras (/administracion/carteleras)(*) 
+
+TERMINADO. (Revisar validaciones). 
+
+5.8 Reporte de Reservas (/administracion/reportes)(*) 
+
+FALTA: Filtrar y validar ("Se deberá validar que el período consultado no exceda los 30 días"). 
