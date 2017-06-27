@@ -165,7 +165,7 @@
                @foreach (var funcion in Model.listadoDeFunciones)
                {
 
-                <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @funcion.horaFuncionModel </option>
+                <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel)) </option>
 
                }
             </select>
