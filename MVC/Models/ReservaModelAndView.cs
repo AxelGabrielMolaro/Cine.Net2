@@ -185,8 +185,8 @@ namespace MVC.Models
             
             //casteo del dt
             string fechaString = Regex.Replace(diaForm, @"[^\d]", "");
-            string dia = fechaString.Substring(0, 2);
-            string mes = fechaString.Substring(2, fechaString.Length - 2);
+            string dia = fechaString.Substring(0, 1);
+            string mes = fechaString.Substring(fechaString.Length - 1, 1);
             string horarioString = Regex.Replace(diaForm, @"[^\d]", "");
             string horaSt = hora.ToString();
             string minutosSt = minutos.ToString();

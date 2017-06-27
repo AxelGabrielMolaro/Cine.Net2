@@ -124,7 +124,7 @@ namespace MVC.ServicesImpl
                 {
                     listadoDePeliculasAMostrar.Add(peliculaDao.getPeliculaPorId(cartelera.IdPelicula));
                 }
-               
+
             }
             return listadoDePeliculasAMostrar;
         }
@@ -142,7 +142,19 @@ namespace MVC.ServicesImpl
             List<Carteleras> listadoDeCartelerasAMostrar = new List<Carteleras>();
             foreach (Carteleras cartelera in listadoDeCarteleras)
             {
-                int mesDeHoy = DateTime.Now.Month;
+                /* 
+                 * si la diferencia entre el mes de la fecha de inicio de la cartelera y el mes actual
+                 es 1 o menor, y la diferencia entre el mes de la fecha de fin y el mes de actual también es 1 
+                 o menor, y además el día de la fecha de fin de la cartelera es menor o igual al día actual 
+                 agrega la cartelera a ser mostrada. 
+                 */
+                if (cartelera.FechaInicio.Month - DateTime.Now.Month <= 1
+                        && cartelera.FechaFin.Month - DateTime.Now.Month <= 1
+                        && cartelera.FechaFin.Day <= DateTime.Now.Day)
+                {
+                    listadoDeCartelerasAMostrar.Add(cartelera);
+                }
+                /* int mesDeHoy = DateTime.Now.Month;
                 int mesDeCartelera = cartelera.FechaInicio.Month;
                 int diferenciaFechas = mesDeCartelera - mesDeHoy;
                 if (cartelera.IdPelicula != 0 && diferenciaFechas <= 1)
@@ -151,7 +163,7 @@ namespace MVC.ServicesImpl
                     {
                         listadoDeCartelerasAMostrar.Add(cartelera);
                     }
-                }
+                } */
             }
 
             return listadoDeCartelerasAMostrar;
@@ -177,7 +189,7 @@ namespace MVC.ServicesImpl
             {
                 throw new Exception("");
             }
-        } 
+        }
 
     }
 }
