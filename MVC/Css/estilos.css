@@ -141,3 +141,7 @@ body {
     max-width:20%;
 }
 /*FIN Tablas*/
+
+.visualizacionNone {
+    display  : none;
+}

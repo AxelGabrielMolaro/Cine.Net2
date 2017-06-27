@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace MVC.Models
@@ -178,6 +179,35 @@ namespace MVC.Models
             return listadoDeFunciones;
         }
 
+        public bool estaDisponibleLaFuncion(string hora, string minutos, string diaForm)
+        {
+            DateTime actual = DateTime.Now;
+            
+            //casteo del dt
+            string fechaString = Regex.Replace(diaForm, @"[^\d]", "");
+            string dia = fechaString.Substring(0, 2);
+            string mes = fechaString.Substring(2, fechaString.Length - 2);
+            string horarioString = Regex.Replace(diaForm, @"[^\d]", "");
+            string horaSt = hora.ToString();
+            string minutosSt = minutos.ToString();
+            //fecha dada
+            DateTime fechaHorainicioDate = DateTime.Parse(dia + "-" + mes + "-" + DateTime.Now.Year + " " + horaSt + ":" + minutosSt + ":" + "00");
+
+            TimeSpan diaTM = TimeSpan.FromTicks(fechaHorainicioDate.Ticks);
+
+            TimeSpan diaACTM = TimeSpan.FromTicks(actual.Ticks);
+
+            TimeSpan final = diaACTM - diaTM;
+            if (final.TotalMinutes < 60)
+            {
+                return true;
+            }
+
+
+            return false;
+
+        }
+
 
         public void setearSedeYPeliculaYVersionParaReserva2(int idPeli, int idSede, int idVers)
         {
@@ -199,6 +229,9 @@ namespace MVC.Models
             setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPelicula), Convert.ToInt32(idSedem), Convert.ToInt32(idVersion));
             this.mailReservaModel = mail;
             this.NumeroDocumento = numerodoc;
+
         }
+
+
     }
 }

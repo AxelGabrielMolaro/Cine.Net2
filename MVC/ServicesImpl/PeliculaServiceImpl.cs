@@ -120,7 +120,11 @@ namespace MVC.ServicesImpl
             List<Carteleras> listadoDeCarteleras = getListadoDeCartelerasHome(); //ver
             foreach (Carteleras cartelera in listadoDeCarteleras)
             {
-                listadoDePeliculasAMostrar.Add(peliculaDao.getPeliculaPorId(cartelera.IdPelicula));
+                if (!listadoDePeliculasAMostrar.Contains(peliculaDao.getPeliculaPorId(cartelera.IdPelicula)))
+                {
+                    listadoDePeliculasAMostrar.Add(peliculaDao.getPeliculaPorId(cartelera.IdPelicula));
+                }
+               
             }
             return listadoDePeliculasAMostrar;
         }

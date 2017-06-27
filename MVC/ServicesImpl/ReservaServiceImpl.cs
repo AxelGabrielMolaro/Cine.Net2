@@ -43,7 +43,7 @@ namespace MVC.ServicesImpl
                 Versiones versionCartelera = versionServive.getVersionPorId(cartelera.IdVersion);
                 foreach(var version in versionServive.getListadoDeVersiones())
                 {
-                    if (!listado.Contains(version))
+                    if (!listado.Contains(version) && version.IdVersion == cartelera.IdVersion)
                     {
                         listado.Add(version);
                     }

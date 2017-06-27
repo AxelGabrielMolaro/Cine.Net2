@@ -7,6 +7,7 @@ using MVC.Models;
 using MVC.Entity;
 using MVC.ServicesImpl;
 using MVC.Herramientas;
+using System.Text.RegularExpressions;
 
 namespace MVC.Controllers
 {
@@ -161,7 +162,9 @@ namespace MVC.Controllers
                 model.idSedeReservaModel = idSedeFC;
                 model.idVersionReservaModel = idVersionFC;
                 model.diaDeReservaReservaModel = diaFC;
-                model.horaDeFuncionReservaModel = horarioFC;
+                TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(horarioFC));
+               
+                model.horaDeFuncionReservaModel = (horario.Hours.ToString() + ":" + horario.Minutes.ToString());
                 model.listadoDeTipoDocumentoReservaModel = documentoService.getListadoTipoDocumento();
                 model.paso = "4";
                 model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
@@ -182,13 +185,21 @@ namespace MVC.Controllers
                 return View("reserva2", model);
             }
 
-            
+            //casteo del dt
+            string fechaString = Regex.Replace(model.diaDeReservaReservaModel, @"[^\d]", "");
+            string dia = fechaString.Substring(0, 2);
+            string mes = fechaString.Substring(2, fechaString.Length - 2);
+            string horarioString = Regex.Replace(model.horaDeFuncionReservaModel, @"[^\d]", "");
+            string hora = horarioString.Substring(0, 2);
+            string minutos = horarioString.Substring(2, fechaString.Length - 2);
+            DateTime fechaHorainicioDate = DateTime.Parse(dia + "-" + mes + "-" + DateTime.Now.Year + " " + hora + ":" + minutos + ":" + "00");
+
             //crea la reserva
             Reservas nuevaReserva = new Reservas();
             nuevaReserva.CantidadEntradas = Convert.ToInt32(model.cantidadDeEntradasPasoFinalReservaModel);
             nuevaReserva.Email = model.mailPasoFinalReservaModel;
             nuevaReserva.FechaCarga = DateTime.Now;
-            nuevaReserva.FechaHoraInicio = DateTime.Now; //CAMBIAR ESTO ESTA MAL
+            nuevaReserva.FechaHoraInicio = fechaHorainicioDate;
             nuevaReserva.IdPelicula = Convert.ToInt32(model.idPeliculaReservaModel);
             nuevaReserva.IdSede = Convert.ToInt32(model.idSedeReservaModel);
             nuevaReserva.IdVersion = Convert.ToInt32(model.idVersionReservaModel);
