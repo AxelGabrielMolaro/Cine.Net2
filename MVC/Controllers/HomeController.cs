@@ -28,8 +28,16 @@ namespace MVC.Controllers
 
         public ActionResult login()
         {
-            UsuarioModelAndView modeloLogin = new UsuarioModelAndView();
-            return View(modeloLogin);
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
+            {
+                return Redirect("/Administracion/inicio"); //si hay una sesión activa, el botón "Administración" redirige al inicio de admin.
+            }
+            else
+            {
+                UsuarioModelAndView modeloLogin = new UsuarioModelAndView();
+                return View(modeloLogin);
+            }
         }
 
 
@@ -49,7 +57,8 @@ namespace MVC.Controllers
             {
                 Usuarios usuarioLogin = usuarioService.login(model.nombreUsuarioModel, model.contraseñaUsuarioModel);
                 System.Web.HttpContext.Current.Session["sessionString"] = model.idUsuarioModel; //guarda la variable de sesión. 
-                return Redirect("/Administracion/inicio");
+                //return Redirect("/Administracion/inicio");
+                return RedirectToAction(TempData["accion"].ToString(), TempData["controlador"].ToString()); //redirige a la última página que se accedió por url.
             }
             catch (Exception e)
             {
@@ -70,7 +79,7 @@ namespace MVC.Controllers
             Session.Abandon();
             Session.Clear();
             return RedirectToAction("inicio", "Home");
-        } 
+        }
 
     }
 }

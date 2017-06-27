@@ -36,7 +36,11 @@
                     <td class="col-md-2"> @p.Calificaciones.Nombre </td>
                     <td class="col-md-2"> @p.Generos.Nombre </td>
                     <td class="col-md-2"> @p.Duracion  </td>
-
+                    <td class="col-md-2">
+                        <a href="/Administracion/modificarPelicula/@p.IdPelicula"> 
+                            <input class="btn btn-warning" type="submit" value="Modificar" />
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

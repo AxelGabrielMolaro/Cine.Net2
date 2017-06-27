@@ -30,13 +30,15 @@ namespace MVC.Controllers
 
         public ActionResult inicio()
         {
-            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String; //paso variable de sesión para validar si está logueado o no.
             if (ViewData["sessionString"] != null)
             {
                 return View();
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString(); //acá estoy guardando el controller y el action de cada vista 
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString(); //para redigir desde el login.
                 return RedirectToAction("login", "Home");
             }
         }
@@ -63,6 +65,8 @@ namespace MVC.Controllers
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString();
                 return RedirectToAction("login", "Home");
             }
         }
@@ -79,6 +83,8 @@ namespace MVC.Controllers
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString();
                 return RedirectToAction("login", "Home");
             }
         }
@@ -128,6 +134,55 @@ namespace MVC.Controllers
 
         }
 
+        /********** MODIFICAR PELÍCULA **********/
+        //ESTOY TENIENDO PROBLEMAS PARA MODIFICAR, NO ME TOMA EL ID 
+        //YA ESTÁ HECHO EL FORM Y TODOS LOS MÉTODOS, EL PROBLEMA ESTÁ EN EL CONTROLLER.
+        public ActionResult modificarPelicula(int id, PeliculaModelAndView model)
+        {
+            if (id == 0)
+            {
+                return View();
+            }
+            else
+            {
+                model.idPeliculaModel = id.ToString();
+                return View(model);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult modificarPelicula(PeliculaModelAndView model)
+        {
+            model.IdPelicula = Convert.ToInt32(model.idPeliculaModel);
+            if (ModelState.IsValid)
+            {
+                string appDataFolder = Server.MapPath("~/ImagenesDelServidor/");
+                string fileName = peliculaService.guardarUnaImagenEnUnCarpetaSeServidor(appDataFolder, model.imagenPeliculaModel);
+
+                Peliculas peliAEditar = peliculaService.getPeliculaPorId(model.IdPelicula);
+                model.nombrePeliculaModel = peliAEditar.Nombre;
+                model.descripcionPeliculaModel = peliAEditar.Descripcion;
+                model.idCalificacionPeliculaModel = Convert.ToString(peliAEditar.IdCalificacion);
+                model.duracionPeliculaModel = Convert.ToString(TimeSpan.FromMinutes(peliAEditar.Duracion));
+                model.idgeneroPeliculaModel = Convert.ToString(peliAEditar.IdGenero);
+                // model.imagenPeliculaModel REVISAR CÓMO QUEDA LA IMG. (Si no se cambia, hay que conservar la anterior, y si se cambia, hay que eliminarla)
+
+                //Fecha carga tiene que quedar igual, no se modifica. 
+
+                peliculaService.modificarPelicula(Convert.ToInt32(model.idPeliculaModel), model.nombrePeliculaModel, model.descripcionPeliculaModel, model.idCalificacionPeliculaModel, model.duracionPeliculaModel, model.idgeneroPeliculaModel, Convert.ToString(model.imagenPeliculaModel));
+                return RedirectToAction("peliculas");
+            }
+            else
+            {
+                ModelState.AddModelError("IdPelicula", "La película no existe");
+                return View(model);
+            }
+        }
+
+        /* * * * * * * * * * * * * * * * * * * */
+
+
         //sede
 
         //lista las sedes por request
@@ -159,6 +214,8 @@ namespace MVC.Controllers
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString();
                 return RedirectToAction("login", "Home");
             }
         }
@@ -281,6 +338,8 @@ namespace MVC.Controllers
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString();
                 return RedirectToAction("login", "Home");
             }
         }
@@ -376,7 +435,7 @@ namespace MVC.Controllers
                     catch (Exception e)
                     {
                         ViewBag.ErrorAlAgregarCartelera = e.Message; //me esta entrando en esta excepcion
-                        //Ya lo arreglé - Marian.
+                                                                     //Ya lo arreglé - Marian.
                         return View("agregarCartelera", model);
                     }
                     TempData["CarteleraOK"] = "¡La cartelera se agregó correctamente!";
@@ -452,6 +511,8 @@ namespace MVC.Controllers
             }
             else
             {
+                TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString();
                 return RedirectToAction("login", "Home");
             }
         }

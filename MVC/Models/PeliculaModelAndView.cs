@@ -9,7 +9,7 @@ using MVC.ServicesImpl;
 
 namespace MVC.Models
 {
-    public class PeliculaModelAndView 
+    public class PeliculaModelAndView : Peliculas
     {
         //implementacion de metodos 
         GeneroServiceImpl generoService = new GeneroServiceImpl();

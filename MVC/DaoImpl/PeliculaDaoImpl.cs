@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using MVC.Entity;
 using MVC.Manager;
+using System.Data.Entity;
+
 namespace MVC.DaoImpl
 {
-    public class PeliculaDaoImpl 
+    public class PeliculaDaoImpl
     {
         RepositorioManager repositorioManager = new RepositorioManager();
 
@@ -21,7 +23,7 @@ namespace MVC.DaoImpl
             {
                 return listadoDePeliculasADevolver;
             }
-            else 
+            else
             {
                 throw new Exception("Error al traer la lista de peliculas de la base de datos");
             }
@@ -31,7 +33,7 @@ namespace MVC.DaoImpl
         //guarda una pelicula en al base de datos
         public void grabarPeliculaEnLaBaseDeDatos(Peliculas pelicula)
         {
-            
+
             repositorioManager.ctx.Peliculas.Add(pelicula);
             repositorioManager.ctx.SaveChanges();
         }
@@ -48,6 +50,32 @@ namespace MVC.DaoImpl
             return peliculaBuscada;
         }
 
-        
+
+        public void modificarPeliculaDeLaBdd(int id, string nombre, string descripcion, string idCalificacion, string duracion, string idGenero, string imagen)
+        {
+            if (id == 0)
+            {
+                throw new Exception("");
+            }
+            else
+            {
+                Peliculas peli = getPeliculaPorId(id);
+
+                if (peli != null) //en lugar de validar campo por campo, valido no recibir el objeto peli vacío. 
+                {
+                    peli.Nombre = nombre;
+                    peli.Descripcion = descripcion;
+                    peli.IdCalificacion = Convert.ToInt32(idCalificacion);
+                    peli.Duracion = Convert.ToInt32(duracion);
+                    peli.IdGenero = Convert.ToInt32(idGenero);
+                    peli.Imagen = imagen;
+                    repositorioManager.ctx.Peliculas.Attach(peli);
+                    repositorioManager.ctx.Entry(peli).State = EntityState.Modified;
+                    repositorioManager.ctx.SaveChanges();
+                }
+                throw new Exception("");
+            }
+
+        }
     }
 }

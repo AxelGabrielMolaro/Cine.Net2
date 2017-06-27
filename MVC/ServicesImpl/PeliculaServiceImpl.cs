@@ -10,9 +10,9 @@ using System.IO;
 
 namespace MVC.ServicesImpl
 {
-    
-    
-    public class PeliculaServiceImpl 
+
+
+    public class PeliculaServiceImpl
     {
         PeliculaDaoImpl peliculaDao = new PeliculaDaoImpl();
 
@@ -35,15 +35,17 @@ namespace MVC.ServicesImpl
                     return listadoDePeliculas;
                 }
 
-            } catch (Exception e){
+            }
+            catch (Exception e)
+            {
 
                 //Mostrar exepcion 
                 throw new Exception("No hay ninguna pelicula cargada ");
-                
-                
-              
+
+
+
             }
-            
+
         }
 
         //si es null lanza excepcion
@@ -56,7 +58,7 @@ namespace MVC.ServicesImpl
             }
             else
             {
-                throw new  Exception("Ingrese una película antes de guardarla");
+                throw new Exception("Ingrese una película antes de guardarla");
             }
         }
 
@@ -67,7 +69,7 @@ namespace MVC.ServicesImpl
         }
 
 
-        public string guardarUnaImagenEnUnCarpetaSeServidor(string urlCarpeta, HttpPostedFileBase imagenPelicula )
+        public string guardarUnaImagenEnUnCarpetaSeServidor(string urlCarpeta, HttpPostedFileBase imagenPelicula)
         {
             string extencion = Path.GetExtension(imagenPelicula.FileName);
             if (extencion != ".png" && extencion != ".jpg")
@@ -130,7 +132,7 @@ namespace MVC.ServicesImpl
         /// </summary>
         public List<Carteleras> getListadoDeCartelerasHome()
         {
-            
+
             CarteleraDaoImpl carteleraDao = new CarteleraDaoImpl();
             List<Carteleras> listadoDeCarteleras = carteleraDao.getListadoDeCarteleras();
             List<Carteleras> listadoDeCartelerasAMostrar = new List<Carteleras>();
@@ -138,13 +140,13 @@ namespace MVC.ServicesImpl
             {
                 int mesDeHoy = DateTime.Now.Month;
                 int mesDeCartelera = cartelera.FechaInicio.Month;
-                int diferenciaFechas = mesDeCartelera -  mesDeHoy ;
+                int diferenciaFechas = mesDeCartelera - mesDeHoy;
                 if (cartelera.IdPelicula != 0 && diferenciaFechas <= 1)
                 {
-                    if(cartelera!=null)
+                    if (cartelera != null)
                     {
                         listadoDeCartelerasAMostrar.Add(cartelera);
-                    }                    
+                    }
                 }
             }
 
@@ -160,5 +162,18 @@ namespace MVC.ServicesImpl
             Carteleras carteleraBuscada = repositorioManager.ctx.Carteleras.OrderByDescending(o => o.IdCartelera == id).FirstOrDefault();
             return carteleraBuscada;
         }
+
+        public void modificarPelicula(int id, string nombre, string descripcion, string idCalificacion, string duracion, string idGenero, string imagen)
+        {
+            try
+            {
+                peliculaDao.modificarPeliculaDeLaBdd(id, nombre, descripcion, idCalificacion, duracion, idGenero, imagen);
+            }
+            catch
+            {
+                throw new Exception("");
+            }
+        } 
+
     }
 }

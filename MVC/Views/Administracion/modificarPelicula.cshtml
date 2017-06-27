@@ -1,112 +1,103 @@
-﻿@model MVC.DAL.Peliculas
+﻿@model MVC.Models.PeliculaModelAndView
 
 @{
     ViewBag.Title = "modificarPelicula";
     Layout = "~/Views/Shared/_AdministradorBase.cshtml";
-    MVC.DAL.TPEntities ctx = new MVC.DAL.TPEntities();
-    var calificaciones = (from c in ctx.Calificaciones
-                          select c).ToList();
-    var generos = (from g in ctx.Generos
-                   select g).ToList();
 }
+
+<h2>modificarPelicula</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="col-md-offset-3 col-md-6">
         <hr />
         <div class="btn btn-xs btn-default">
-            @Html.ActionLink("Volver", "sedes")
+            @Html.ActionLink("Volver", "peliculas")
         </div>
-        <div class="text-center">
-            <h3>
-                Modificar la película: @Model.Nombre
-            </h3>
-        </div>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdPelicula, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdPelicula, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.IdPelicula)
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.Nombre)
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.Descripcion)
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.Imagen)
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdCalificacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="IdCalificacion">
-                    <option value="@Model.IdCalificacion"> @Model.Calificaciones.Nombre </option>
-                    @foreach (var c in calificaciones)
-                    {
-                        <option value="@c.IdCalificacion"> @c.Nombre </option>
-                    }
-                </select>
-                @Html.ValidationMessageFor(x => x.IdCalificacion)
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdGenero, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="IdGenero">
-                    <option value="@Model.IdGenero"> @Model.Generos.Nombre </option>
-                    @foreach (var g in generos)
-                    {
-                        <option value="@g.IdGenero"> @g.Nombre </option>
-                    }
-                </select>
-                @Html.ValidationMessageFor(x => x.IdGenero)
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Duracion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Duracion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.Duracion)
-            </div>
-        </div>
+        <div class="text-center"><h3>Agregar una pelicula</h3></div>
+        <div>
+            <form action="agregarPelicula" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="" class="control-label">Nombre</label>
+                    <div>
+                        <input type="text" class="form-control" name="nombrePeliculaModel" value="@Model.nombrePeliculaModel" />
+                        <div class="btn-danger"> @Html.ValidationMessageFor(x => x.nombrePeliculaModel)</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Descripción</label>
+                    <div>
+                        <textarea class="form-control" name="descripcionPeliculaModel">@Model.descripcionPeliculaModel"</textarea>
+                        <div class="btn-danger">
+                            @Html.ValidationMessageFor(x => x.descripcionPeliculaModel)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Calificación</label>
+                    <div>
+                        <select id="comboCalificacionPeliculaModel" name="idCalificacionPeliculaModel" class="form-control">
+                            <option value="0" name="idCalificacionPeliculaModel">Seleccione</option>
 
-        <br />
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-block btn-success" value="Guardar" />
-            </div>
+                            @foreach (var calificacion in Model.listadoDeCalificaciones)
+                            {
+                                <option value="@calificacion.IdCalificacion" name="idCalificacionPeliculaModel"> @calificacion.Nombre</option>
+                            }
+
+
+
+                        </select>
+                        <div class="btn-danger">
+                            @Html.ValidationMessageFor(x => x.idCalificacionPeliculaModel)
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Género</label>
+                    <div>
+                        <select id="comboPeliculaModel" name="idgeneroPeliculaModel" class="form-control">
+                            <option value="0" name="idgeneroPeliculaModel">Seleccione</option>
+                            @foreach (var genero in Model.listadoDeGeneros)
+                            {
+                                <option value="@genero.IdGenero" name="idgeneroPeliculaModel"> @genero.Nombre</option>
+                            }
+
+
+                        </select>
+                        <div class="btn-danger">
+                            @Html.ValidationMessageFor(x => x.idgeneroPeliculaModel)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Imagen</label>
+                    <div>
+                        <input type="file" name="imagenPeliculaModel" id="imagenPelicula" value="@Model.imagenPeliculaModel" />
+                        <div class="btn-danger">
+                            @ViewBag.ErrorPeliculaImagen
+                            @Html.ValidationMessageFor(x => x.imagenPeliculaModel)
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Duración</label>
+                    <div>
+                        <input type="text" class="form-control" name="duracionPeliculaModel" value="@Model.duracionPeliculaModel" />
+                        <div class="btn-danger">
+                            @Html.ValidationMessageFor(x => x.duracionPeliculaModel)
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-block btn-success" value="Agregar película" />
+            </form>
+            <div class="text-center alert-danger"> <h4>@ViewBag.errorPelicula</h4></div>
         </div>
     </div>
-}
+} 
