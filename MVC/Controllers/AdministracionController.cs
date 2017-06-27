@@ -506,7 +506,6 @@ namespace MVC.Controllers
             {
                 ReservaModelAndView model = new ReservaModelAndView();
                 model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
-
                 return View(model);
             }
             else

@@ -14,46 +14,39 @@ namespace MVC.DaoImpl
         ReservaDaoImpl reservaDao = new ReservaDaoImpl();
         public List<Reservas> getListadoDeReservasConFilto(string fecha1, string fecha2)
         {
-            List<Reservas> listado = new List<Reservas>();
-            DateTime fecha11 = new DateTime() ;
-            DateTime fecha22 = new DateTime();
-            if (fecha1 != null && fecha1 != "")
+            if ((fecha1 == null || fecha1 == "") && (fecha2 == null || fecha2 == "")) //si los string recibidos son nulos, devuelve el listado de reservas completo. 
             {
-                 fecha11 = DateTime.ParseExact(fecha1, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-            }
-
-            if (fecha2 != null && fecha2 != "")
-            {
-                fecha22 = DateTime.ParseExact(fecha2, "dd/mm/yyyy", CultureInfo.InvariantCulture);
-                
-            }
-
-            if (fecha1 == null && fecha22 == null)
-            {
-                listado = reservaDao.getListadoDeReservas();
+                List<Reservas> listado = reservaDao.getListadoDeReservas();
                 return listado;
             }
-            if(fecha1 != null && fecha1 !="" && fecha2 == null)
+            else
             {
-                var listado2 = repositorioManager.ctx.Reservas.OrderByDescending(o => o.FechaCarga > fecha11);
-                listado = listado2.ToList();
-                return listado;
-            }
-            if (fecha2 != null && fecha2 != "" && fecha1 == null)
-            {
-                var listado2 = repositorioManager.ctx.Reservas.OrderByDescending(o => o.FechaCarga < fecha22);
-                listado = listado2.ToList();
-                return listado;
-            }
-            if (fecha2 != null && fecha2 != "" && fecha1 != null && fecha1 == "")
-            {
-                var listado2 = repositorioManager.ctx.Reservas.OrderByDescending(o => o.FechaCarga > fecha11 && o.FechaCarga< fecha22);
-                listado = listado2.ToList();
-                return listado;
-            }
+                DateTime fecha11 = Convert.ToDateTime(fecha1); //si no, convierte el string a DateTime
+                DateTime fecha22 = Convert.ToDateTime(fecha2);
 
-            return listado;
+                if (fecha11 != null && fecha22 == null) //devuelve todas las reservas a partir de esa fecha 
+                {
+                    var listaDesde = (from reserva in repositorioManager.ctx.Reservas
+                                      where reserva.FechaHoraInicio >= fecha11
+                                      select reserva).ToList();
+                    return listaDesde;
+                }
 
+                if (fecha11 == null && fecha22 != null) //devuelve todas las reservas hasta esa fecha inclusive
+                {
+                    var listaHasta = (from reserva in repositorioManager.ctx.Reservas
+                                      where reserva.FechaHoraInicio <= fecha22
+                                      select reserva).ToList();
+                    return listaHasta;
+                }
+                else //devuelve las reservas que están dentro de la fecha de inicio y de fin especificadas 
+                {
+                    var listaDesdeHasta = (from reserva in repositorioManager.ctx.Reservas
+                                           where reserva.FechaHoraInicio >= fecha11 && reserva.FechaHoraInicio <= fecha22
+                                           select reserva).ToList();
+                    return listaDesdeHasta;
+                }
+            }
         }
     }
 }

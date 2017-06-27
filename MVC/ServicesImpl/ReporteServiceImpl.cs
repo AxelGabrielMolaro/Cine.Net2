@@ -12,7 +12,6 @@ namespace MVC.ServicesImpl
         ReporteDaoImpl reporteDao = new ReporteDaoImpl();
         public List<Reservas> getListadoDeReservasConFilto(string fecha1, string fecha2)
         {
-
             return reporteDao.getListadoDeReservasConFilto(fecha1, fecha2);
         }
     }

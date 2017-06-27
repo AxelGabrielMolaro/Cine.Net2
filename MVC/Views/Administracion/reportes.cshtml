@@ -23,14 +23,14 @@
             <div class="form-group">
                 <label for="" class="control-label ">Fecha desde</label>
                 <div>
-                    <input type="date" class="form-control datepicker" id="fechaInicio" name="fechaDesdeReporteModel" readonly="readonly" />
+                    <input type="date" class="form-control " id="fechaInicio" name="fechaDesdeReporteModel" autocomplete="off" />
                 </div>
                 
             </div>
             <div class="form-group">
                 <label for="" class="control-label">Fecha hasta</label>
                 <div>
-                    <input type="date" class="form-control datepicker"  id="fechaHasta"  name="fechaHastaReporteModel" readonly="readonly" />
+                    <input type="date" class="form-control "  id="fechaHasta"  name="fechaHastaReporteModel" autocomplete="off" />
                 </div>
             </div>
             <input type="submit" value="Buscar" class="btn btn-block btn-success"/>
@@ -45,18 +45,20 @@
         <thead>
 
             <tr class="success">
+                <th> ID </th>
                 <th>Sede</th>
                 <th>Versión</th>
                 <th>Nombre de la película</th>
                 <th>Precio</th>
-
+                
             </tr>
         </thead>
         <tbody>
 
             @foreach (var reserva in Model.listadoDeReservasReporteModel)
             {
-                <tr class="warning">
+                <tr class="warning"> 
+                    <td class="col-md-2"> @reserva.IdReserva </td>
                     <td class="col-md-2">@reserva.Sedes.Nombre</td>
                     <td class="col-md-2">@reserva.Versiones.Nombre</td>
                     <td class="col-md-2">@reserva.Peliculas.Nombre</td>
