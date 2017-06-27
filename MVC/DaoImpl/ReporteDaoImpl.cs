@@ -23,7 +23,7 @@ namespace MVC.DaoImpl
             {
                 DateTime fecha11 = Convert.ToDateTime(fecha1); //si no, convierte el string a DateTime
                 DateTime fecha22 = Convert.ToDateTime(fecha2);
-
+                
                 if (fecha11 != null && fecha22 == null) //devuelve todas las reservas a partir de esa fecha 
                 {
                     var listaDesde = (from reserva in repositorioManager.ctx.Reservas
