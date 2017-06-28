@@ -1,27 +1,26 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MVC.Entity;
 using MVC.Manager;
 using System.Data.Entity;
 
 namespace MVC.DaoImpl
 {
-    public class SedeDaoImpl 
+    public class SedeDaoImpl
     {
         RepositorioManager repositorioManager = new RepositorioManager();
 
-
         //Busca una sede por id y la elimina
+
+        /******************** No implementado ********************/
         public void eliminarSedeDeLaBddPorId(int id)
         {
             Sedes sedeABorrar = getSedePorId(id);
             repositorioManager.ctx.Sedes.Remove(sedeABorrar);
             repositorioManager.ctx.SaveChanges();
         }
-        
+
         //Trae todas las sedes
         public List<Sedes> getListadoDeSedes()
         {
@@ -54,7 +53,7 @@ namespace MVC.DaoImpl
             else
             {
                 Sedes sede = getSedePorId(id);
-               
+
                 if (nombre != null)
                 {
                     sede.Nombre = nombre;
@@ -64,7 +63,7 @@ namespace MVC.DaoImpl
                     throw new Exception("Error al modificar usuario en la base de datos, hay campos vacios");
                 }
 
-                if (direccion != null )
+                if (direccion != null)
                 {
                     sede.Direccion = direccion;
                 }
@@ -73,7 +72,7 @@ namespace MVC.DaoImpl
                     throw new Exception("Error al modificar usuario en la base de datos, hay campos vacios");
                 }
 
-                if (precioEntradaGeneral != null )
+                if (precioEntradaGeneral != null)
                 {
                     sede.PrecioGeneral = Convert.ToInt32(precioEntradaGeneral);
                 }
@@ -84,9 +83,7 @@ namespace MVC.DaoImpl
 
                 repositorioManager.ctx.Sedes.Attach(sede);
                 repositorioManager.ctx.Entry(sede).State = EntityState.Modified;
-                repositorioManager.ctx.SaveChanges();
-               
-       
+                repositorioManager.ctx.SaveChanges(); 
             }
         }
     }

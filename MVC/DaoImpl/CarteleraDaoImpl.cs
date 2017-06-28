@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MVC.Entity;
 using MVC.Manager;
 using System.Data.Entity;
@@ -106,7 +105,7 @@ namespace MVC.DaoImpl
                 if (domingo != null)
                 {
                     cartelera.Domingo = Convert.ToBoolean(domingo);
-                } 
+                }
                 else
                 {
                     throw new Exception("");
@@ -145,6 +144,5 @@ namespace MVC.DaoImpl
                 }
             }
         }
-
     }
 }

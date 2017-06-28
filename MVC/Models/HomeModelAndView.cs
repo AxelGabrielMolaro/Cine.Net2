@@ -1,8 +1,5 @@
 ﻿using MVC.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVC.Models
 {
@@ -11,6 +8,5 @@ namespace MVC.Models
         public List<Peliculas> listadoDePeliculasHome { get; set; }
         public string idPeliculaHome { get; set; }
         public HomeModelAndView() { }
-        
     }
 }

@@ -5,21 +5,21 @@
 }
 
 
-<div id="pasito" class="visualizacionNone" >@Model.paso </div>
-<div class="col-md-offset-0 col-md-12 formularioReserva" >
+<div id="pasito" class="visualizacionNone">@Model.paso </div>
+<div class="col-md-offset-0 col-md-12 formularioReserva">
     <div class="text-center ">
         <h2>Reserva</h2>
     </div>
     <div class="text-center">
         <span id="progreso" class="progreso">0%</span>
     </div>
-  
+
 
     <!-- ______________________________________________version ______________________________________________________________  -->
-   <form id="paso1" method="post" action="/Peliculas/reservaPaso2" class="visualizacionNone" >
+    <form id="paso1" method="post" action="/Peliculas/reservaPaso2" class="visualizacionNone">
 
 
-        <div class="form-group col-md-6 col-md-offset-3" >
+        <div class="form-group col-md-6 col-md-offset-3">
             <h3>Version</h3>
 
             <div class="col-md-12">
@@ -46,7 +46,7 @@
 
     </form>
     <!-- ______________________________________________sede______________________________________________________________  -->
-    <form id="paso2" method="post" action="/Peliculas/reservaPaso3" class="visualizacionNone" >
+    <form id="paso2" method="post" action="/Peliculas/reservaPaso3" class="visualizacionNone">
 
 
 
@@ -71,7 +71,7 @@
     </form>
     <!-- ______________________________________________dia______________________________________________________________  -->
     <div class="btn-danger"> @ViewBag.errorReserva</div>
-    <form id="paso3" method="post" action="/Peliculas/reservaPaso4" class="visualizacionNone" >
+    <form id="paso3" method="post" action="/Peliculas/reservaPaso4" class="visualizacionNone">
 
 
         <div class="form-group col-md-6 col-md-offset-3">
@@ -98,54 +98,40 @@
         </div>
     </form>
     <!-- ______________________________________________horario______________________________________________________________  -->
-    <form id="paso4" method="post" action="/Peliculas/reserva2" class="visualizacionNone" >
+    <form id="paso4" method="post" action="/Peliculas/reserva2" class="visualizacionNone">
 
 
 
         <div class="form-group col-md-6 col-md-offset-3">
             <h3>Horario</h3>
-            <!-- <select class="form-control" id="horario" name="horario"> !-->
-            <!--No se esta parte-->
-            <!-- <option value="0">Seleccionar hora</option>
-                foreach (var funcion in Model.listadoDeFunciones)
-                {
-                    <option value="funcion.horaFuncionModel">funcion.numeroFuncionModel Funcion : funcion.horaFuncionModel</option>
-                }
-            </select> !-->
-
-            <!-- VER CÓMO MANDA EL VALUE LA HORA DE LA FUNCIÓN A RESERVAS -->
-
             <select class="form-control" id="horario" name="horario">
                 <option value="0">Seleccionar hora</option>
-               
-               @foreach (var funcion in Model.listadoDeFunciones)
-               {
-                   TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
 
+                @foreach (var funcion in Model.listadoDeFunciones)
+                {
+                    TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
 
-
-                   //TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
                     if (Model.estaDisponibleLaFuncion(horario.Hours.ToString(), horario.Minutes.ToString(), Model.diaDeReservaReservaModel.ToString()) == true)
-                   {
-                       if (Convert.ToInt32(horario.Minutes) < 10)
-                       {
-                           string cero = "0";
-                        <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @cero@horario.Minutes</option>
+                    {
+                        if (Convert.ToInt32(horario.Minutes) < 10)
+                        {
+                            string cero = "0";
+                            <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @cero@horario.Minutes</option>
 
-                       }
-                       else
-                       {
+                        }
+                        else
+                        {
 
-                       <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes </option>
-                       }
-                   }
-                   else
-                   {
-                    <option value="" class="text-danger"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes Agotada </option>
+                            <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes </option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="" class="text-danger"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes Agotada </option>
 
-                   }
+                    }
 
-               }
+                }
             </select>
 
             <div id="mensaje4" class="mensajeError col-md-12">Seleccione un horario</div>

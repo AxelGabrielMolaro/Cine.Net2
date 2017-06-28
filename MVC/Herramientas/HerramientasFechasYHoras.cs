@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVC.Herramientas
 {
@@ -34,13 +31,13 @@ namespace MVC.Herramientas
             return timeSpanStringFinal;
         }
 
-        public static string pasarUnMesAStringddmm(string diap,string mesp)
+        public static string pasarUnMesAStringddmm(string diap, string mesp)
         {
             string dia = diap;
             string mes = mesp;
             if (Convert.ToInt32(dia) <= 9)
             {
-                dia =  "0" + dia;
+                dia = "0" + dia;
             }
 
             if (Convert.ToInt32(mes) <= 9)
@@ -48,8 +45,7 @@ namespace MVC.Herramientas
                 mes = "0" + mes;
             }
 
-
-            string diaMes = (dia+mes);
+            string diaMes = (dia + mes);
 
             return diaMes;
         }
@@ -71,5 +67,5 @@ namespace MVC.Herramientas
             if (diaDeSemna == "Sunday") dia = "Domingo";
             return dia;
         }
-   }
+    }
 }

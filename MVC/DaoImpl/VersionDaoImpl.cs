@@ -3,7 +3,6 @@ using MVC.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MVC.DaoImpl
 {
@@ -23,7 +22,7 @@ namespace MVC.DaoImpl
             }
             else
             {
-                throw new Exception("Error al traer la lista de carteleras de la base de datos");
+                throw new Exception("Error al traer la lista de versiones de la base de datos");
             }
         }
 

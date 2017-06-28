@@ -3,9 +3,7 @@ using MVC.ServicesImpl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace MVC.Models
 {
@@ -18,21 +16,19 @@ namespace MVC.Models
         DocumentoServiceImpl documentoServise = new DocumentoServiceImpl();
 
         CarteleraServiceImpl carteleraService = new CarteleraServiceImpl();
-        //--------------PASO FINAL -------------------------//
-        //-----------------Lo importante----------------------//
+        //-------------- PASO FINAL -------------------------//
+        //----------------- Lo importante -------------------//
         [EmailAddress(ErrorMessage = "Caráctetes no validos")]
         [StringLength(50, ErrorMessage = "El mail no puede contener más de 12 caracteres")]
         [Required(ErrorMessage = "El mail es requierido para continual")]
         public string mailPasoFinalReservaModel { get; set; }
 
-
         [Required(ErrorMessage = "El tipo de documento es requerido para continuar")]
         public string tipoDocumentoPasoFinalReservaModel { get; set; }
 
-
         [MinLength(8, ErrorMessage = "El numero de documento debe tener al menos 8 carácteres")]
         [StringLength(8, ErrorMessage = "El numero de documento no puede contener más de 8 caracteres")]
-        [RegularExpression( "^[1-9][0-9]*$",ErrorMessage = "Carácteres no válidos")]
+        [RegularExpression("^[1-9][0-9]*$", ErrorMessage = "Carácteres no válidos")]
         [Required(ErrorMessage = "El numero de documento es requerida para continuar")]
         public string numeroDocumentoPasoFinalReservaModel { get; set; }
 
@@ -55,7 +51,6 @@ namespace MVC.Models
         public string fechaCargaReservaModel { get; set; }
         public string diaDeReservaReservaModel { get; set; }
         public string horaDeFuncionReservaModel { get; set; }
-        //ver el tema de las funciones
 
         //reserva 2
         public Peliculas pelicula { get; set; }
@@ -80,9 +75,6 @@ namespace MVC.Models
         public string fechaDesdeReporteModel { get; set; }
         public string fechaHastaReporteModel { get; set; }
 
-        //para los errores del ultimo paso
-        //public List<string> erroresListado { get; set; }
-
         public ReservaModelAndView()
         {
             listadoDeDiasTemporal = new List<string>();
@@ -91,59 +83,8 @@ namespace MVC.Models
             listadoDeVersionesReservaModel = new List<Versiones>();
             listadoDeSedesReservaModel = new List<Sedes>();
             listadoDeDiasReservaModel = new List<string>();
-            // erroresListado = new List<string>();
         }
 
-        /// <summary>
-        /// Va a traer un listado de funciones y estas van a tener de diferencia el final de la pelicula,
-        /// mas media hora 
-        /// </summary>
-        /// <param name="idPeliculaF"></param>
-        /// <param name="idSedeF"></param>
-        /// <param name="idVersionF"></param>
-        /* public void llenarListadoDeFunciones(int idPeliculaF, int idSedeF,int idVersionF)
-        {
-            Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
-            int horaFuncion = cartelera.HoraInicio;
-            TimeSpan horaDeInicioCarteleraTimeSpan = TimeSpan.FromMinutes(cartelera.HoraInicio);
-            TimeSpan horaDeFuncionEnHoras =TimeSpan.FromMinutes(horaFuncion);
-            TimeSpan horaFinPeliculaEnMinutos = TimeSpan.FromMinutes(peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion);
-            TimeSpan horaFinPelicula = horaDeFuncionEnHoras + horaFinPeliculaEnMinutos;
-            TimeSpan horaFuncionTime = horaFinPelicula;
-              string horaFuncionString = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaDeInicioCarteleraTimeSpan);
-            for (var i = 1; i<=7; i++)
-            {
-                if (i == 1)
-                {
-
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
-                    listadoDeFunciones.Add(nuevaFuncion);
-                }
-                else
-                {
-                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
-                    if (horaFuncionTime.Days.ToString() == "1")
-                    {
-                        TimeSpan unDia = TimeSpan.FromDays(1);
-                        horaFuncionTime = horaFuncionTime - unDia;
-                    }
-                    //formateo de la funcion en hh:mm
-                    string horaFuncionStringFinal = Herramientas.HerramientasFechasYHoras.pasarUnTimeSpanAHHMMString(horaFuncionTime);
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horaFuncionStringFinal);
-                    horaFuncionTime = horaFuncionTime + TimeSpan.FromMinutes(30);
-                    horaFinPelicula = horaFuncionTime + horaFinPeliculaEnMinutos;   
-                    listadoDeFunciones.Add(nuevaFuncion);
-                }
-
-            }
-            
-            
-        }
-        
-
-        
-        [Obsolete] */
         public List<FuncionModelAndView> llenarListadoDeFunciones(int idPeliculaF, int idSedeF, int idVersionF)
         {
             Carteleras cartelera = reservaService.getCarteleraReserva(idPeliculaF, idSedeF, idVersionF);
@@ -157,7 +98,7 @@ namespace MVC.Models
 
             for (var i = 1; i <= 7; i++)
             {
-                     if (i == 1)
+                if (i == 1)
                 {
                     FuncionModelAndView primeraFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
                     horaFuncion = cartelera.HoraInicio;
@@ -174,7 +115,6 @@ namespace MVC.Models
                     horaFinPelicula = horaFuncion + (duracionDeLaPeli) + 30;
                     listadoDeFunciones.Add(nuevaFuncion);
                 }
-
             }
             return listadoDeFunciones;
         }
@@ -182,16 +122,16 @@ namespace MVC.Models
         public bool estaDisponibleLaFuncion(string hora, string minutos, string diaForm)
         {
             DateTime actual = DateTime.Now;
-            
-            
+
             //casteo del dt
             string fechaString = diaForm;
-          
-            string dia = fechaString.Substring(0,fechaString.IndexOf("/"));
-             string mes = fechaString.Substring(fechaString.IndexOf("/") + 1, fechaString.Length - fechaString.IndexOf("/")-1);
+
+            string dia = fechaString.Substring(0, fechaString.IndexOf("/"));
+            string mes = fechaString.Substring(fechaString.IndexOf("/") + 1, fechaString.Length - fechaString.IndexOf("/") - 1);
             string horarioString = Regex.Replace(diaForm, @"[^\d]", "");
             string horaSt = hora.ToString();
             string minutosSt = minutos.ToString();
+
             //fecha dada
             DateTime fechaHorainicioDate = DateTime.Parse(dia + "-" + mes + "-" + DateTime.Now.Year + " " + horaSt + ":" + minutosSt + ":" + "00");
 
@@ -205,9 +145,7 @@ namespace MVC.Models
                 return true;
             }
 
-
             return false;
-
         }
 
 
@@ -231,9 +169,6 @@ namespace MVC.Models
             setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPelicula), Convert.ToInt32(idSedem), Convert.ToInt32(idVersion));
             this.mailReservaModel = mail;
             this.NumeroDocumento = numerodoc;
-
         }
-
-
     }
 }

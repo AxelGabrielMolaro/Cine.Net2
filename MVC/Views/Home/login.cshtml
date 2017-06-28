@@ -8,17 +8,12 @@
 @section cabezeraAdmin
 {
     <div class="well">
-        <div class="text-left"> <a href="/Home/inicio" class="alert-link"><input class="btn btn-info" value="Volver" /></a></div>
+        <div class="text-left"> <a href="/Home/inicio" class="alert-link"><input type="button" class="btn btn-info" value="Volver" /></a></div>
     </div>
 }
 
-
-
 <div class="col-md-offset-3 col-md-6 formularioDeLogueo">
-
-
     <div class="well">
-
         <form method="post" action="/Home/login">
 
             <div class="form-group">
@@ -36,16 +31,13 @@
                     <input type="password" class="form-control" name="contraseñaUsuarioModel" id="contraseñaUsuarioModel" value="@Model.contraseñaUsuarioModel" />
                     <div class="alert-danger text-danger"> @Html.ValidationMessageFor(x => x.contraseñaUsuarioModel)</div>
                 </div>
-            </div>  
-             <input type="submit" class="btn btn-success col-md-offset-10" value="Ingresar" />
+            </div>
+            <input type="submit" class="btn btn-success col-md-offset-10" value="Ingresar" />
         </form>
 
     </div>
-    <div class="alert-danger text-center te" >
-       <h3>@ViewBag.errorLogin</h3>
+    <div class="alert-danger text-center te">
+        <h3>@ViewBag.errorLogin</h3>
     </div>
 
 </div>
-
-
-

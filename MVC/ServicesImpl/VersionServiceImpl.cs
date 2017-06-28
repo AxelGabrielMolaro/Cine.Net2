@@ -2,8 +2,6 @@
 using MVC.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVC.ServicesImpl
 {
@@ -46,8 +44,6 @@ namespace MVC.ServicesImpl
             {
                 return version;
             }
-
-
         }
     }
 }

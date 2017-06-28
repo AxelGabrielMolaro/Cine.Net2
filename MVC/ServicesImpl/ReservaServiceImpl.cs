@@ -2,8 +2,6 @@
 using MVC.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVC.ServicesImpl
 {
@@ -14,7 +12,7 @@ namespace MVC.ServicesImpl
     {
         ReservaDaoImpl reservaDao = new ReservaDaoImpl();
         VersionServiceImpl versionServive = new VersionServiceImpl();
-        sedeServiceImpl  sedeServive = new sedeServiceImpl();
+        sedeServiceImpl sedeServive = new sedeServiceImpl();
         CarteleraDaoImpl carteleraDao = new CarteleraDaoImpl();
         public void agregarReserva(Reservas reserva)
         {
@@ -22,7 +20,7 @@ namespace MVC.ServicesImpl
             reservaDao.agregarReserva(reserva);
         }
 
-        //para el formulario de reservaç
+        //para el formulario de reserva
 
 
         //borrar esto
@@ -32,26 +30,24 @@ namespace MVC.ServicesImpl
         /// </summary>
         /// <param name="idDePelicula"></param>
         /// <returns></returns>
-        
+
         public List<Versiones> getListadosDeVersionesParaReserva(int idDePelicula)
         {
             List<Versiones> listado = new List<Versiones>();
-            List<Carteleras> listadoDeCarteleras = reservaDao.getListadosDeCartelerasParaReserva(idDePelicula,0,0);
+            List<Carteleras> listadoDeCarteleras = reservaDao.getListadosDeCartelerasParaReserva(idDePelicula, 0, 0);
 
             foreach (var cartelera in listadoDeCarteleras)
             {
                 Versiones versionCartelera = versionServive.getVersionPorId(cartelera.IdVersion);
-                foreach(var version in versionServive.getListadoDeVersiones())
+                foreach (var version in versionServive.getListadoDeVersiones())
                 {
                     if (!listado.Contains(version) && version.IdVersion == cartelera.IdVersion)
                     {
                         listado.Add(version);
                     }
                 }
-                
             }
-            return listado; 
-
+            return listado;
         }
 
         public List<Sedes> getListadoDeSedesParaReserva(int idPelicula, int idVersion)
@@ -82,7 +78,7 @@ namespace MVC.ServicesImpl
         /// <param name="idVersion"></param>
         /// <param name="idSede"></param>
         /// <returns></returns>
-       
+
         public List<string> getListadoDeDiasParaReserva(int idPelicula, int idVersion, int idSede)
         {
             List<string> listado = new List<string>();
@@ -161,26 +157,24 @@ namespace MVC.ServicesImpl
                         listado.Add(domingo);
                     }
                 }
-
-               
             }
-            // hasta aca optengo los dias de la semana disponibles
+            // hasta aca obtengo los dias de la semana disponibles
             //optener todos los dias en un intervalo
             List<String> listadoTotalDeDias = new List<String>();
             DateTime inicio = carteleraTratada.FechaInicio;
-            DateTime final =carteleraTratada.FechaFin;
+            DateTime final = carteleraTratada.FechaFin;
 
             for (DateTime i = inicio; i < final; i = i.AddDays(1))
             {
-               if(listado.Contains(i.DayOfWeek.ToString()))
-                   {
+                if (listado.Contains(i.DayOfWeek.ToString()))
+                {
                     string diaDeSemana = Herramientas.HerramientasFechasYHoras.traducirDiaDeSemana(i.DayOfWeek.ToString());
-                    listadoTotalDeDias.Add(diaDeSemana + " " + i.Day.ToString()+" / "+i.Month.ToString());
+                    listadoTotalDeDias.Add(diaDeSemana + " " + i.Day.ToString() + " / " + i.Month.ToString());
                 }
-                                   
             }
             return listadoTotalDeDias;
         }
+
         /// <summary>
         /// Devuelve una cartelera unica con esos datos
         /// </summary>
@@ -204,11 +198,6 @@ namespace MVC.ServicesImpl
         public List<Reservas> getListadoDeReservas()
         {
             return reservaDao.getListadoDeReservas();
-         }
-
+        }
     }
-
-
-
-
 }

@@ -36,7 +36,6 @@
                     <th class="text-center"> Versión </th>
                     <th class="text-center"> Fecha de carga </th>
                     <th class="text-center"> Disponible: </th>
-                    <!-- <th> Funciones </th> !-->
                     <th>
                         <form method="post" action="/Administracion/agregarCartelera">
                             <input type="hidden" value="0" name="idCartelera" />
@@ -61,7 +60,7 @@
                         <td class="col-md-2"> @c.FechaFin.ToShortDateString() </td>
                         <td class="col-md-2"> @c.NumeroSala </td>
                         <td class="col-md-2"> @c.Versiones.Nombre  </td>
-                        <td class="col-md-2"> @c.FechaCarga </td> <!-- Muestra la fecha completa (Fecha y hora) -->
+                        <td class="col-md-2"> @c.FechaCarga.ToShortDateString() </td> <!-- Muestra la fecha en día, mes y año -->
                         <td class="col-md-2">
                             @{
 
@@ -115,12 +114,6 @@
                                 }
                             }
                         </td>
-                        <!-- <td>
-                            foreach (var funcion in Model.listadoDeFunciones)
-                            {
-                                <h5> funcion.numeroFuncionModel) TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel)).ToString("hh':'mm") hs. </h5>
-                            }
-                        </td> !-->
                         <td class="col-md-2">
                             <form action="/Administracion/agregarCartelera" method="post">
                                 <input type="hidden" name="idCartelera" value="@c.IdCartelera" />

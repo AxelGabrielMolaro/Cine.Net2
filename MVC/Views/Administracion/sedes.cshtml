@@ -10,7 +10,6 @@
         <h3>
             Lista de sedes
         </h3>
-        
     </div>
     <div class="col-md-12 alert-danger">@ViewBag.errorSede</div>
     <table class="table text-center table-responsive table-hover">
@@ -24,35 +23,25 @@
                         <input type="hidden" value="0" name="idSede" />
                         <input type="submit" class="btn bn-block btn-success col-md-12" value="Nueva" />
                     </form>
-                    
-                       
-                    
                 </th>
             </tr>
         </thead>
         <tbody>
-           
-                @foreach (var sede in Model.listadoDeSedesModel)
-                {
-                    <tr class="warning">
-                        <td>@sede.Nombre</td>
-                        <td>@sede.Direccion</td>
-                        <td>$ @sede.PrecioGeneral</td>
-                        <td>
-                            <form action="/Administracion/agregarSede" method="post">
-                                <input type="hidden" name="idSede" value="@sede.IdSede" />
-                                <input type="submit" class="btn btn-warning" value="Modificar" />
-                            </form>
-                        </td>
 
-                    </tr>
-                }
-            
-           
+            @foreach (var sede in Model.listadoDeSedesModel)
+            {
+                <tr class="warning">
+                    <td>@sede.Nombre</td>
+                    <td>@sede.Direccion</td>
+                    <td>$ @sede.PrecioGeneral</td>
+                    <td>
+                        <form action="/Administracion/agregarSede" method="post">
+                            <input type="hidden" name="idSede" value="@sede.IdSede" />
+                            <input type="submit" class="btn btn-warning" value="Modificar" />
+                        </form>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
-   
-    
-    
-</div>
-
+</div> 

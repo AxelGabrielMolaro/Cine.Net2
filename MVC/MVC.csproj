@@ -147,7 +147,6 @@
       <LastGenOutput>TPBDDCINE.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="ImagenesDelServidor\imagenDePrueba.jpg" />
     <Content Include="Img\check_23024.png" />
     <Content Include="Img\CINE.jpg" />
     <Content Include="Js\bootstrap.js" />
@@ -158,7 +157,6 @@
     <Content Include="Js\jquery-ui.min.js" />
     <Content Include="Js\jquery.validate.min.js" />
     <Content Include="Js\npm.js" />
-    <Content Include="Js\practica.js" />
     <Content Include="Js\Validacion.js" />
     <Content Include="ScriptsBDD\DB.txt" />
     <Content Include="ScriptsBDD\Insert - Copia.txt" />
@@ -184,7 +182,6 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeliculasController.cs" />
-    <Compile Include="Controllers\PracticaController.cs" />
     <Compile Include="DaoImpl\CalificacionDaoImpls.cs" />
     <Compile Include="DaoImpl\CarteleraDaoImpl.cs" />
     <Compile Include="DaoImpl\DocumentoDaoImpl.cs" />
@@ -266,7 +263,6 @@
     <Compile Include="ServicesImpl\VersionServiceImpl.cs" />
     <Compile Include="SessionManger\SessionManager.cs" />
     <Compile Include="Validadores\CarteleraValidation.cs" />
-    <Compile Include="Validadores\ValidacionesCustom.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -290,21 +286,13 @@
     <Content Include="Views\Administracion\inicio.cshtml" />
     <Content Include="Views\Peliculas\reserva.cshtml" />
     <Content Include="Views\Peliculas\reserva2.cshtml" />
-    <Content Include="Views\Practica\practica1.cshtml" />
-    <Content Include="Views\Practica\practica2.cshtml" />
-    <Content Include="Views\Practica\practica3.cshtml" />
-    <Content Include="Views\Practica\practica4.cshtml" />
-    <Content Include="Views\Practica\practica5.cshtml" />
-    <Content Include="Views\Practica\practica6.cshtml" />
     <Content Include="Views\Administracion\peliculas.cshtml" />
     <Content Include="Views\Administracion\agregarPelicula.cshtml" />
     <Content Include="Views\Administracion\sedes.cshtml" />
     <Content Include="Views\Administracion\agregarSede.cshtml" />
     <Content Include="Views\Administracion\reportes.cshtml" />
-    <Content Include="Views\Administracion\modificarSede.cshtml" />
     <Content Include="Views\Administracion\modificarPelicula.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
-    <Content Include="Views\prueba\pruebaAgregar.cshtml" />
     <Content Include="Views\Administracion\carteleras.cshtml" />
     <Content Include="Views\Administracion\agregarCartelera.cshtml" />
     <None Include="Web.Debug.config">
@@ -319,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagenesDelServidor\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

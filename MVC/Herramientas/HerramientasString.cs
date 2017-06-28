@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace MVC.Herramientas
 {
     public static class HerramientasString
     {
-
         /// <summary>
         /// Si es nulo vacio devuelve true sino false
         /// 
@@ -17,7 +13,7 @@ namespace MVC.Herramientas
         /// <returns></returns>
         public static bool esNuloVacio(string texto)
         {
-            if(texto == "" || texto == null)
+            if (texto == "" || texto == null)
             {
                 return true;
             }
@@ -25,7 +21,7 @@ namespace MVC.Herramientas
             {
                 return false;
             }
-           
+
         }
 
         public static bool esNumero(string texto)
@@ -51,7 +47,8 @@ namespace MVC.Herramientas
                 }
                 return false;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
@@ -60,8 +57,6 @@ namespace MVC.Herramientas
         {
             bool esValido = Regex.IsMatch(mail, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             return esValido;
-        }  
-
-
+        }
     }
 }

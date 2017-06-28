@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using MVC.Entity;
 using System.ComponentModel.DataAnnotations;
-using MVC.DaoImpl;
 
 namespace MVC.Models
 {
     //Esta clase la uso mas para la parte visual, tipar las vistas, y manejar 
     //pasaje de parametros
-    public class SedeModelAndView : Sedes 
+    public class SedeModelAndView : Sedes
     {
-
         public string idSedeModel { get; set; }
-        //Le comente los required porque me explota algo, igual lo valide en Backend
+        //los required están validados en backend. 
         //[Required (ErrorMessage ="Por favor ingrese el nombre de la sede")]
         [MaxLength(30, ErrorMessage = "El nombre de la sede no puede ser mayor a 30 caracteres")]
 
@@ -29,8 +24,7 @@ namespace MVC.Models
         [MaxLength(30, ErrorMessage = "El precio de la sede no puede ser mayor a 30 caracteres")]
         public string precioEntradaGeneralModel { get; set; }
 
-        //Lo uso para listar sedes
-
+        //Lo uso para listar sedes 
         public List<Sedes> listadoDeSedesModel { get; set; }
 
         //aca creo un constructor donde seteo los valores de la clase de la bdd a las propiedades
@@ -42,7 +36,5 @@ namespace MVC.Models
             this.direccionSedeModel = Direccion;
             this.precioEntradaGeneralModel = PrecioGeneral.ToString();
         }
-
-     
     }
 }

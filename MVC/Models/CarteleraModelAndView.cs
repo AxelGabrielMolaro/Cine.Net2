@@ -3,8 +3,6 @@ using MVC.ServicesImpl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace MVC.Models
 {
@@ -27,7 +25,6 @@ namespace MVC.Models
         [CustomValidation(typeof(CarteleraModelAndView), "ValueDistintoDe0")]
         public string idPeliculaCarteleraModel { get; set; }
         [Required(ErrorMessage = "Ingrese la hora de inicio")]
-        //[CustomValidation(typeof(CarteleraModelAndView), "HoraInicioMayorA15")]
         [CustomValidation(typeof(CarteleraModelAndView), "ValueDistintoDe0")]
         public string horaInicioModel { get; set; }
         [Required(ErrorMessage = "Ingrese la fecha de inicio")]
@@ -63,11 +60,6 @@ namespace MVC.Models
 
         public List<Versiones> listadoDeVersiones { get; set; }
 
-
-        //Para las funciones. 
-        public List<FuncionModelAndView> listadoDeFunciones { get; set; }
-
-
         public CarteleraModelAndView()
         {
             idCarteleraModel = IdCartelera.ToString();
@@ -90,8 +82,6 @@ namespace MVC.Models
 
             llenarListados(); //Llena las listas Sedes, Peliculas y Versiones. 
 
-            listadoDeFunciones = new List<FuncionModelAndView>();
-
         }
 
         public void llenarListados()
@@ -110,8 +100,6 @@ namespace MVC.Models
 
 
         //VALIDACIONES: 
-
-        //(El problema con estas validaciones es que saltan en el formulario de agregar también, REVISAR ESO!)
         public static ValidationResult ValueDistintoDe0(object value, ValidationContext c)
         {
             String valueString = value as String;
@@ -121,17 +109,6 @@ namespace MVC.Models
             }
             return ValidationResult.Success;
         }
-
-        /* public static ValidationResult HoraInicioMayorA15(object value, ValidationContext c)
-        {
-            int valueInt = Convert.ToInt32(value);
-            //1500 reprenta las 15:00
-            if (valueInt < 1500)
-            {
-                return new ValidationResult("La hora de inicio debe ser a partir de las 15:00hs.");
-            }
-            return ValidationResult.Success;
-        } */
 
         public static ValidationResult ValidadorDeFechas(object value, ValidationContext c)
         {
@@ -154,40 +131,6 @@ namespace MVC.Models
             }
 
             return ValidationResult.Success;
-        }
-        public List<FuncionModelAndView> llenarListadoDeFunciones(int paramIdCartelera)
-        {
-            Carteleras cartelera = carteleraService.obtenerCarteleraPorId(paramIdCartelera);
-            int horaFuncion = cartelera.HoraInicio;
-
-            int duracionDeLaPeli = peliculaService.getPeliculaPorId(cartelera.IdPelicula).Duracion;
-
-            int horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
-
-            string horaFuncionString = horaFuncion.ToString();
-
-            for (var i = 1; i <= 7; i++)
-            {
-                if (i == 1)
-                {
-                    FuncionModelAndView primeraFuncion = new FuncionModelAndView(i.ToString(), horaFuncionString);
-                    horaFuncion = cartelera.HoraInicio;
-
-                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60);
-
-                    listadoDeFunciones.Add(primeraFuncion);
-                }
-                else
-                {
-                    int horarioFuncion = horaFinPelicula + 30;
-                    FuncionModelAndView nuevaFuncion = new FuncionModelAndView(i.ToString(), horarioFuncion.ToString());
-                    horaFuncion = horaFinPelicula;
-                    horaFinPelicula = horaFuncion + (duracionDeLaPeli * 60) + 30;
-                    listadoDeFunciones.Add(nuevaFuncion);
-                }
-
-            }
-            return listadoDeFunciones;
         }
     }
 }

@@ -16,12 +16,12 @@
             <th class="info ">Descripción</th>
         <tr class="">
             <td class="col-md-12"> @Model.pelicula.Descripcion</td>
-        </tr> 
+        </tr>
         <tr class="">
             <th class="info ">Género</th>
         <tr class="">
             <td class="col-md-12"> @Model.pelicula.Generos.Nombre </td>
-        </tr> 
+        </tr>
         <tr>
         <tr class="">
             <th class="info ">Clasificación</th>
@@ -64,7 +64,7 @@
 <div class="col-md-offset-1 col-md-5 well">
     <div class="text-center text"><h3>Finalizar Reserva</h3></div>
     <div class="btn-danger"> @ViewBag.errorReserva</div>
-    <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva" onmousemove ="setearPrecioTotalReserva()" >
+    <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva" onmousemove="setearPrecioTotalReserva()">
         <div class="form-group">
             <label class="control-label">mail</label>
             <div>
@@ -76,7 +76,7 @@
             <label class="control-label ">Tipo de documento</label>
             <div>
                 <div class="">
-                    <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel"  onclick="ocultarCartelDeConfirmacionDeReserva()">
+                    <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel" onclick="ocultarCartelDeConfirmacionDeReserva()">
                         <option value="">Seleccione</option>
                         @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
                         {
@@ -93,16 +93,16 @@
         <div class="form-group">
             <label class="control-label">Numero de documento</label>
             <div class="col-md-12">
-                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel"value="@Model.numeroDocumentoPasoFinalReservaModel" maxlength="8" onclick="ocultarCartelDeConfirmacionDeReserva()" />
+                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel" value="@Model.numeroDocumentoPasoFinalReservaModel" maxlength="8" onclick="ocultarCartelDeConfirmacionDeReserva()" />
             </div>
-           
-        <div class="btn-danger">@Html.ValidationMessageFor(O => O.numeroDocumentoPasoFinalReservaModel)</div>
+
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.numeroDocumentoPasoFinalReservaModel)</div>
         </div>
-      
+
         <div class="form-group">
             <label class="control-label">Cantidad De Entradas</label>
             <div>
-                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas" name="cantidadDeEntradasPasoFinalReservaModel"  value="@Model.cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
+                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas" name="cantidadDeEntradasPasoFinalReservaModel" value="@Model.cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
             </div>
             <div class="btn-danger">@Html.ValidationMessageFor(O => O.cantidadDeEntradasPasoFinalReservaModel)</div>
         </div>

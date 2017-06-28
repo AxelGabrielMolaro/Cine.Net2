@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
 using MVC.Entity;
 using MVC.ServicesImpl;
-using MVC.Herramientas;
-using System.Text.RegularExpressions;
 
 namespace MVC.Controllers
 {
@@ -18,6 +14,7 @@ namespace MVC.Controllers
         VersionServiceImpl versionService = new VersionServiceImpl();
         ReservaServiceImpl reservaService = new ReservaServiceImpl();
         DocumentoServiceImpl documentoService = new DocumentoServiceImpl();
+
         // GET: Peliculas
         public ActionResult Index()
         {
@@ -25,7 +22,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult reserva( HomeModelAndView homeModel)
+        public ActionResult reserva(HomeModelAndView homeModel)
         {
             ReservaModelAndView model = new ReservaModelAndView();
             model.paso = "1";
@@ -34,18 +31,15 @@ namespace MVC.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public ActionResult reservaPaso2(FormCollection formCol)
         {
-
             ReservaModelAndView model = new ReservaModelAndView();
             string idPeliculaFC = formCol["peliculaPaso1"];
             string idVersionFC = formCol["versionPaso1"];
 
             if (idVersionFC == "" || idVersionFC == null || idVersionFC == "0")
             {
-               
                 ViewBag.errorReserva = "Seleccione una versión por favor";
                 model.listadoDeVersionesReservaModel = reservaService.getListadosDeVersionesParaReserva(Convert.ToInt32(idPeliculaFC));
                 model.paso = "1";
@@ -53,20 +47,19 @@ namespace MVC.Controllers
                 return View("reserva", model);
             }
             else
-            {           
+            {
                 model.idPeliculaReservaModel = idPeliculaFC;
                 model.idVersionReservaModel = idVersionFC;
                 model.paso = "2";
                 model.listadoDeSedesReservaModel = reservaService.getListadoDeSedesParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC));
                 model.listadoDeFunciones = new List<FuncionModelAndView>();
                 return View("reserva", model);
-            }    
+            }
         }
 
         [HttpPost]
         public ActionResult reservaPaso3(FormCollection formCol)
         {
-
             ReservaModelAndView model = new ReservaModelAndView();
             string idVersionFC = formCol["versionPaso2"];
             string idPeliculaFC = formCol["peliculaPaso2"];
@@ -83,18 +76,14 @@ namespace MVC.Controllers
             }
             else
             {
-
                 model.idPeliculaReservaModel = idPeliculaFC;
                 model.idSedeReservaModel = idSedeFC;
                 model.idVersionReservaModel = idVersionFC;
                 model.paso = "3";
                 model.listadoDeDiasReservaModel = reservaService.getListadoDeDiasParaReserva(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idVersionFC), Convert.ToInt32(idSedeFC));
                 return View("reserva", model);
-
             }
-
         }
-
 
         [HttpPost]
         public ActionResult reservaPaso4(FormCollection formCol)
@@ -120,8 +109,6 @@ namespace MVC.Controllers
             }
             else
             {
-
-
                 model.idPeliculaReservaModel = idPeliculaFC;
                 model.idSedeReservaModel = idSedeFC;
                 model.idVersionReservaModel = idVersionFC;
@@ -130,7 +117,6 @@ namespace MVC.Controllers
                 model.llenarListadoDeFunciones(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
             }
 
-
             return View("reserva", model);
         }
 
@@ -138,7 +124,6 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult reserva2(FormCollection formCol)
         {
-          
             ReservaModelAndView model = new ReservaModelAndView();
             string idVersionFC = formCol["versionPaso4"];
             string idPeliculaFC = formCol["peliculaPaso4"];
@@ -179,10 +164,9 @@ namespace MVC.Controllers
                 model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
                 return View(model);
             }
-
         }
 
-       [HttpPost]
+        [HttpPost]
         public ActionResult finalizarReserva(ReservaModelAndView model)
         {
             if (!ModelState.IsValid)
@@ -215,9 +199,10 @@ namespace MVC.Controllers
             nuevaReserva.IdTipoDocumento = Convert.ToInt32(model.tipoDocumentoPasoFinalReservaModel);
             nuevaReserva.NumeroDocumento = model.numeroDocumentoPasoFinalReservaModel;
             reservaService.agregarReserva(nuevaReserva);
-            
-            return Redirect("/Home/Inicio");
 
+            TempData["ReservaOK"] = "¡Tu reserva ha sido registrada con éxito!";
+
+            return Redirect("/Home/Inicio");
         }
     }
 }

@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_AdministradorBase.cshtml";
 }
 
-
 <div class="text-center"><h2>Reportes</h2></div>
 
 <div class="col-md-6">
@@ -16,49 +15,41 @@
                 <div>
                     <input type="date" class="form-control datepicker " id="fechaInicio" name="fechaDesdeReporteModel" autocomplete="off" value="@Model.fechaDesdeReporteModel" />
                 </div>
-                
             </div>
+
             <div class="form-group">
                 <label for="" class="control-label">Fecha hasta</label>
                 <div>
-                    <input type="date" class="form-control datepicker "  id="fechaHasta"  name="fechaHastaReporteModel" autocomplete="off" value="@Model.fechaHastaReporteModel"  />
+                    <input type="date" class="form-control datepicker " id="fechaHasta" name="fechaHastaReporteModel" autocomplete="off" value="@Model.fechaHastaReporteModel" />
                 </div>
             </div>
-            <input type="submit" value="Buscar" class="btn col-md-offset-10 btn-success "/>
+            <input type="submit" value="Buscar" class="btn col-md-offset-10 btn-success " />
             <div class="col-md-12 alert-danger"> @ViewBag.errorAlFiltrar </div>
         </form>
     </div>
 </div>
- <div class="col-md-6">
+
+<div class="col-md-6">
     <div class="text-center"><h3>Reportes de reservas</h3></div>
     <table class="table text-center table-responsive table-hover ">
-
         <thead>
-
             <tr class="success">
-                <!--<th class="text-center"> ID </thclass="text-center">-->
                 <th class="text-center">Sede</th>
                 <th class="text-center">Versión</th>
                 <th class="text-center">Nombre de la película</th>
                 <th class="text-center">Precio</th>
-                
             </tr>
         </thead>
         <tbody>
-
             @foreach (var reserva in Model.listadoDeReservasReporteModel)
             {
-                <tr class="warning"> 
-                   <!-- <td class="col-md-2"> @reserva.IdReserva </td>-->
+                <tr class="warning">
                     <td class="col-md-2">@reserva.Sedes.Nombre</td>
                     <td class="col-md-2">@reserva.Versiones.Nombre</td>
                     <td class="col-md-2">@reserva.Peliculas.Nombre</td>
                     <td class="col-md-2">@reserva.Sedes.PrecioGeneral</td>
                 </tr>
             }
-
         </tbody>
-
-        
     </table>
 </div>

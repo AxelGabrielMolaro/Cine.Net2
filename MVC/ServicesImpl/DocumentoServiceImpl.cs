@@ -1,9 +1,6 @@
 ﻿using MVC.DaoImpl;
 using MVC.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVC.ServicesImpl
 {
@@ -18,7 +15,6 @@ namespace MVC.ServicesImpl
 
         public TiposDocumentos getTipoDocumentoPorId(int IdTipoP)
         {
-
             return documentoDao.getTipoDocumentoPorId(IdTipoP);
         }
 

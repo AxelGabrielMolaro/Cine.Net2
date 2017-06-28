@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MVC.Entity;
-
 using MVC.DaoImpl;
 using System.ComponentModel.DataAnnotations;
 
@@ -69,11 +67,9 @@ namespace MVC.ServicesImpl
             {
                 return sede;
             }
-
-
         }
 
-        //modifica una sede, si algun campo esta vacio tirra excepcion
+        //modifica una sede, si algun campo esta vacio tira excepcion
         public void modificarSedeorId(int id, string nombre, string direccion, string precioEntradaGeneral)
         {
             try
@@ -84,17 +80,6 @@ namespace MVC.ServicesImpl
             {
                 throw new Exception("Error al modificar sede. Por favor no deje campos vacios");
             }
-        }
-        public static ValidationResult ValidadorNombreUnico(object value, ValidationContext c)
-        {
-            sedeServiceImpl sedeService = new sedeServiceImpl();
-            var model = c.ObjectInstance as Sedes;
-            List<Sedes> sedes = sedeService.getListadoDeSedes();
-            if (sedes.Any(o => o.Nombre == model.Nombre))
-            {
-                return new ValidationResult("Nombre ya registrado");
-            }
-            return ValidationResult.Success;
         }
     }
 }

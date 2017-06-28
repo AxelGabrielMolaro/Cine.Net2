@@ -18,7 +18,7 @@ namespace MVC.Controllers
         PeliculaServiceImpl peliculaService = new PeliculaServiceImpl();
         sedeServiceImpl sedeService = new sedeServiceImpl();
         ReservaServiceImpl reservaServiceImpl = new ReservaServiceImpl();
-        //Se agrega el service de Carteleras
+        //Se agrega el service de Carteleras y Reportes. 
         CarteleraServiceImpl carteleraService = new CarteleraServiceImpl();
         ReporteServiceImpl reporteService = new ReporteServiceImpl();
 
@@ -71,7 +71,7 @@ namespace MVC.Controllers
             }
         }
 
-        //El el formulario vacio para agregar la pelicula
+        //Es el formulario vacio para agregar la pelicula
         public ActionResult agregarPelicula()
         {
             ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
@@ -88,12 +88,12 @@ namespace MVC.Controllers
                 return RedirectToAction("login", "Home");
             }
         }
+
         [HttpPost]
         public ActionResult agregarPelicula(PeliculaModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
             if (!ModelState.IsValid)
             {
-                //model.llenarListados();
                 return View(model);
             }
             else
@@ -129,29 +129,34 @@ namespace MVC.Controllers
                     ViewBag.ErrorPelicula = e.Message;
                     return View(model);
                 }
-
             }
-
         }
 
         /********** MODIFICAR PELÍCULA **********/
-        //ESTOY TENIENDO PROBLEMAS PARA MODIFICAR, NO ME TOMA EL ID 
-        //YA ESTÁ HECHO EL FORM Y TODOS LOS MÉTODOS, EL PROBLEMA ESTÁ EN EL CONTROLLER.
         public ActionResult modificarPelicula(int id)
         {
-            Peliculas pelicula = peliculaService.getPeliculaPorId(id);
-            PeliculaModelAndView model = new PeliculaModelAndView(pelicula.IdPelicula.ToString(),pelicula.Nombre,pelicula.Descripcion,pelicula.IdCalificacion.ToString(),pelicula.IdGenero.ToString(),pelicula.Imagen, pelicula.Duracion.ToString());
-            model.idgeneroPeliculaModel = id.ToString();
-            if (id == 0)
+            ViewData["sessionString"] = System.Web.HttpContext.Current.Session["sessionString"] as String;
+            if (ViewData["sessionString"] != null)
             {
-                return View();
+                Peliculas pelicula = peliculaService.getPeliculaPorId(id);
+                PeliculaModelAndView model = new PeliculaModelAndView(pelicula.IdPelicula.ToString(), pelicula.Nombre, pelicula.Descripcion, pelicula.IdCalificacion.ToString(), pelicula.IdGenero.ToString(), pelicula.Imagen, pelicula.Duracion.ToString());
+                model.idgeneroPeliculaModel = id.ToString();
+                if (id == 0)
+                {
+                    return View();
+                }
+                else
+                {
+                    model.idPeliculaModel = id.ToString();
+                    return View(model);
+                }
             }
             else
             {
-                model.idPeliculaModel = id.ToString();
-                return View(model);
+                /* TempData["controlador"] = Request.RequestContext.RouteData.Values["controller"].ToString();
+                TempData["accion"] = Request.RequestContext.RouteData.Values["action"].ToString(); */ // No guardamos la url porque modificar requiere un id previo.
+                return RedirectToAction("login", "Home"); //redirigimos a loguearse. 
             }
-
         }
 
         [HttpPost]
@@ -169,7 +174,7 @@ namespace MVC.Controllers
                 model.idCalificacionPeliculaModel = Convert.ToString(peliAEditar.IdCalificacion);
                 model.duracionPeliculaModel = model.duracionPeliculaModel;
                 model.idgeneroPeliculaModel = Convert.ToString(peliAEditar.IdGenero);
-              
+
 
                 //Fecha carga tiene que quedar igual, no se modifica. 
 
@@ -183,7 +188,7 @@ namespace MVC.Controllers
             }
         }
 
-        /* * * * * * * * * * * * * * * * * * * */
+        /* * * * * * * * * * FÍN MODIFICAR PELÍCULA * * * * * * * * * */
 
 
         //sede
@@ -230,9 +235,6 @@ namespace MVC.Controllers
         {
             if (model.IdSede == 0)
             {
-
-                model.nombreSedeModel = "Ingrese nombre";
-
                 return View(new SedeModelAndView());
             }
             else
@@ -280,9 +282,8 @@ namespace MVC.Controllers
                     }
                     catch (Exception e)
                     {
-                        ViewBag.errorSede = "Error al agregar sede, por favor no lene los campos vacios.";
+                        ViewBag.errorSede = e.Message;
                         return View("agregarSede", model);
-
                     }
 
                     return RedirectToAction("sedes", model);
@@ -291,7 +292,6 @@ namespace MVC.Controllers
                 { //Modifica uno ya existente
                     try
                     {
-                        ViewBag.errorSede = "";
                         sedeService.modificarSedeorId(Convert.ToInt32(model.idSedeModel), model.nombreSedeModel, model.direccionSedeModel, model.precioEntradaGeneralModel);
                     }
                     catch (Exception e)
@@ -301,9 +301,7 @@ namespace MVC.Controllers
                     }
                     return RedirectToAction("sedes");
                 }
-
             }
-
         }
 
         //CARTELERAS 
@@ -322,13 +320,6 @@ namespace MVC.Controllers
                     try
                     {
                         model.listadoDeCarteleras = carteleraService.getListadoDeCarteleras();
-                        /*model.listadoDeFunciones = new List<FuncionModelAndView>(); 
-                        foreach (var c in model.listadoDeCarteleras)
-                        {
-                            model.llenarListadoDeFunciones(c.IdCartelera);
-                        }*/
-                        //VER FUNCIONES.
-
                         return View(model);
                     }
                     catch (Exception e)
@@ -367,7 +358,6 @@ namespace MVC.Controllers
                     model.fechaFinModel = carteleraModificable.FechaFin.ToString();
                     model.numeroSalaModel = carteleraModificable.NumeroSala.ToString();
                     model.idVersionModel = carteleraModificable.IdVersion.ToString();
-                    //esto de los dias no se para q se usa, por ahora no setea nada, pasa en todos los abms
                     model.lunesModel = carteleraModificable.Lunes.ToString();
                     model.martesModel = carteleraModificable.Martes.ToString();
                     model.miercolesModel = carteleraModificable.Miercoles.ToString();
@@ -401,21 +391,9 @@ namespace MVC.Controllers
                 {
                     Carteleras carteleraAAgregar = new Carteleras();
 
-                    /* 
-                     * carteleraAAgregar.IdCartelera = Convert.ToInt32(model.idCarteleraModel); 
-                     COMENTÉ ESTA LÍNEA PORQUE OBVIAMENTE IBA A TIRAR UNA EXCEPCIÓN, 
-                     ESTABA TOMANDO EL ID 0 DEL MODEL 
-                     *  Marian
-                     */
-
-
                     carteleraAAgregar.IdSede = Convert.ToInt32(model.idSedeCarteleraModel);
                     carteleraAAgregar.IdPelicula = Convert.ToInt32(model.idPeliculaCarteleraModel);
                     carteleraAAgregar.HoraInicio = Convert.ToInt32(model.horaInicioModel);
-                    //carteleraAAgregar.FechaInicio = DateTime.Now;//ver esto mariana 
-                    //carteleraAAgregar.FechaFin = DateTime.Now; 
-
-                    //Por el momento lo pongo como string - Marian. 
 
                     carteleraAAgregar.FechaInicio = Convert.ToDateTime(model.fechaInicioModel);
                     carteleraAAgregar.FechaFin = Convert.ToDateTime(model.fechaFinModel);
@@ -430,15 +408,13 @@ namespace MVC.Controllers
                     carteleraAAgregar.Sabado = Convert.ToBoolean(model.sabadoModel);
                     carteleraAAgregar.Domingo = Convert.ToBoolean(model.domingoModel);
                     carteleraAAgregar.FechaCarga = DateTime.Now;
-                    model.listadoDeFunciones = new List<FuncionModelAndView>();
                     try
                     {
                         carteleraService.crearCartelera(carteleraAAgregar);
                     }
                     catch (Exception e)
                     {
-                        ViewBag.ErrorAlAgregarCartelera = e.Message; //me esta entrando en esta excepcion
-                                                                     //Ya lo arreglé - Marian.
+                        ViewBag.ErrorAlAgregarCartelera = e.Message;
                         return View("agregarCartelera", model);
                     }
                     TempData["CarteleraOK"] = "¡La cartelera se agregó correctamente!";
@@ -524,10 +500,10 @@ namespace MVC.Controllers
         {
             try
             {
-                
+
                 model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
                 ViewBag.errorAlFiltrar = e.Message;

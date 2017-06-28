@@ -13,7 +13,7 @@
         <div class="btn btn-xs btn-default">
             @Html.ActionLink("Volver", "carteleras")
         </div>
-        <div class="text-center"><h3>Agregar una cartelera</h3></div>
+        <div class="text-center"><h3> Cartelera </h3></div>
         <div>
             <form action="/Administracion/agregarCarteleraPost" method="post" enctype="multipart/form-data">
                 <div class="text-center alert-danger">
@@ -21,12 +21,12 @@
                         @ViewBag.ErrorAlAgregarCartelera
                     </h4>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="" class="control-label">ID</label>
                     <div>
                         <input type="text" class="form-control" name="idCarteleraModel" value="@Model.IdCartelera" readonly="readonly" />
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="" class="control-label">
@@ -84,8 +84,6 @@
 
                 <div class="form-group">
                     <label for="" class="control-label">Hora</label>
-                    <!-- <div>
-                         <input type="text" class="form-control" name="horaInicioModel" value="@Model.horaInicioModel" /> -->
                     <select class="form-control" name="horaInicioModel">
                         <option value=""> Seleccione un horario </option>
                         @for (var h = 15; h <= 23; h++)
@@ -100,11 +98,7 @@
                         }
                     </select>
                     @Html.ValidationMessageFor(x => x.horaInicioModel)
-                    <!-- </div> -->
                 </div>
-
-
-
                 <div>
                     <label for="" class="control-label">
                         Vigencia de la cartelera:
@@ -127,9 +121,7 @@
                                 }
                                 @Html.ValidationMessageFor(x => x.fechaInicioModel)
                             </div>
-
                         </div>
-
 
                         <div class="form-group">
                             <label for="" class="control-label">
@@ -186,7 +178,6 @@
                             <input type="checkbox" name="viernesModel" value="true"> Viernes <br />
                         </label>
                         <input type="hidden" name="viernesModel" value="false">
-
                         <label>
                             <input type="checkbox" name="sabadoModel" value="true"> Sábado <br />
                         </label>
@@ -196,13 +187,10 @@
                             <input type="checkbox" name="domingoModel" value="true"> Domingo <br />
                         </label>
                         <input type="hidden" name="domingoModel" value="false">
-
                     </div>
                 </div>
-
                 <input type="submit" class="btn btn-block btn-success" value="Guardar" />
             </form>
-
         </div>
     </div>
 </body>

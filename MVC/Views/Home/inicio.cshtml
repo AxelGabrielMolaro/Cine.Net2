@@ -35,30 +35,29 @@
         }
 
     </div>
-        <!-- FIN carro -->
-        <!-- lista de pelis del medio -->
-        <div class="col-md-offset-3 col-md-6 listaDePeliculas">
-            @foreach (var pelicula in @Model.listadoDePeliculasHome)
+    <div class="text-center alert-success">
+        @TempData["ReservaOK"]
+    </div>
+    <!-- lista de pelis del medio -->
+    <div class="col-md-offset-3 col-md-6 listaDePeliculas">
+        @foreach (var pelicula in @Model.listadoDePeliculasHome)
             {
 
-                <form action="/Peliculas/reserva" method="post" id="formReservaHome-@pelicula.IdPelicula">
-                    <input id="idPeliculaHome" name="idPeliculaHome" value="@pelicula.IdPelicula" type="hidden" />
-                    <div class="col-md-4 " onclick="enviarFormulatio(@pelicula.IdPelicula)">
-                        <div class="imgYDescripcion">
-                            <img src="~/ImagenesDelServidor/@pelicula.Imagen" alt="Imagen de la pelicula">
-                            <div class="descripcionPelicula">
-                                <h3>@pelicula.Nombre</h3>
-                                <p class="textoDescripcion">Genero : @pelicula.Generos.Nombre </p>
-                                <p class="textoDescripcion text-center"> @pelicula.Calificaciones.Nombre </p>
-                            </div>
+            <form action="/Peliculas/reserva" method="post" id="formReservaHome-@pelicula.IdPelicula">
+                <input id="idPeliculaHome" name="idPeliculaHome" value="@pelicula.IdPelicula" type="hidden" />
+                <div class="col-md-4 " onclick="enviarFormulatio(@pelicula.IdPelicula)">
+                    <div class="imgYDescripcion">
+                        <img src="~/ImagenesDelServidor/@pelicula.Imagen" alt="Imagen de la pelicula">
+                        <div class="descripcionPelicula">
+                            <h3>@pelicula.Nombre</h3>
+                            <p class="textoDescripcion">Genero : @pelicula.Generos.Nombre </p>
+                            <p class="textoDescripcion text-center"> @pelicula.Calificaciones.Nombre </p>
                         </div>
                     </div>
-                </form>
-            }
-            <!--eliminar-->
-            <!--fin eliminar-->
-        </div>
-        <!--FIN lista de pelis del medio-->
+                </div>
+            </form>
+        }
     </div>
+    <!--FIN lista de pelis del medio-->
 </body>
 </html>

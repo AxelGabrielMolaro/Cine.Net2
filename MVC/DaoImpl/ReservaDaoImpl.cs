@@ -3,11 +3,10 @@ using MVC.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MVC.DaoImpl
 {
-    
+
     public class ReservaDaoImpl
     {
         RepositorioManager repositorioManager = new RepositorioManager();
@@ -19,7 +18,6 @@ namespace MVC.DaoImpl
         {
             repositorioManager.ctx.Reservas.Add(reserva);
             repositorioManager.ctx.SaveChanges();
-            
         }
 
         /// <summary>
@@ -27,12 +25,12 @@ namespace MVC.DaoImpl
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Reservas getReservaPorId(int id) {
-
+        public Reservas getReservaPorId(int id)
+        {
             return null;
         }
 
-        //--------PARA RESERVAS Mesclo con otras clases-----//
+        //--------PARA RESERVAS Mezclo con otras clases-----//
 
 
         /// <summary>
@@ -53,9 +51,8 @@ namespace MVC.DaoImpl
         }
 
 
-        public List<Carteleras> getListadosDeCartelerasParaReserva(int idPeliculaRecibido, int idVersionRecibido, int  idSedeRecibido) 
+        public List<Carteleras> getListadosDeCartelerasParaReserva(int idPeliculaRecibido, int idVersionRecibido, int idSedeRecibido)
         {
-          
             List<Carteleras> listadoADevolder = new List<Carteleras>();
 
             if (idSedeRecibido != 0)
@@ -84,21 +81,15 @@ namespace MVC.DaoImpl
                     listadoADevolder = listado.ToList();
                 }
             }
-
-
             return listadoADevolder;
         }
 
         //reportes
-
-
         public List<Reservas> getListadoDeReservas()
         {
             var listadoDeReservas = (from reserva in repositorioManager.ctx.Reservas select reserva);
             List<Reservas> listadoDeReservasADevolver = listadoDeReservas.ToList();
             return listadoDeReservasADevolver;
         }
-
-
     }
 }

@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MVC.Entity;
 using MVC.Manager;
 using System.Data.Entity;
@@ -27,17 +25,14 @@ namespace MVC.DaoImpl
             {
                 throw new Exception("Error al traer la lista de peliculas de la base de datos");
             }
-
         }
 
         //guarda una pelicula en al base de datos
         public void grabarPeliculaEnLaBaseDeDatos(Peliculas pelicula)
         {
-
             repositorioManager.ctx.Peliculas.Add(pelicula);
             repositorioManager.ctx.SaveChanges();
         }
-
 
         /// <summary>
         /// /Trae una pelicula por id¡
@@ -50,12 +45,11 @@ namespace MVC.DaoImpl
             return peliculaBuscada;
         }
 
-
         public void modificarPeliculaDeLaBdd(int id, string nombre, string descripcion, string idCalificacion, string duracion, string idGenero, string imagen)
         {
             if (id == 0)
             {
-                throw new Exception("");
+                throw new Exception("La película no existe.");
             }
             else
             {
@@ -75,10 +69,9 @@ namespace MVC.DaoImpl
                 }
                 else
                 {
-                    throw new Exception("");
+                    throw new Exception("La película no existe.");
                 }
             }
-
         }
     }
 }

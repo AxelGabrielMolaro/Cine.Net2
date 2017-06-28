@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +9,6 @@ using System.IO;
 
 namespace MVC.ServicesImpl
 {
-
-
     public class PeliculaServiceImpl
     {
         PeliculaDaoImpl peliculaDao = new PeliculaDaoImpl();
@@ -38,12 +35,8 @@ namespace MVC.ServicesImpl
             }
             catch (Exception e)
             {
-
-                //Mostrar exepcion 
+                //Mostrar excepcion 
                 throw new Exception("No hay ninguna pelicula cargada ");
-
-
-
             }
 
         }
@@ -109,15 +102,13 @@ namespace MVC.ServicesImpl
             return fileName;
         }
 
-
-
         /// <summary>
         /// Trar un listado de peliculas actuales y con un mes de anticipacion
         /// </summary>
         public List<Peliculas> getListadoDePeliculasHome()
         {
             List<Peliculas> listadoDePeliculasAMostrar = new List<Peliculas>();
-            List<Carteleras> listadoDeCarteleras = getListadoDeCartelerasHome(); //ver
+            List<Carteleras> listadoDeCarteleras = getListadoDeCartelerasHome();
             foreach (Carteleras cartelera in listadoDeCarteleras)
             {
                 if (!listadoDePeliculasAMostrar.Contains(peliculaDao.getPeliculaPorId(cartelera.IdPelicula)))
@@ -154,25 +145,13 @@ namespace MVC.ServicesImpl
                 {
                     listadoDeCartelerasAMostrar.Add(cartelera);
                 }
-                /* int mesDeHoy = DateTime.Now.Month;
-                int mesDeCartelera = cartelera.FechaInicio.Month;
-                int diferenciaFechas = mesDeCartelera - mesDeHoy;
-                if (cartelera.IdPelicula != 0 && diferenciaFechas <= 1)
-                {
-                    if (cartelera != null)
-                    {
-                        listadoDeCartelerasAMostrar.Add(cartelera);
-                    }
-                } */
             }
 
             return listadoDeCartelerasAMostrar;
 
         }
 
-
-        //camviar dps 
-        public Carteleras getCarteleraPorId (int id) 
+        public Carteleras getCarteleraPorId(int id)
         {
             RepositorioManager repositorioManager = new RepositorioManager();
             Carteleras carteleraBuscada = repositorioManager.ctx.Carteleras.OrderByDescending(o => o.IdCartelera == id).FirstOrDefault();
@@ -190,6 +169,5 @@ namespace MVC.ServicesImpl
                 throw new Exception("Error al modificar");
             }
         }
-
     }
 }

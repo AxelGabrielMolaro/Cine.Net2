@@ -9,7 +9,7 @@
     <hr />
     <div class="">
         <a href="/Administracion/sedes">
-            <input type="button" class="btn btn-info " value="volver al listado" />
+            <input type="button" class="btn btn-info " value="Volver al listado" />
         </a>
     </div>
     <div class="text-center col-md-12">
@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-12 alert-danger">
         @ViewBag.errorSede
-    </div> <!-- REVISAR TODOS LOS ERRORES! (ViewBag, TempData que mandamos desde el controlador) -->
+    </div>
     <div>
         <form class="form" action="/Administracion/agregarSedePost" method="post">
             <div class="form-group">
@@ -28,7 +28,7 @@
                 </label>
                 <div>
                     <!--Este input id lo uso para saber si es una edicion o una adicion de sede-->
-                    <input type="hidden" class="form-control" name="idSedeModel" value="@Model.IdSede" disabled/>
+                    <input type="hidden" class="form-control" name="idSedeModel" value="@Model.IdSede" />
                     <input type="text" class="form-control" name="nombreSedeModel" value="@Model.nombreSedeModel" />
                     <div class="alert-danger">@Html.ValidationMessageFor(x => x.nombreSedeModel)</div>
                 </div>

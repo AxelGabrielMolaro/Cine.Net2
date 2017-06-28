@@ -10,7 +10,7 @@ namespace MVC.ServicesImpl
     public class GeneroServiceImpl
     {
         GeneroDaoImpl generoDao = new GeneroDaoImpl();
-        //Trae todas los generos, si esta vacio tira exepcion , y si no trae el listado
+        //Trae todos los generos, si esta vacio tira exepcion , y si no trae el listado
         public List<Generos> getListadoDeGeneros()
         {
             List<Generos> listado = generoDao.getListadoDeGeneros();
@@ -40,8 +40,6 @@ namespace MVC.ServicesImpl
             {
                 return genero;
             }
-
-
         }
     }
 }

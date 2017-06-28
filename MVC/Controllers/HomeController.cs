@@ -13,6 +13,7 @@ namespace MVC.Controllers
     {
         UsuarioServiceImpl usuarioService = new UsuarioServiceImpl();
         PeliculaServiceImpl peliculaService = new PeliculaServiceImpl();
+
         // GET: Home
         public ActionResult Index()
         {
@@ -40,15 +41,12 @@ namespace MVC.Controllers
             }
         }
 
-
-        //Si igresa mal los datos de el login, y no pasa las reglas de validacion se mantiene en la vista
+        //Si iNgresa mal los datos de el login, y no pasa las reglas de validacion se mantiene en la vista
         //Si el usuario que ingresa es incorrecto y se manda un msj de error
         //Si es correcto ingresa a el home del admin
         [HttpPost]
         public ActionResult login(UsuarioModelAndView model)
         {
-            ViewBag.errorLogin = "";
-
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -57,20 +55,13 @@ namespace MVC.Controllers
             {
                 Usuarios usuarioLogin = usuarioService.login(model.nombreUsuarioModel, model.contraseñaUsuarioModel);
                 System.Web.HttpContext.Current.Session["sessionString"] = model.idUsuarioModel; //guarda la variable de sesión. 
-                //return Redirect("/Administracion/inicio");
                 return RedirectToAction(TempData["accion"].ToString(), TempData["controlador"].ToString()); //redirige a la última página que se accedió por url.
             }
             catch (Exception e)
             {
                 ViewBag.errorLogin = e.Message;
                 return View(model);
-
             }
-
-
-
-            /* ViewBag.bienvenido = ("Bienvenido " + model.nombre);//no anda ver bien dps con la bdd
-            return Redirect("/Administracion/inicio"); */
         }
 
         [HttpPost]
@@ -80,6 +71,5 @@ namespace MVC.Controllers
             Session.Clear();
             return RedirectToAction("inicio", "Home");
         }
-
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MVC.Entity;
 using MVC.Manager;
 
@@ -9,10 +7,10 @@ namespace MVC.DaoImpl
 {
     public class DocumentoDaoImpl
     {
-
         RepositorioManager repositorioManager = new RepositorioManager();
 
-        public void grabarDocumento(TiposDocumentos tipoDocumento) {
+        public void grabarDocumento(TiposDocumentos tipoDocumento)
+        {
             repositorioManager.ctx.TiposDocumentos.Add(tipoDocumento);
             repositorioManager.ctx.SaveChanges();
         }

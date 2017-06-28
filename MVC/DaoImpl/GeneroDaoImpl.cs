@@ -3,16 +3,14 @@ using MVC.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MVC.DaoImpl
 {
     public class GeneroDaoImpl
     {
-
         RepositorioManager repositorioManager = new RepositorioManager();
 
-        //Trae todas los generos de la base de datos
+        //Trae todos los generos de la base de datos
         public List<Generos> getListadoDeGeneros()
         {
             var listadoDeGeneros = (from genero in repositorioManager.ctx.Generos select genero);
@@ -24,9 +22,8 @@ namespace MVC.DaoImpl
             }
             else
             {
-                throw new Exception("Error al traer la lista de peliculas de la base de datos");
+                throw new Exception("Error al traer la lista de géneros de la base de datos");
             }
-
         }
 
         //Obtiene un genero por id
@@ -35,6 +32,5 @@ namespace MVC.DaoImpl
             Generos generoBuscado = repositorioManager.ctx.Generos.OrderByDescending(o => o.IdGenero == id).FirstOrDefault();
             return generoBuscado;
         }
-
     }
 }

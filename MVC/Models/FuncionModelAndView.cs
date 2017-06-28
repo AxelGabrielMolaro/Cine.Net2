@@ -9,7 +9,6 @@ namespace MVC.Models
     {
         public string numeroFuncionModel { get; set; }
         public string horaFuncionModel { get; set; }
-        
 
         public FuncionModelAndView(string numeroFuncionModelp, string horaFuncionModelp)
         {

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "_base";
 }
 
@@ -12,27 +11,26 @@
     <link href="~/Css/" rel="stylesheet" />
 
     <link href="~/Css/estilos.css" rel="stylesheet" />
-    <script  type="text/javascript" src="~/Js/bootstrap.js"></script>   
-    <script type="text/javascript" src="~/Js/npm.js"></script>   
+    <script type="text/javascript" src="~/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Js/npm.js"></script>
     <script type="text/javascript" src="~/Js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="~/Js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="~/Js/formularios.js"></script>
-    <script type="text/javascript"  src="~/Js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Js/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="~/Css/jquery-ui.css">
-    @RenderSection("librerias" , required : false);
+    @RenderSection("librerias", required: false);
 </head>
 <body>
     <header>
         <div class="text-center header  text-uppercase tituloHeader ">
-               Cinematix
-                @RenderSection("usuario", required: false)<!--Nombre del admin-->
+            Cinematix
+            @RenderSection("usuario", required: false)<!--Nombre del admin-->
         </div>
     </header>
-   
+
     @RenderSection("cabezeraAdmin", required: false);
     @RenderBody()
 
-    @RenderSection("pie", required:false)
+    @RenderSection("pie", required: false)
 </body>
-</html>
-
+</html> 
