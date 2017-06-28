@@ -3,119 +3,106 @@
     ViewBag.Title = "reserva2";
     Layout = "~/Views/Shared/_base.cshtml";
 }
-
-
-
 <div class="text-center"> <h2>Finalizar Reserva</h2> </div>
 <div class="col-md-5">
     <table class="table">
-       
-            <tr class="">
-                <th class="info ">Nombre</th>
-                 <tr class="">
-                    <td class="col-md-12">@Model.pelicula.Nombre</td>
-                </tr>
-            <tr>
-            <tr class="">
-                <th class="info ">Descripcion</th>
-            <tr class="">
-                <td class="col-md-12"> @Model.pelicula.Descripcion</td>
-            </tr>
-            <tr>
-            <tr class="">
-                <th class="info ">Clasificaion</th>
-            <tr class="">
-                <td class="col-md-12">5 estrella</td>
-            </tr>
-            <tr>
-            <tr class="">
-                <th class="info ">Perecio de la entrada</th>
-            <tr class="">
-                <td class="col-md-12" > <span id="precioUnitario">@Model.sede.PrecioGeneral.ToString()</span></td>
-            </tr>
-            <tr>
-            <tr class="">
-                <th class="success ">Version</th>
-            <tr class="">
-                <td class="col-md-12"> @Model.version.Nombre</td>
-            </tr>
-            <tr>
-            <tr class="">
-                <th class="success ">Sede</th>
-            <tr class="">
-                <td class="col-md-12"> @Model.sede.Direccion</td>
-            </tr>
-            <tr>
-            <tr class="">
-            <th class="success ">Dia</th>
-            <tr class="">
-                <td class="col-md-12"> @Model.diaDeReservaReservaModel</td>
-            </tr>
-            <tr>
-            <tr class="">
+        <tr class="">
+            <th class="info ">Nombre</th>
+        <tr class="">
+            <td class="col-md-12">@Model.pelicula.Nombre</td>
+        </tr>
+        <tr>
+        <tr class="">
+            <th class="info ">Descripción</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.pelicula.Descripcion</td>
+        </tr> 
+        <tr class="">
+            <th class="info ">Género</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.pelicula.Generos.Nombre </td>
+        </tr> 
+        <tr>
+        <tr class="">
+            <th class="info ">Clasificación</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.pelicula.Calificaciones.Nombre </td>
+        </tr>
+        <tr>
+        <tr class="">
+            <th class="info ">Precio de la entrada</th>
+        <tr class="">
+            <td class="col-md-12"> <span id="precioUnitario">@Model.sede.PrecioGeneral.ToString()</span></td>
+        </tr>
+        <tr>
+        <tr class="">
+            <th class="success ">Versión</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.version.Nombre</td>
+        </tr>
+        <tr>
+        <tr class="">
+            <th class="success ">Sede</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.sede.Direccion</td>
+        </tr>
+        <tr>
+        <tr class="">
+            <th class="success ">Día</th>
+        <tr class="">
+            <td class="col-md-12"> @Model.diaDeReservaReservaModel</td>
+        </tr>
+        <tr>
+        <tr class="">
             <th class="success ">Horario</th>
-            <tr class="">
-                <td class="col-md-12"> @Model.horaDeFuncionReservaModel hs. </td>
-            </tr>
-            <tr>
-
-        
- </table>
-
+        <tr class="">
+            <td class="col-md-12"> @Model.horaDeFuncionReservaModel hs. </td>
+        </tr>
+        <tr>
+    </table>
 </div>
 <div class="col-md-offset-1 col-md-5">
     <div class="text-center text"><h3>Finalizar Reserva</h3></div>
     <div class="btn-danger"> @ViewBag.errorReserva</div>
     <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva">
-        
-
         <div class="form-group">
-            <label class="control-label" >mail</label>
+            <label class="control-label">mail</label>
             <div>
-                <input class="form-control"  id="mail" name="mailPasoFinalReservaModel" maxlength="50" onclick="ocultarCartelDeConfirmacionDeReserva()"/>
+                <input class="form-control" id="mail" name="mailPasoFinalReservaModel" maxlength="50" onclick="ocultarCartelDeConfirmacionDeReserva()" />
             </div>
-            <div class="btn-danger">@Html.ValidationMessageFor(O => O.mailPasoFinalReservaModel)</div> 
-            
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.mailPasoFinalReservaModel)</div>
         </div>
         <div class="form-group">
-            <label class="control-label " >Tipo de documento</label>
-           <div>
-               <div class="">
-                 
-                   <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel" onclick="ocultarCartelDeConfirmacionDeReserva()">
-                       <option value="">Seleccione</option>
-                       @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
-                       {
-                        <option value="@tipoDocumento.IdTipoDocumento">@tipoDocumento.Descripcion</option>
-                       }
-                   </select>
-                   
-               </div>
-              
-             
-           </div>
-            <div class="btn-danger">@Html.ValidationMessageFor(O => O.tipoDocumentoPasoFinalReservaModel)</div> 
+            <label class="control-label ">Tipo de documento</label>
+            <div>
+                <div class="">
+                    <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel" onclick="ocultarCartelDeConfirmacionDeReserva()">
+                        <option value="">Seleccione</option>
+                        @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
+                        {
+                            <option value="@tipoDocumento.IdTipoDocumento">@tipoDocumento.Descripcion</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="btn-danger">@Html.ValidationMessageFor(O => O.tipoDocumentoPasoFinalReservaModel)</div>
         </div>
         <br />
         <div class="form-group">
             <label class="control-label">Numero de documento</label>
             <div class="col-md-12">
-                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel" maxlength="8"  onclick="ocultarCartelDeConfirmacionDeReserva()"/>
+                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel" maxlength="8" onclick="ocultarCartelDeConfirmacionDeReserva()" />
             </div>
             <div>
                 <div class="btn-danger">@Html.ValidationMessageFor(O => O.numeroDocumentoPasoFinalReservaModel)</div>
-
             </div>
-
         </div>
-
         <div class="form-group">
             <label class="control-label">Cantidad De Entradas</label>
             <div>
-                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas"  name="cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
+                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas" name="cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
             </div>
             <div class="btn-danger">@Html.ValidationMessageFor(O => O.cantidadDeEntradasPasoFinalReservaModel)</div>
-          
         </div>
         <div class="form-group">
             <input type="hidden" name="idVersionReservaModel" value="@Model.idVersionReservaModel" />
@@ -123,38 +110,28 @@
             <input type="hidden" name="idSedeReservaModel" value="@Model.idSedeReservaModel" />
             <input type="hidden" name="diaDeReservaReservaModel" value="@Model.diaDeReservaReservaModel" />
             <input type="hidden" name="horaDeFuncionReservaModel" value="@Model.horaDeFuncionReservaModel" />
-        
-            
             <div>
-                <input type="button" id="btnReserva2" class="btn btn-success col-md-6 " value="Reservar" onclick="mostrarCartelDeConfirmacionDeReserva()"/>
-                <div class="text-right col-md-offset-1 col-md-5 btn-success"  >Total $ <span id="precioTotalReserva"> 0 </span>   </div>
-             </div>
-            
+                <input type="button" id="btnReserva2" class="btn btn-success col-md-6 " value="Reservar" onclick="mostrarCartelDeConfirmacionDeReserva()" />
+                <div class="text-right col-md-offset-1 col-md-5 btn-success">Total $ <span id="precioTotalReserva"> 0 </span>   </div>
+            </div>
         </div>
-       
         <div class="form-group  alert alert-warning  col-md-12">
             <span class=""> La reserva estará vigente hasta una hora antes de la función elegida y deberá ser confirmada en el cine seleccionado</span>
-           
+        </div>
+    </form>
+    <div id="cartel-confirmacion-reserva" class="form-group  alert alert-info visualizacionNone col-md-12">
+        <div class="row">
+            <span class=""> ¿Confirmar Reserva? </span>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><span id="mail-cartel"> </span></div>
+            <div class="col-md-12"><span id="entradas-cartel"> </span></div>
+            <div class="col-md-12"><span id="precio-cartel"> </span></div>
         </div>
 
-
-    </form>
-    <div id ="cartel-confirmacion-reserva"class="form-group  alert alert-info visualizacionNone col-md-12">
-            <div class="row">
-                <span class=""> ¿Confirmar Reserva?</span>
-            </div>
-            <div class="row">
-                <div class="col-md-12"><span id="mail-cartel"> </span></div>
-                <div class="col-md-12"><span id="entradas-cartel"> </span></div>
-                <div class="col-md-12"><span id="precio-cartel"> </span></div>              
-            </div>
-
-            <div class="row">
-                <input type="button" id="btn-confirmar-reserva" class="btn-success btn col-md-2" value="Si" onclick="enviarFormularioReserva()" />
-                <input type="button" id="btn-rechazar-reserva" class="btn-danger btn col-md-2" onclick="ocultarCartelDeConfirmacionDeReserva()" value="No" />
-
-            </div>   
-        </div> 
-</div>
-
-
+        <div class="row">
+            <input type="button" id="btn-confirmar-reserva" class="btn-success btn col-md-2" value="Si" onclick="enviarFormularioReserva()" />
+            <input type="button" id="btn-rechazar-reserva" class="btn-danger btn col-md-2" onclick="ocultarCartelDeConfirmacionDeReserva()" value="No" />
+        </div>
+    </div>
+</div> 

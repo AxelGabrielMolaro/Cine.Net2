@@ -152,6 +152,7 @@
     <Content Include="Img\CINE.jpg" />
     <Content Include="Js\bootstrap.js" />
     <Content Include="Js\bootstrap.min.js" />
+    <Content Include="Js\Eventos.js" />
     <Content Include="Js\formularios.js" />
     <Content Include="Js\jquery-3.2.1.min.js" />
     <Content Include="Js\jquery-ui.min.js" />
