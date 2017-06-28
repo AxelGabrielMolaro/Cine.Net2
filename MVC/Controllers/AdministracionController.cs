@@ -137,8 +137,11 @@ namespace MVC.Controllers
         /********** MODIFICAR PELÍCULA **********/
         //ESTOY TENIENDO PROBLEMAS PARA MODIFICAR, NO ME TOMA EL ID 
         //YA ESTÁ HECHO EL FORM Y TODOS LOS MÉTODOS, EL PROBLEMA ESTÁ EN EL CONTROLLER.
-        public ActionResult modificarPelicula(int id, PeliculaModelAndView model)
+        public ActionResult modificarPelicula(int id)
         {
+            Peliculas pelicula = peliculaService.getPeliculaPorId(id);
+            PeliculaModelAndView model = new PeliculaModelAndView(pelicula.IdPelicula.ToString(),pelicula.Nombre,pelicula.Descripcion,pelicula.IdCalificacion.ToString(),pelicula.IdGenero.ToString(),pelicula.Imagen, pelicula.Duracion.ToString());
+            model.idgeneroPeliculaModel = id.ToString();
             if (id == 0)
             {
                 return View();
@@ -164,13 +167,13 @@ namespace MVC.Controllers
                 model.nombrePeliculaModel = peliAEditar.Nombre;
                 model.descripcionPeliculaModel = peliAEditar.Descripcion;
                 model.idCalificacionPeliculaModel = Convert.ToString(peliAEditar.IdCalificacion);
-                model.duracionPeliculaModel = Convert.ToString(TimeSpan.FromMinutes(peliAEditar.Duracion));
+                model.duracionPeliculaModel = model.duracionPeliculaModel;
                 model.idgeneroPeliculaModel = Convert.ToString(peliAEditar.IdGenero);
-                // model.imagenPeliculaModel REVISAR CÓMO QUEDA LA IMG. (Si no se cambia, hay que conservar la anterior, y si se cambia, hay que eliminarla)
+              
 
                 //Fecha carga tiene que quedar igual, no se modifica. 
 
-                peliculaService.modificarPelicula(Convert.ToInt32(model.idPeliculaModel), model.nombrePeliculaModel, model.descripcionPeliculaModel, model.idCalificacionPeliculaModel, model.duracionPeliculaModel, model.idgeneroPeliculaModel, Convert.ToString(model.imagenPeliculaModel));
+                peliculaService.modificarPelicula(Convert.ToInt32(model.idPeliculaModel), model.nombrePeliculaModel, model.descripcionPeliculaModel, model.idCalificacionPeliculaModel, model.duracionPeliculaModel, model.idgeneroPeliculaModel, fileName);
                 return RedirectToAction("peliculas");
             }
             else
@@ -519,7 +522,16 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult reportesFiltrar(ReservaModelAndView model) //A esta vista se tiene acceso por post, no es necesario validar acceso por url. 
         {
-            model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
+            try
+            {
+                
+                model.listadoDeReservasReporteModel = reporteService.getListadoDeReservasConFilto(model.fechaDesdeReporteModel, model.fechaHastaReporteModel);
+            }
+            catch(Exception e)
+            {
+                model.listadoDeReservasReporteModel = reservaServiceImpl.getListadoDeReservas();
+                ViewBag.errorAlFiltrar = e.Message;
+            }
             return View("reportes", model);
         }
     }

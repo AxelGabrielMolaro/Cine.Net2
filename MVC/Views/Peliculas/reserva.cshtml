@@ -16,7 +16,7 @@
   
 
     <!-- ______________________________________________version ______________________________________________________________  -->
-    <form id="paso1" method="post" action="/Peliculas/reservaPaso2" class="visualizacionNone" >
+   <form id="paso1" method="post" action="/Peliculas/reservaPaso2" class="visualizacionNone" >
 
 
         <div class="form-group col-md-6 col-md-offset-3" >
@@ -121,6 +121,10 @@
                @foreach (var funcion in Model.listadoDeFunciones)
                {
                    TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
+
+    
+                   
+                   //TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
                    if (Model.estaDisponibleLaFuncion(horario.Hours.ToString(), horario.Minutes.ToString(), Model.diaDeReservaReservaModel.ToString()) == true)
                    {
                         <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes </option>
@@ -148,7 +152,7 @@
 
 
 
-        <input type="submit" id="reservaBotonEnviar" value="Continuar con la reserva" class="btn btn-success col-md-12" />
+        <input type="submit" id="reservaBotonEnviar" value="Continuar con la reserva" class="btn btn-success col-md-offset-10" />
     </form>
 
 </div>

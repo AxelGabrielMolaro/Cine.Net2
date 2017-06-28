@@ -172,7 +172,7 @@ namespace MVC.ServicesImpl
 
 
         //camviar dps 
-        public Carteleras getCarteleraPorId(int id)
+        public Carteleras getCarteleraPorId (int id) 
         {
             RepositorioManager repositorioManager = new RepositorioManager();
             Carteleras carteleraBuscada = repositorioManager.ctx.Carteleras.OrderByDescending(o => o.IdCartelera == id).FirstOrDefault();
@@ -185,9 +185,9 @@ namespace MVC.ServicesImpl
             {
                 peliculaDao.modificarPeliculaDeLaBdd(id, nombre, descripcion, idCalificacion, duracion, idGenero, imagen);
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("");
+                throw new Exception("Error al modificar");
             }
         }
 

@@ -34,6 +34,26 @@ namespace MVC.Herramientas
             return timeSpanStringFinal;
         }
 
+        public static string pasarUnMesAStringddmm(string diap,string mesp)
+        {
+            string dia = diap;
+            string mes = mesp;
+            if (Convert.ToInt32(dia) <= 9)
+            {
+                dia =  "0" + dia;
+            }
+
+            if (Convert.ToInt32(mes) <= 9)
+            {
+                mes = "0" + mes;
+            }
+
+
+            string diaMes = (dia+mes);
+
+            return diaMes;
+        }
+
         /// <summary>
         /// Traduce el dia de la semana en ingles al español
         /// </summary>

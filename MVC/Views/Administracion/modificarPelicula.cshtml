@@ -1,29 +1,23 @@
 ﻿@model MVC.Models.PeliculaModelAndView
-
 @{
     ViewBag.Title = "modificarPelicula";
     Layout = "~/Views/Shared/_AdministradorBase.cshtml";
 }
 
-<h2>modificarPelicula</h2>
+<div class="col-md-offset-3 col-md-6">
+    <hr />
+    <div class="">
+        <a href="/Administracion/Peliculas"><input type="button" class="btn btn-info" value="volver" />  </a>     
+    </div>
+    <div class="text-center"><h3>Modificar una pelicula</h3></div>
+    <div>
+        <div class="well">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="col-md-offset-3 col-md-6">
-        <hr />
-        <div class="btn btn-xs btn-default">
-            @Html.ActionLink("Volver", "peliculas")
-        </div>
-        <div class="text-center"><h3>Agregar una pelicula</h3></div>
-        <div>
             <form action="agregarPelicula" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="" class="control-label">Nombre</label>
                     <div>
+                        <input type="hidden" class="form-control" name="idPeliculaModel" value="@Model.idPeliculaModel" />
                         <input type="text" class="form-control" name="nombrePeliculaModel" value="@Model.nombrePeliculaModel" />
                         <div class="btn-danger"> @Html.ValidationMessageFor(x => x.nombrePeliculaModel)</div>
                     </div>
@@ -31,10 +25,9 @@
                 <div class="form-group">
                     <label for="" class="control-label">Descripción</label>
                     <div>
-                        <textarea class="form-control" name="descripcionPeliculaModel">@Model.descripcionPeliculaModel"</textarea>
-                        <div class="btn-danger">
-                            @Html.ValidationMessageFor(x => x.descripcionPeliculaModel)
-                        </div>
+                        <textarea class="form-control" name="descripcionPeliculaModel">@Model.descripcionPeliculaModel </textarea>
+                    <div class="btn-danger">
+                        @Html.ValidationMessageFor(x => x.descripcionPeliculaModel)
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,48 +49,47 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="control-label">Género</label>
-                    <div>
-                        <select id="comboPeliculaModel" name="idgeneroPeliculaModel" class="form-control">
-                            <option value="0" name="idgeneroPeliculaModel">Seleccione</option>
-                            @foreach (var genero in Model.listadoDeGeneros)
-                            {
-                                <option value="@genero.IdGenero" name="idgeneroPeliculaModel"> @genero.Nombre</option>
-                            }
+                    <div class="form-group">
+                        <label for="" class="control-label">Género</label>
+                        <div>
+                            <select id="comboPeliculaModel" name="idgeneroPeliculaModel" class="form-control">
+                                <option value="0" name="idgeneroPeliculaModel">Seleccione</option>
+                                @foreach (var genero in Model.listadoDeGeneros)
+                                {
+                                    <option value="@genero.IdGenero" name="idgeneroPeliculaModel"> @genero.Nombre</option>
+                                }
 
 
-                        </select>
-                        <div class="btn-danger">
-                            @Html.ValidationMessageFor(x => x.idgeneroPeliculaModel)
+                            </select>
+                            <div class="btn-danger">
+                                @Html.ValidationMessageFor(x => x.idgeneroPeliculaModel)
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="control-label">Imagen</label>
-                    <div>
-                        <input type="file" name="imagenPeliculaModel" id="imagenPelicula" value="@Model.imagenPeliculaModel" />
-                        <div class="btn-danger">
-                            @ViewBag.ErrorPeliculaImagen
-                            @Html.ValidationMessageFor(x => x.imagenPeliculaModel)
+
+                        <div class="form-group">
+                            <label for="" class="control-label">Imagen</label>
+                            <div>
+                                <input type="file" name="imagenPeliculaModel" id="imagenPelicula" value="@Model.imagenPeliculaModel" />
+                                <div class="btn-danger">
+                                    @ViewBag.ErrorPeliculaImagen
+                                    @Html.ValidationMessageFor(x => x.imagenPeliculaModel)
 
 
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="control-label">Duración</label>
-                    <div>
-                        <input type="text" class="form-control" name="duracionPeliculaModel" value="@Model.duracionPeliculaModel" />
-                        <div class="btn-danger">
-                            @Html.ValidationMessageFor(x => x.duracionPeliculaModel)
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-block btn-success" value="Agregar película" />
-            </form>
-            <div class="text-center alert-danger"> <h4>@ViewBag.errorPelicula</h4></div>
-        </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="control-label">Duración</label>
+                                <div>
+                                    <input type="text" class="form-control" name="duracionPeliculaModel" value="@Model.duracionPeliculaModel" />
+                                    <div class="btn-danger">
+                                        @Html.ValidationMessageFor(x => x.duracionPeliculaModel)
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-block btn-success" value="Agregar película" />
+        </form>
+        <div class="text-center alert-danger"> <h4>@ViewBag.errorPelicula</h4></div>
     </div>
-} 
+    </div>
+</div>

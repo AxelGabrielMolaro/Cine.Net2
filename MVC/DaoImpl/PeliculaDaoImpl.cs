@@ -73,7 +73,10 @@ namespace MVC.DaoImpl
                     repositorioManager.ctx.Entry(peli).State = EntityState.Modified;
                     repositorioManager.ctx.SaveChanges();
                 }
-                throw new Exception("");
+                else
+                {
+                    throw new Exception("");
+                }
             }
 
         }

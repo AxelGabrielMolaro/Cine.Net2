@@ -28,7 +28,7 @@
                 </label>
                 <div>
                     <!--Este input id lo uso para saber si es una edicion o una adicion de sede-->
-                    <input typeof="text" class="form-control" name="idSedeModel" value="@Model.IdSede" disabled/>
+                    <input type="hidden" class="form-control" name="idSedeModel" value="@Model.IdSede" disabled/>
                     <input type="text" class="form-control" name="nombreSedeModel" value="@Model.nombreSedeModel" />
                     <div class="alert-danger">@Html.ValidationMessageFor(x => x.nombreSedeModel)</div>
                 </div>

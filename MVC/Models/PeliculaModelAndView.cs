@@ -55,6 +55,7 @@ namespace MVC.Models
         public List<Calificaciones> listadoDeCalificaciones { get; set; }
 
 
+        public string imagenNamePeliculaModel { get; set; }
 
         public PeliculaModelAndView()
         {      
@@ -63,6 +64,19 @@ namespace MVC.Models
             llenarListados();
 
 
+        }
+
+        public PeliculaModelAndView(string id, string nombrep, string descripcionp, string calificacionp, string generoP, string imagenP, string duracionP)
+        {
+            //this.idPeliculaModel = id;
+            this.nombrePeliculaModel = nombrep;
+
+            this.descripcionPeliculaModel = descripcionp;
+            this.duracionPeliculaModel = duracionP;
+            this.idCalificacionPeliculaModel = calificacionp;
+            this.idgeneroPeliculaModel = generoP;
+            this.imagenNamePeliculaModel= imagenP;
+            llenarListados();
         }
 
         //llena la lista genero y calificaciones

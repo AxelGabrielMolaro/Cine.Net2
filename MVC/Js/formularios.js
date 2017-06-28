@@ -2,6 +2,15 @@
 
 $(document).ready(function () {
 
+    //datepicker
+
+    $(function () {
+        $(".datepicker").datepicker(
+            { dateFormat: 'dd/mm/yy' }
+            );
+    });
+    //
+
 
     var paso = $("#pasito").text();
 

@@ -183,10 +183,12 @@ namespace MVC.Models
         {
             DateTime actual = DateTime.Now;
             
+            
             //casteo del dt
-            string fechaString = Regex.Replace(diaForm, @"[^\d]", "");
-            string dia = fechaString.Substring(0, 1);
-            string mes = fechaString.Substring(fechaString.Length - 1, 1);
+            string fechaString = diaForm;
+          
+            string dia = fechaString.Substring(0,fechaString.IndexOf("/"));
+             string mes = fechaString.Substring(fechaString.IndexOf("/") + 1, fechaString.Length - fechaString.IndexOf("/")-1);
             string horarioString = Regex.Replace(diaForm, @"[^\d]", "");
             string horaSt = hora.ToString();
             string minutosSt = minutos.ToString();
