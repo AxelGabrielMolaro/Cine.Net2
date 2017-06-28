@@ -122,12 +122,22 @@
                {
                    TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
 
-    
-                   
+
+
                    //TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(funcion.horaFuncionModel));
-                   if (Model.estaDisponibleLaFuncion(horario.Hours.ToString(), horario.Minutes.ToString(), Model.diaDeReservaReservaModel.ToString()) == true)
+                    if (Model.estaDisponibleLaFuncion(horario.Hours.ToString(), horario.Minutes.ToString(), Model.diaDeReservaReservaModel.ToString()) == true)
                    {
-                        <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes </option>
+                       if (Convert.ToInt32(horario.Minutes) < 10)
+                       {
+                           string cero = "0";
+                        <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @cero@horario.Minutes</option>
+
+                       }
+                       else
+                       {
+
+                       <option value="@funcion.horaFuncionModel"> Función @funcion.numeroFuncionModel - @horario.Hours  : @horario.Minutes </option>
+                       }
                    }
                    else
                    {

@@ -32,7 +32,7 @@
         <tr class="">
             <th class="info ">Precio de la entrada</th>
         <tr class="">
-            <td class="col-md-12"> <span id="precioUnitario">@Model.sede.PrecioGeneral.ToString()</span></td>
+            <td class="col-md-12"> $ <span id="precioUnitario"> @Model.sede.PrecioGeneral.ToString()</span></td>
         </tr>
         <tr>
         <tr class="">
@@ -64,11 +64,11 @@
 <div class="col-md-offset-1 col-md-5 well">
     <div class="text-center text"><h3>Finalizar Reserva</h3></div>
     <div class="btn-danger"> @ViewBag.errorReserva</div>
-    <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva">
+    <form class="form" id="formularioReserva2" method="post" action="/Peliculas/finalizarReserva" onmousemove ="setearPrecioTotalReserva()" >
         <div class="form-group">
             <label class="control-label">mail</label>
             <div>
-                <input class="form-control" id="mail" name="mailPasoFinalReservaModel" maxlength="50" onclick="ocultarCartelDeConfirmacionDeReserva()" />
+                <input class="form-control" id="mail" name="mailPasoFinalReservaModel" value="@Model.mailPasoFinalReservaModel" maxlength="50" onclick="ocultarCartelDeConfirmacionDeReserva()" />
             </div>
             <div class="btn-danger">@Html.ValidationMessageFor(O => O.mailPasoFinalReservaModel)</div>
         </div>
@@ -76,7 +76,7 @@
             <label class="control-label ">Tipo de documento</label>
             <div>
                 <div class="">
-                    <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel" onclick="ocultarCartelDeConfirmacionDeReserva()">
+                    <select class="form-control " id="tipoDocumento" name="tipoDocumentoPasoFinalReservaModel"  onclick="ocultarCartelDeConfirmacionDeReserva()">
                         <option value="">Seleccione</option>
                         @foreach (var tipoDocumento in Model.listadoDeTipoDocumentoReservaModel)
                         {
@@ -93,7 +93,7 @@
         <div class="form-group">
             <label class="control-label">Numero de documento</label>
             <div class="col-md-12">
-                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel" maxlength="8" onclick="ocultarCartelDeConfirmacionDeReserva()" />
+                <input class="form-control" id="numeroDocumento" name="numeroDocumentoPasoFinalReservaModel"value="@Model.numeroDocumentoPasoFinalReservaModel" maxlength="8" onclick="ocultarCartelDeConfirmacionDeReserva()" />
             </div>
            
         <div class="btn-danger">@Html.ValidationMessageFor(O => O.numeroDocumentoPasoFinalReservaModel)</div>
@@ -102,7 +102,7 @@
         <div class="form-group">
             <label class="control-label">Cantidad De Entradas</label>
             <div>
-                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas" name="cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
+                <input type="text" class="form-control bfh-number" id="cantidadDeEntradas" name="cantidadDeEntradasPasoFinalReservaModel"  value="@Model.cantidadDeEntradasPasoFinalReservaModel" maxlength="3" onkeyup="setearPrecioTotalReserva()" onclick="ocultarCartelDeConfirmacionDeReserva()">
             </div>
             <div class="btn-danger">@Html.ValidationMessageFor(O => O.cantidadDeEntradasPasoFinalReservaModel)</div>
         </div>
@@ -113,7 +113,7 @@
             <input type="hidden" name="diaDeReservaReservaModel" value="@Model.diaDeReservaReservaModel" />
             <input type="hidden" name="horaDeFuncionReservaModel" value="@Model.horaDeFuncionReservaModel" />
             <div>
-                <input type="button" id="btnReserva2" class="btn btn-success col-md-6 " value="Reservar" onclick="mostrarCartelDeConfirmacionDeReserva()" />
+                <input type="button" id="btnReserva2" class="btn btn-success col-md-6 " value="Reservar" onclick="mostrarCartelDeConfirmacionDeReserva(), setearPrecioTotalReserva()" />
                 <div class="text-right col-md-offset-1 col-md-5 btn-success">Total $ <span id="precioTotalReserva"> 0 </span>   </div>
             </div>
         </div>

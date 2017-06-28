@@ -10,7 +10,7 @@ $(document).ready(function () {
             );
     });
     //
-
+    
 
     var paso = $("#pasito").text();
 
@@ -67,7 +67,7 @@ var setearFormularioPeliculas = function ( idGenero) { //combos seleccionados
 var setearPrecioTotalReserva = function ()
 {
     
-   
+    
     var precio = $("#precioTotalReserva");
     var cantidad = $("#cantidadDeEntradas");
     var precioUnitario = $("#precioUnitario");
@@ -90,7 +90,7 @@ var mostrarCartelDeConfirmacionDeReserva = function ()
     $("#mail-cartel").text("Mail : " + $("#mail").val());
     $("#entradas-cartel").text("Cantidad de entradas : " + $("#cantidadDeEntradas").val());
     if ($("#precioTotalReserva").text() != "NaN") {
-        $("#precio-cartel").text("Total : " + $("#precioTotalReserva").text());
+        $("#precio-cartel").text("Total : $" + $("#precioTotalReserva").text());
     }
     else {
         $("#precio-cartel").text("Verifique cantidad");

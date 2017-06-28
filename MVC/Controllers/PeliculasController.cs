@@ -163,8 +163,17 @@ namespace MVC.Controllers
                 model.idVersionReservaModel = idVersionFC;
                 model.diaDeReservaReservaModel = diaFC;
                 TimeSpan horario = TimeSpan.FromMinutes(Convert.ToInt32(horarioFC));
-               
-                model.horaDeFuncionReservaModel = (horario.Hours.ToString() + ":" + horario.Minutes.ToString());
+
+                if (horario.Minutes < 10)
+                {
+                    model.horaDeFuncionReservaModel = (horario.Hours.ToString() + ":0" + horario.Minutes.ToString());
+
+                }
+                else
+                {
+                    model.horaDeFuncionReservaModel = (horario.Hours.ToString() + ":" + horario.Minutes.ToString());
+
+                }
                 model.listadoDeTipoDocumentoReservaModel = documentoService.getListadoTipoDocumento();
                 model.paso = "4";
                 model.setearSedeYPeliculaYVersionParaReserva2(Convert.ToInt32(idPeliculaFC), Convert.ToInt32(idSedeFC), Convert.ToInt32(idVersionFC));
@@ -186,12 +195,12 @@ namespace MVC.Controllers
             }
 
             //casteo del dt
-            string fechaString = Regex.Replace(model.diaDeReservaReservaModel, @"[^\d]", "");
-            string dia = fechaString.Substring(0, 2);
-            string mes = fechaString.Substring(2, fechaString.Length - 2);
-            string horarioString = Regex.Replace(model.horaDeFuncionReservaModel, @"[^\d]", "");
-            string hora = horarioString.Substring(0, 2);
-            string minutos = horarioString.Substring(2, fechaString.Length - 2);
+            string fechaString = model.diaDeReservaReservaModel;
+            string dia = fechaString.Substring(0, fechaString.IndexOf("/"));
+            string mes = fechaString.Substring(fechaString.IndexOf("/") + 1, fechaString.Length - fechaString.IndexOf("/") - 1);
+            string horarioString = model.horaDeFuncionReservaModel;
+            string hora = horarioString.Substring(0, horarioString.IndexOf(":"));
+            string minutos = horarioString.Substring(horarioString.IndexOf("/") + 1, horarioString.Length - horarioString.IndexOf(":") - 1);
             DateTime fechaHorainicioDate = DateTime.Parse(dia + "-" + mes + "-" + DateTime.Now.Year + " " + hora + ":" + minutos + ":" + "00");
 
             //crea la reserva
